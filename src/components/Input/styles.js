@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 80%;
+    width: 70%;
     position: relative;
     margin-top: 10px;
 
@@ -10,7 +10,7 @@ export const Container = styled.div`
     gap: 5px;
 
     input{
-        height: 25px;
+        height: 27px;
         font-size: 17px;
         border-radius: 4px;
     }

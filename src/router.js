@@ -1,16 +1,15 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
-function Router(){
-    return(
+function Router() {
+    return (
         <BrowserRouter>
             <Switch>
                 <Route path="/">
-                    <Login />
+                    <Register />
                 </Route>
-                <Route path="/Register">
-
-                </Route>
+                <Route path="/register"></Route>
             </Switch>
         </BrowserRouter>
     );
