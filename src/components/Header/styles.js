@@ -2,20 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.header`
     width: 100%;
-    height: 90px;
-    background-color: var(--Dark);
+    height: 65px;
+    background-color: var(--light);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    img {
-        width: 180px;
-        height: 80px;
-        margin-left: 10px;
+    position: absolute;
 
-        border: 1px solid #fff;
-        border-radius: 5px;
-        padding: 4px;
+    img {
+        width: 170px;
+        height: 60px;
+        padding: 5px;
+        margin-left: 10px;
     }
 `;
