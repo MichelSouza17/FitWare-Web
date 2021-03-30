@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 
     :root{
         --Dark: #141414;
-        --DarkGray: #858585;
+        --DarkGray: #b3b3b3;
         --BlueLight: #0284a1;
         --BlueDark: #023ceb;
         --RedTransparent: #EF233C;
@@ -20,6 +20,7 @@ export const GlobalStyles = createGlobalStyle`
 
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
+        overflow-x: hidden;
     }
 
     ::-webkit-scrollbar{

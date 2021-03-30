@@ -7,7 +7,7 @@ function Router() {
         <BrowserRouter>
             <Switch>
                 <Route path="/">
-                    <Login />
+                    <Register />
                 </Route>
                 <Route path="/register"></Route>
             </Switch>
