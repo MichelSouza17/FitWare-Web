@@ -56,11 +56,24 @@ export const FormUser = styled.form`
     }
 `;
 
-export const ContainerDice = styled.div`
-    width: 480px;
+export const ContainerInfo = styled.div`
+    width: 1000px;
     min-height: 300px;
     height: auto;
+    flex-wrap: wrap;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+`;
+
+export const ContainerDice = styled.div`
+    width: 480px;
+    height: 300px;
     margin-right: 20px;
+    flex-wrap: wrap;
 
     display: flex;
     justify-content: center;
@@ -70,35 +83,136 @@ export const ContainerDice = styled.div`
 
 export const ContainerContacts = styled.div`
     width: 100%;
-    min-height: 300px;
-    height: auto;
+    height: 210px;
     margin-bottom: 10px;
-    padding-top: 15px;
+    padding-top: 5px;
+    flex-wrap: wrap;
 
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 7px;
+    gap: 2px;
 
     background-color: var(--light);
 `;
 
 export const ContainerWeight = styled.div`
     width: 100%;
-    min-height: 100px;
-    height: auto;
+    height: 80px;
+    flex-wrap: wrap;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 
     background-color: var(--light);
 `;
 
 export const ContainerAddress = styled.div`
     width: 500px;
-    min-height: 300px;
-    height: auto;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 15px;
+    flex-wrap: wrap;
 
     background-color: var(--light);
+
+    input {
+        width: 400px;
+    }
+`;
+
+export const ContainerAcademy = styled.div`
+    width: 1000px;
+    height: 80px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--light);
+`;
+
+
+export const TextAcademy = styled.div`
+    width: 450px;
+    height: 80px;
+    flex-wrap: wrap;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--light);
+
+    > p {
+        font-size: 15px;
+        text-align: left;
+        align-self: flex-start;
+        overflow: hidden;
+        font-weight: bold;
+        padding-inline-start: 20px;
+    }
+`;
+
+export const SelectAcademy = styled.div`
+    width: 550px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    background-color: var(--light);
+
+    select {
+        width: 530px;
+        align-self: flex-end;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+`;
+
+export const ContainerButtons = styled.div`
+    width: 550px;
+    min-height: 80px;
+    height: auto;
+    margin-top: 100px;
+    gap: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+`;
+
+export const ButtonSave = styled.button`
+  width: 120px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #49C955;
+;
+
+`;
+
+export const ButtonCancel = styled.button`
+  width: 120px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF0000;
+
 `;
