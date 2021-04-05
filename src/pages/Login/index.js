@@ -15,14 +15,14 @@ function Login() {
                 <h1>Faça seu Login</h1>
                 <Input
                     id="email"
-                    label="email"
+                    label="Email"
                     type="email"
                     // value={}
                     // handler={}
                 />
                 <Input
                     id="password"
-                    label="password"
+                    label="Password"
                     type="password"
                     // value={}
                     // handler={}

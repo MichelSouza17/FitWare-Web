@@ -34,6 +34,10 @@ export const FormLogin = styled.form`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
+    h1 {
+        margin-bottom: 40px;
+    }
 
     label {
         margin-left: 10px;
@@ -41,6 +45,8 @@ export const FormLogin = styled.form`
     }
 
     button {
+        width: 70%;
+        height: 40px;
         margin-top: 15px;
         margin-bottom: 15px;
     }
