@@ -14,8 +14,9 @@ export const Container = styled.div`
         height: 27px;
         font-size: 17px;
         border-radius: 4px;
+        opacity: 50%;
     }
     label{
-        font-weight: bold;
+        /* font-weight: bold; */
     }
 `;

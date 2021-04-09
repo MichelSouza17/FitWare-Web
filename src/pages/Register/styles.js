@@ -9,18 +9,21 @@ export const Container = styled.div`
 
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-
+    align-items: center;
+    flex-direction: column;
     background-color: var(--DarkGray);
 `;
 
 export const ContainerUser = styled.div`
     width: 1000px;
-    min-height: 250px;
+    min-height: 220px;
     height: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-bottom: 10px;
+    border-radius: 5px;
+    border:solid 1px;
+    
 
     display: flex;
     justify-content: center;
@@ -29,29 +32,41 @@ export const ContainerUser = styled.div`
 
     background-color: var(--light);
 
-    > h2 {
+    > h1 {
         font-size: 22px;
         text-align: center;
         margin-top: 10px;
         overflow: hidden;
     }
+
+  
 `;
 
 export const FormUser = styled.form`
     width: 100%;
     height: 100%;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 10px;
-
+    padding-left: 10px;
+    
+    margin-top: 25px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
+    
+
+    input {
+        min-width: 280px;
+        opacity: 60%;
+    }
+    select {
+        min-width: 280px;
+        opacity: 60%;
+    }
 
     label {
-        margin-left: 10px;
+        margin-left: 0px;
         margin-top: 7px;
     }
 `;
@@ -61,8 +76,10 @@ export const ContainerInfo = styled.div`
     min-height: 300px;
     height: auto;
     flex-wrap: wrap;
+    border-radius: 5px;
 
 
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +91,8 @@ export const ContainerDice = styled.div`
     height: 300px;
     margin-right: 20px;
     flex-wrap: wrap;
-
+    
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +105,8 @@ export const ContainerContacts = styled.div`
     margin-bottom: 10px;
     padding-top: 5px;
     flex-wrap: wrap;
+    border-radius: 5px;
+    border:solid 1px;
 
     display: flex;
     align-items: center;
@@ -100,6 +120,8 @@ export const ContainerWeight = styled.div`
     width: 100%;
     height: 80px;
     flex-wrap: wrap;
+    border-radius: 5px;
+    border:solid 1px;
 
     display: flex;
     justify-content: center;
@@ -118,6 +140,8 @@ export const ContainerAddress = styled.div`
     gap: 2px;
     padding-top: 15px;
     flex-wrap: wrap;
+    border-radius: 5px;
+    border:solid 1px;
 
     background-color: var(--light);
 
@@ -131,6 +155,8 @@ export const ContainerAcademy = styled.div`
     height: 80px;
     margin-top: 10px;
     flex-wrap: wrap;
+    border-radius: 5px;
+    border:solid 1px;
 
     display: flex;
     justify-content: center;
@@ -158,7 +184,7 @@ export const TextAcademy = styled.div`
         text-align: left;
         align-self: flex-start;
         overflow: hidden;
-        font-weight: bold;
+        /* font-weight: bold; */
         padding-inline-start: 20px;
     }
 `;

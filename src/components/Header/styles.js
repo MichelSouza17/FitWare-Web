@@ -1,21 +1,29 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-    width: 100%;
-    height: 65px;
-    background-color: var(--light);
-    z-index: 9;
+  width: 100%;
+  height: 60px;
+  background-color: var(--light);
+  z-index: 999;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  /* border-bottom: solid 1px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    position: absolute;
+  position: fixed;
 
-    img {
-        width: 170px;
-        height: 60px;
-        padding: 5px;
-        margin-left: 10px;
+  img {
+    width: 130px;
+    height: 50px;
+    padding: 5px;
+    margin-left: 20px;
+    /* border: solid 1px; */
+    transition: all 0.4s;
+
+    :hover {
+      width: 135px;
+      height: 52px;
     }
+  }
 `;
