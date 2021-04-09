@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
     width: 100vw;
     min-height: 500px;
     height: auto;
@@ -42,11 +42,10 @@ export const ContainerUser = styled.div`
   
 `;
 
-export const FormUser = styled.form`
+export const User = styled.div`
     width: 100%;
     height: 100%;
     padding-left: 10px;
-    
     margin-top: 25px;
     border-radius: 15px;
     display: flex;

@@ -7,7 +7,7 @@ import {
   ContainerDice,
   TextAcademy,
   ContainerAcademy,
-  FormUser,
+  User,
   SelectAcademy,
   ContainerButtons,
   ButtonSave,
@@ -27,7 +27,7 @@ function Register() {
       <Container>
         <ContainerUser>
           <h1>Cadastro Usuário</h1>
-          <FormUser>
+          <User>
             <Input
               id="name"
               label="Primeiro Nome"
@@ -71,7 +71,7 @@ function Register() {
               // value={}
               // handler={}
             />
-          </FormUser>
+          </User>
         </ContainerUser>
         <ContainerInfo>
           <ContainerDice>
