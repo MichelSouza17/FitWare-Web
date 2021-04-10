@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.form`
+export const FormContainer = styled.form`
     width: 100vw;
     min-height: 500px;
     height: auto;
@@ -146,6 +146,49 @@ export const ContainerAddress = styled.div`
 
     input {
         width: 400px;
+    }
+`;
+
+export const Cep = styled.div`
+    width: 400px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: var(--light);
+
+    input {
+        width: 130px;
+    }
+`;
+
+export const ButtonCep = styled.button`
+  width: 130px;
+  height: 36px;
+  margin-top: 24px;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+;
+
+h3 {
+    font-size: 12px;
+}
+
+`;
+
+export const Numero = styled.div`
+    width: 400px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: var(--light);
+
+    input {
+        width: 130px;
     }
 `;
 

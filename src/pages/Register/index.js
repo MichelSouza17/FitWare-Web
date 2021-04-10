@@ -1,5 +1,5 @@
 import {
-  Container,
+  FormContainer,
   ContainerUser,
   ContainerContacts,
   ContainerAddress,
@@ -13,6 +13,9 @@ import {
   ButtonSave,
   ButtonCancel,
   ContainerInfo,
+  Cep,
+  ButtonCep,
+  Numero
 } from "./styles";
 
 import Input from "../../components/Input";
@@ -24,7 +27,7 @@ function Register() {
   return (
     <>
       <Header />
-      <Container>
+      <FormContainer>
         <ContainerUser>
           <h1>Cadastro Usuário</h1>
           <User>
@@ -32,44 +35,44 @@ function Register() {
               id="name"
               label="Primeiro Nome"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
             <Input
               id="lastname"
               label="Sobrenome"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
 
             <Select
               id="sexo"
               label="Sexo"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
             <Input
               id="dataNascimento"
               label="Data de Nascimento"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
             <Input
               id="cpf"
               label="CPF"
               type="int"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
             <Input
               id="email"
               label="E-mail"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
           </User>
         </ContainerUser>
@@ -80,22 +83,22 @@ function Register() {
                 id="celular"
                 label="Celular"
                 type="int"
-                // value={}
-                // handler={}
+              // value={}
+              // handler={}
               />
               <Select
                 id="tipo"
                 label="Tipo"
                 type="text"
-                // value={}
-                // handler={}
+              // value={}
+              // handler={}
               />
               <Select
                 id="estado"
                 label="Estado"
                 type="text"
-                // value={}
-                // handler={}
+              // value={}
+              // handler={}
               />
             </ContainerContacts>
             <ContainerWeight>
@@ -103,46 +106,53 @@ function Register() {
                 id="peso"
                 label="Peso"
                 type="double"
-                // value={}
-                // handler={}
+              // value={}
+              // handler={}
               />
               <Input
                 id="altura"
                 label="Altura"
                 type="double"
-                // value={}
-                // handler={}
+              // value={}
+              // handler={}
               />
             </ContainerWeight>
           </ContainerDice>
           <ContainerAddress>
-            <Input
-              id="cep"
-              label="Cep"
-              type="int"
+            <Cep>
+              <Input
+                id="cep"
+                label="Cep"
+                type="int"
               // value={}
               // handler={}
-            />
+              />
+              <ButtonCep>
+                <h3>Não sei meu CEP</h3>
+              </ButtonCep>
+            </Cep>
             <Input
               id="logradouro"
               label="Logradouro"
               type="text"
+            // value={}
+            // handler={}
+            />
+            <Numero>
+              <Input
+                id="numero"
+                label="Numero"
+                type="int"
               // value={}
               // handler={}
-            />
-            <Input
-              id="numero"
-              label="Numero"
-              type="int"
-              // value={}
-              // handler={}
-            />
+              />
+            </Numero>
             <Input
               id="Bairro"
               label="Bairro"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
           </ContainerAddress>
         </ContainerInfo>
@@ -154,8 +164,8 @@ function Register() {
             <Select
               id="academia"
               type="text"
-              // value={}
-              // handler={}
+            // value={}
+            // handler={}
             />
           </SelectAcademy>
         </ContainerAcademy>
@@ -163,7 +173,7 @@ function Register() {
           <ButtonSave>Salvar</ButtonSave>
           <ButtonCancel>Cancelar</ButtonCancel>
         </ContainerButtons>
-      </Container>
+      </FormContainer>
       <Footer />
     </>
   );
