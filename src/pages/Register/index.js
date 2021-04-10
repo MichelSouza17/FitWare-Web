@@ -22,8 +22,61 @@ import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Select from "../../components/Select";
+import { useState } from "react";
 
 function Register() {
+
+    const [student, setStudent] = useStatete({
+        id: "",
+        name:"",
+        surname:"",
+        email:"",
+        password:"",
+        birthday:"",
+        telefone:"",
+        Weight:"",
+        height:"",
+        gender:"",
+        state:"",
+        city:"",
+        street:"",
+        cep:"",
+    });
+
+    const handleInput = (e) =>{
+        setStudent({...student, [e.target.id]: e.target.value});
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const {id, name, surname, email, password, birthday, telefone, Weight, height, gender, state, city, street, cep} = UserAcademy;
+
+            const response = await api.post("/UserAcademy",{
+                id,
+                name,
+                surname,
+                email,
+                password,
+                birthday,
+                telefone,
+                Weight,
+                height,
+                gender,
+                state,
+                city,
+                street,
+                cep,
+
+            });
+
+        }catch(error){
+            console.error(error);
+            alert(error.response.data.error);
+        }
+    };
+
   return (
     <>
       <Header />
@@ -36,14 +89,14 @@ function Register() {
               label="Primeiro Nome"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
             <Input
               id="lastname"
               label="Sobrenome"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
 
             <Select
@@ -51,28 +104,28 @@ function Register() {
               label="Sexo"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
             <Input
               id="dataNascimento"
               label="Data de Nascimento"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
             <Input
               id="cpf"
               label="CPF"
               type="int"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
             <Input
               id="email"
               label="E-mail"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
           </User>
         </ContainerUser>
@@ -84,21 +137,21 @@ function Register() {
                 label="Celular"
                 type="int"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
               <Select
                 id="tipo"
                 label="Tipo"
                 type="text"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
               <Select
                 id="estado"
                 label="Estado"
                 type="text"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
             </ContainerContacts>
             <ContainerWeight>
@@ -107,14 +160,14 @@ function Register() {
                 label="Peso"
                 type="double"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
               <Input
                 id="altura"
                 label="Altura"
                 type="double"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
             </ContainerWeight>
           </ContainerDice>
@@ -125,7 +178,7 @@ function Register() {
                 label="Cep"
                 type="int"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
               <ButtonCep>
                 <h3>Não sei meu CEP</h3>
@@ -136,7 +189,7 @@ function Register() {
               label="Logradouro"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
             <Numero>
               <Input
@@ -144,7 +197,7 @@ function Register() {
                 label="Numero"
                 type="int"
               // value={}
-              // handler={}
+              handler={handleInput}
               />
             </Numero>
             <Input
@@ -152,7 +205,7 @@ function Register() {
               label="Bairro"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
           </ContainerAddress>
         </ContainerInfo>
@@ -165,7 +218,7 @@ function Register() {
               id="academia"
               type="text"
             // value={}
-            // handler={}
+            handler={handleInput}
             />
           </SelectAcademy>
         </ContainerAcademy>
