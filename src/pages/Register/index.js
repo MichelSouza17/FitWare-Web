@@ -29,7 +29,7 @@ function Register() {
       <Header />
       <FormContainer>
         <ContainerUser>
-          <h1>Cadastro Usuário</h1>
+          <h1>Dados Pessoais</h1>
           <User>
             <Input
               id="name"
@@ -79,6 +79,7 @@ function Register() {
         <ContainerInfo>
           <ContainerDice>
             <ContainerContacts>
+            <h1>Contato</h1>
               <Input
                 id="celular"
                 label="Celular"
@@ -119,6 +120,7 @@ function Register() {
             </ContainerWeight>
           </ContainerDice>
           <ContainerAddress>
+          <h1>Endereço</h1>
             <Cep>
               <Input
                 id="cep"

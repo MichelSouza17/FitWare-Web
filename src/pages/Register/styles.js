@@ -22,7 +22,7 @@ export const ContainerUser = styled.div`
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-    border:solid 1px;
+    box-shadow: 0 0 0.3em black;
     
 
     display: flex;
@@ -71,14 +71,11 @@ export const User = styled.div`
 `;
 
 export const ContainerInfo = styled.div`
-    width: 1000px;
-    min-height: 300px;
+    width: 1005px;
+    min-height: 332px;
     height: auto;
     flex-wrap: wrap;
-    border-radius: 5px;
 
-
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,10 +84,9 @@ export const ContainerInfo = styled.div`
 
 export const ContainerDice = styled.div`
     width: 480px;
-    height: 300px;
+    height: 332px;
     margin-right: 20px;
     flex-wrap: wrap;
-    
     
     display: flex;
     justify-content: center;
@@ -99,13 +95,13 @@ export const ContainerDice = styled.div`
 `;
 
 export const ContainerContacts = styled.div`
-    width: 100%;
-    height: 210px;
+    width: 475px;
+    height: 237px;
     margin-bottom: 10px;
     padding-top: 5px;
     flex-wrap: wrap;
     border-radius: 5px;
-    border:solid 1px;
+    box-shadow: 0 0 0.3em black;
 
     display: flex;
     align-items: center;
@@ -113,14 +109,21 @@ export const ContainerContacts = styled.div`
     gap: 2px;
 
     background-color: var(--light);
+
+    > h1 {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 10px;
+        overflow: hidden;
+    }
 `;
 
 export const ContainerWeight = styled.div`
-    width: 100%;
+    width: 475px;
     height: 80px;
     flex-wrap: wrap;
     border-radius: 5px;
-    border:solid 1px;
+    box-shadow: 0 0 0.3em black;
 
     display: flex;
     justify-content: center;
@@ -132,7 +135,7 @@ export const ContainerWeight = styled.div`
 
 export const ContainerAddress = styled.div`
     width: 500px;
-    height: 300px;
+    height: 327px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -140,21 +143,27 @@ export const ContainerAddress = styled.div`
     padding-top: 15px;
     flex-wrap: wrap;
     border-radius: 5px;
-    border:solid 1px;
+    box-shadow: 0 0 0.3em black;
 
     background-color: var(--light);
 
     input {
         width: 400px;
     }
+
+    > h1 {
+        font-size: 22px;
+        text-align: center;
+        overflow: hidden;
+    }
 `;
 
 export const Cep = styled.div`
     width: 400px;
-    height: 60px;
     display: flex;
     align-items: center;
     flex-direction: row;
+    padding-top: 10px;
 
     background-color: var(--light);
 
@@ -198,7 +207,7 @@ export const ContainerAcademy = styled.div`
     margin-top: 10px;
     flex-wrap: wrap;
     border-radius: 5px;
-    border:solid 1px;
+    box-shadow: 0 0 0.3em black;
 
     display: flex;
     justify-content: center;
