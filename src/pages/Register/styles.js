@@ -293,3 +293,23 @@ export const ButtonCancel = styled.button`
   background-color: #FF0000;
 
 `;
+
+export const ContainerPassword = styled.div`
+    width: 1000px;
+    height: 80px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    box-shadow: 0 0 0.3em black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--light);
+
+    input {
+        width: 300px;
+    }
+`;
