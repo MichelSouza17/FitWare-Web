@@ -15,174 +15,181 @@ import {
   ContainerInfo,
   Cep,
   ButtonCep,
-  Numero
+  Numero,
 } from "./styles";
 
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Select from "../../components/Select";
+import Modal from "../../components/Modal";
 import { useState } from "react";
+import { api } from "../../services/api";
 
 function Register() {
+  const [Userstudent, setUserStudent] = useState({
+    first_name: "",
+    surname: "",
+    email: "",
+    password: "",
+    birthdate: "",
+    celular: "",
+    weight: "",
+    numero: "",
+    height: "",
+    state: "",
+    city: "",
+    street: "",
+    cep: "",
+    cpf: "",
+  });
 
-    // const [student, setStudent] = useStatete({
-    //     id: "",
-    //     name:"",
-    //     surname:"",
-    //     email:"",
-    //     password:"",
-    //     birthday:"",
-    //     telefone:"",
-    //     Weight:"",
-    //     height:"",
-    //     gender:"",
-    //     state:"",
-    //     city:"",
-    //     street:"",
-    //     cep:"",
-    // });
+  const [showCep, setShowCep] = useState(false);
 
-    // const handleInput = (e) =>{
-    //     setStudent({...student, [e.target.id]: e.target.value});
-    // };
+  const handleInput = (e) => {
+    setUserStudent({ ...Userstudent, [e.target.id]: e.target.value });
+  };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    //     try{
-    //         const {id, name, surname, email, password, birthday, telefone, Weight, height, gender, state, city, street, cep} = UserAcademy;
-
-    //         const response = await api.post("/UserAcademy",{
-    //             id,
-    //             name,
-    //             surname,
-    //             email,
-    //             password,
-    //             birthday,
-    //             telefone,
-    //             Weight,
-    //             height,
-    //             gender,
-    //             state,
-    //             city,
-    //             street,
-    //             cep,
-
-    //         });
-
-    //     }catch(error){
-    //         console.error(error);
-    //         alert(error.response.data.error);
-    //     }
-    // };
+    try {
+      const response = await api.post("/UserAcademy", {
+        
+        first_name: Userstudent.first_name,
+        surname: Userstudent.surname,
+        email: Userstudent.email,
+        password: Userstudent.password,
+        birthdate: Userstudent.birthdate,
+        celular: Userstudent.celular,
+        weight: Userstudent.weight,
+        numero: Userstudent.numero,
+        height: Userstudent.height,
+        state: Userstudent.state,
+        city: Userstudent.city,
+        street: Userstudent.street,
+        cep: Userstudent.cep,
+        cpf: Userstudent.cpf,
+      });
+    } catch (error) {
+      console.error(error);
+      alert(error.response.data.error);
+    }
+  };
 
   return (
     <>
+    {showCep && (
+        <Modal
+          title="Faça a busca de seu endereço pelo CEP"
+          handleClose={() => setShowCep(false)}
+        >
+        </Modal>
+      )}
       <Header />
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <ContainerUser>
           <h1>Dados Pessoais</h1>
           <User>
             <Input
-              id="name"
+              id="first_name"
               label="Primeiro Nome"
               type="text"
-            // value={}
-            // handler={handleInput}
+              value={Userstudent.first_name}
+              handler={handleInput}
             />
             <Input
-              id="lastname"
+              id="surname"
               label="Sobrenome"
               type="text"
-            // value={}
-            // handler={handleInput}
+              value={Userstudent.surname}
+              handler={handleInput}
             />
 
             <Select
               id="sexo"
               label="Sexo"
               type="text"
-            // value={}
-            // handler={handleInput}
+              // value={Userstudent.sexo}
+              // handler={handleInput}
             />
             <Input
-              id="dataNascimento"
+              id="birthdate"
               label="Data de Nascimento"
               type="text"
-            // value={}
-            // handler={handleInput}
+              value={Userstudent.birthdate}
+              handler={handleInput}
             />
             <Input
               id="cpf"
               label="CPF"
               type="int"
-            // value={}
-            // handler={handleInput}
+              value={Userstudent.cpf}
+              handler={handleInput}
             />
             <Input
               id="email"
               label="E-mail"
               type="text"
-            // value={}
-            // handler={handleInput}
+              value={Userstudent.email}
+              handler={handleInput}
             />
           </User>
         </ContainerUser>
         <ContainerInfo>
           <ContainerDice>
             <ContainerContacts>
-            <h1>Contato</h1>
+              <h1>Contato</h1>
               <Input
                 id="celular"
                 label="Celular"
                 type="int"
-              // value={}
-              // handler={handleInput}
+                value={Userstudent.celular}
+                handler={handleInput}
               />
               <Select
                 id="tipo"
                 label="Tipo"
                 type="text"
-              // value={}
-              // handler={handleInput}
+                // value={}
+                // handler={handleInput}
               />
               <Select
                 id="estado"
                 label="Estado"
                 type="text"
-              // value={}
-              // handler={handleInput}
+                // value={}
+                handler={handleInput}
               />
             </ContainerContacts>
             <ContainerWeight>
               <Input
-                id="peso"
+                id="weight"
                 label="Peso"
                 type="double"
-              // value={}
-              // handler={handleInput}
+                value={Userstudent.weight}
+                handler={handleInput}
               />
               <Input
-                id="altura"
+                id="height"
                 label="Altura"
                 type="double"
-              // value={}
-              // handler={handleInput}
+                value={Userstudent.height}
+                handler={handleInput}
               />
             </ContainerWeight>
           </ContainerDice>
           <ContainerAddress>
-          <h1>Endereço</h1>
+            <h1>Endereço</h1>
             <Cep>
               <Input
                 id="cep"
                 label="Cep"
                 type="int"
-              // value={}
-              // handler={handleInput}
+                value={Userstudent.cep}
+                handler={handleInput}
               />
-              <ButtonCep>
+              <ButtonCep  onClick={() => setShowCep(true)}>
                 <h3>Não sei meu CEP</h3>
               </ButtonCep>
             </Cep>
@@ -190,24 +197,24 @@ function Register() {
               id="logradouro"
               label="Logradouro"
               type="text"
-            // value={}
-            // handler={handleInput}
+              // value={Userstudent}
+              // handler={handleInput}
             />
             <Numero>
               <Input
                 id="numero"
                 label="Numero"
                 type="int"
-              // value={}
-              // handler={handleInput}
+                value={Userstudent.numero}
+                handler={handleInput}
               />
             </Numero>
             <Input
-              id="Bairro"
+              id="street"
               label="Bairro"
               type="text"
-            // value={}
-            // handler={handleInput}
+              value={Userstudent.street}
+              handler={handleInput}
             />
           </ContainerAddress>
         </ContainerInfo>
@@ -219,8 +226,8 @@ function Register() {
             <Select
               id="academia"
               type="text"
-            // value={}
-            // handler={handleInput}
+              // value={}
+              // handler={handleInput}
             />
           </SelectAcademy>
         </ContainerAcademy>
