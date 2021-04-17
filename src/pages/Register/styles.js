@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
     width: 100vw;
     min-height: 500px;
     height: auto;
@@ -262,7 +262,7 @@ export const SelectAcademy = styled.div`
     }
 `;
 
-export const ContainerButtons = styled.div`
+export const ContainerButtons = styled.form`
     width: 550px;
     min-height: 80px;
     height: auto;

@@ -28,11 +28,12 @@ import { useState } from "react";
 import { api } from "../../services/api";
 
 function Register() {
-    const [Userstudent, setUserStudent] = useState({
+    const [userStudent, setUserStudent] = useState({
         first_name: "",
         surname: "",
         email: "",
         password: "",
+        validPassword: "",
         birthdate: "",
         celular: "",
         weight: "",
@@ -47,16 +48,32 @@ function Register() {
 
     const [showCep, setShowCep] = useState(false);
 
+    const confirmePassword = () => userStudent.password === userStudent.validPassword ? true : false ;
+
     const handleInput = (e) => {
-        setUserStudent({ ...Userstudent, [e.target.id]: e.target.value });
+        setUserStudent({ ...userStudent, [e.target.id]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await api.post("/UserAcademy", Userstudent);
-
+            const response = await api.post("/UserAcademy", {
+                first_name: userStudent.first_name,
+                surname: userStudent.surname,
+                email: userStudent.email,
+                password: userStudent.password,
+                birthdate: userStudent.birthdate,
+                celular: userStudent.celular,
+                weight: userStudent.weight,
+                numero: userStudent.numero,
+                height: userStudent.height,
+                state: userStudent.state,
+                city: userStudent.city,
+                street: userStudent.street,
+                cep: userStudent.cep,
+                cpf: userStudent.cpf,
+            });
         } catch (error) {
             console.error(error);
             alert(error.response.data.error);
@@ -72,7 +89,7 @@ function Register() {
                 ></Modal>
             )}
             <Header />
-            <FormContainer onSubmit={handleSubmit}>
+            <FormContainer>
                 <ContainerUser>
                     <h1>Dados Pessoais</h1>
                     <User>
@@ -80,14 +97,14 @@ function Register() {
                             id="first_name"
                             label="Primeiro Nome"
                             type="text"
-                            value={Userstudent.first_name}
+                            value={userStudent.first_name}
                             handler={handleInput}
                         />
                         <Input
                             id="surname"
                             label="Sobrenome"
                             type="text"
-                            value={Userstudent.surname}
+                            value={userStudent.surname}
                             handler={handleInput}
                         />
 
@@ -95,28 +112,28 @@ function Register() {
                             id="sexo"
                             label="Sexo"
                             type="text"
-                            // value={Userstudent.sexo}
+                            // value={userStudent.sexo}
                             // handler={handleInput}
                         />
                         <Input
                             id="birthdate"
                             label="Data de Nascimento"
                             type="text"
-                            value={Userstudent.birthdate}
+                            value={userStudent.birthdate}
                             handler={handleInput}
                         />
                         <Input
                             id="cpf"
                             label="CPF"
                             type="int"
-                            value={Userstudent.cpf}
+                            value={userStudent.cpf}
                             handler={handleInput}
                         />
                         <Input
                             id="email"
                             label="E-mail"
                             type="text"
-                            value={Userstudent.email}
+                            value={userStudent.email}
                             handler={handleInput}
                         />
                     </User>
@@ -129,7 +146,7 @@ function Register() {
                                 id="celular"
                                 label="Celular"
                                 type="int"
-                                value={Userstudent.celular}
+                                value={userStudent.celular}
                                 handler={handleInput}
                             />
                             <Select
@@ -152,14 +169,14 @@ function Register() {
                                 id="weight"
                                 label="Peso"
                                 type="double"
-                                value={Userstudent.weight}
+                                value={userStudent.weight}
                                 handler={handleInput}
                             />
                             <Input
                                 id="height"
                                 label="Altura"
                                 type="double"
-                                value={Userstudent.height}
+                                value={userStudent.height}
                                 handler={handleInput}
                             />
                         </ContainerWeight>
@@ -171,7 +188,7 @@ function Register() {
                                 id="cep"
                                 label="Cep"
                                 type="int"
-                                value={Userstudent.cep}
+                                value={userStudent.cep}
                                 handler={handleInput}
                             />
                             <ButtonCep onClick={() => setShowCep(true)}>
@@ -182,7 +199,7 @@ function Register() {
                             id="logradouro"
                             label="Logradouro"
                             type="text"
-                            // value={Userstudent}
+                            // value={userStudent}
                             // handler={handleInput}
                         />
                         <Numero>
@@ -190,7 +207,7 @@ function Register() {
                                 id="numero"
                                 label="Numero"
                                 type="int"
-                                value={Userstudent.numero}
+                                value={userStudent.numero}
                                 handler={handleInput}
                             />
                         </Numero>
@@ -198,7 +215,7 @@ function Register() {
                             id="street"
                             label="Bairro"
                             type="text"
-                            value={Userstudent.street}
+                            value={userStudent.street}
                             handler={handleInput}
                         />
                     </ContainerAddress>
@@ -223,19 +240,19 @@ function Register() {
                         id="password"
                         label="Senha"
                         type="text"
-                        value={Userstudent.password}
+                        value={userStudent.password}
                         handler={handleInput}
                     />
                     <Input
-                        id="confirmePassword"
+                        id="validPassword"
                         label="Confirme sua Senha"
                         type="text"
-                        value={Userstudent.password}
+                        value={userStudent.validPassword}
                         handler={handleInput}
                     />
                 </ContainerPassword>
-                <ContainerButtons>
-                    <ButtonSave>Salvar</ButtonSave>
+                <ContainerButtons onSubmit={handleSubmit}>
+                    <ButtonSave disabled={confirmePassword}>Salvar</ButtonSave>
                     <ButtonCancel>Cancelar</ButtonCancel>
                 </ContainerButtons>
             </FormContainer>
