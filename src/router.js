@@ -4,16 +4,16 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route path="/">
-                    <Home />
-                </Route>
-                <Route path="/home"></Route>
-            </Switch>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/">
+          <Register />
+        </Route>
+        <Route path="/register"></Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default Router;

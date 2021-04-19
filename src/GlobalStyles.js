@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     :root{
         --Dark: #141414;
         --DarkGray: #f0e6e6;
-        --BlueLight: #6874f1;
+        --BlueLight: #23B0FF;
         --BlueDark: #023ceb;
         --RedTransparent: #EF233C;
         --textLight: #f0f3f5;
@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     ::-webkit-scrollbar-thumb{
         border-radius: 2px;
-        background-color: var(--RedTransparent);
+        background-color: var(--BlueLight);
     }
 
     button{
