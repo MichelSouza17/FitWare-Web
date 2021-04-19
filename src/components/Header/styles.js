@@ -4,7 +4,7 @@ export const Container = styled.header`
   width: 100%;
   height: 60px;
   background-color: var(--light);
-  z-index: 999;
+  z-index: 9;
 
   /* border-bottom: solid 1px; */
   display: flex;
@@ -17,7 +17,7 @@ export const Container = styled.header`
     width: 130px;
     height: 50px;
     padding: 5px;
-    margin-left: 20px;
+    margin-left: 60px;
     /* border: solid 1px; */
     transition: all 0.4s;
 
