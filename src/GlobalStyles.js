@@ -11,6 +11,8 @@ export const GlobalStyles = createGlobalStyle`
         --textLight: #f0f3f5;
         --lightTransparent: #d6d6d6;
         --light: #ffffff;
+        --silver: #C4C4C4;
+
     }
 
     *{
