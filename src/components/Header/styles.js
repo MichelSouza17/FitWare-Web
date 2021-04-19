@@ -10,7 +10,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 3px 3px var(--BlueLight), -1em 0 0.4em olive;
+  box-shadow: 3px 3px var(--blueLight), -1em 0 0.4em olive;
   position: fixed;
 
   img {

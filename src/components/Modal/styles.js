@@ -6,7 +6,7 @@ export const Overlay = styled.div`
   height: 144vh;
   z-index: 999;
 
-  background-color: #000c;
+  background-color: var(--Dark);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,6 @@ export const ModalContainer = styled.div`
   min-height: 60%;
   max-height: calc(100vh -20px);
   padding: 15px;
-
 
   background-color: var(--light);
 
@@ -40,7 +39,7 @@ export const ModalContainer = styled.div`
     transition: 0.2s;
 
     :hover {
-      color: var(--BlueLight);
+      color: var(--blueLight);
     }
 
     > Input {
@@ -55,6 +54,6 @@ export const ModalContainer = styled.div`
     text-align: center;
     padding: 20px;
     margin: 20px 20px 20px 30px;
-    border-bottom: solid 2px var(--BlueLight);
+    border-bottom: solid 2px var(--blueLight);
   }
 `;

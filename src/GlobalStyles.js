@@ -5,13 +5,16 @@ export const GlobalStyles = createGlobalStyle`
     :root{
         --Dark: #141414;
         --DarkGray: #f0e6e6;
-        --BlueLight: #23B0FF;
-        --BlueDark: #023ceb;
-        --RedTransparent: #EF233C;
-        --textLight: #f0f3f5;
-        --lightTransparent: #d6d6d6;
+        --blueLight: #23B0FF;
         --light: #ffffff;
-        --silver: #C4C4C4;
+
+        --primary: #293CFF;
+        --primaryBlack: #5D61BB;
+        --secondy: #6874F1;
+        --secondyLight: #A9B8FC;
+        --redBlack: #A53B6C;
+        --accentLight: #F6C1A7;
+        --accentBlack: #F9B5AC;
 
     }
 
@@ -34,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     ::-webkit-scrollbar-thumb{
         border-radius: 2px;
-        background-color: var(--BlueLight);
+        background-color: var(--blueLight);
     }
 
     button{
@@ -42,7 +45,7 @@ export const GlobalStyles = createGlobalStyle`
         font-weight: bold;
         font-size: 17px;
         color: var(--textLight);
-        background-color: var(--BlueLight);
+        background-color: var(--blueLight);
         border: 1px solid var(--light);
         border-radius: 4px;
 
@@ -50,7 +53,7 @@ export const GlobalStyles = createGlobalStyle`
         transition: .2s ease-in-out;
 
         :hover{
-            background-color: var(--BlueDark);
+            background-color: var(--primary);
         }
 
         :active{
