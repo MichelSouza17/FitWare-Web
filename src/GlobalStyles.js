@@ -4,18 +4,16 @@ export const GlobalStyles = createGlobalStyle`
 
     :root{
         --Dark: #141414;
-        --DarkGray: #f0e6e6;
-        --blueLight: #23B0FF;
+        --DarkGray: #CAC3C3;
         --light: #ffffff;
-
         --primary: #293CFF;
         --primaryBlack: #5D61BB;
         --secondy: #6874F1;
         --secondyLight: #A9B8FC;
-        --redBlack: #A53B6C;
+        --redBlack: #C1153E;
         --accentLight: #F6C1A7;
         --accentBlack: #F9B5AC;
-
+        --blueLight: #23B0FF;
     }
 
     *{
