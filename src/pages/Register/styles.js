@@ -102,7 +102,7 @@ export const ContainerContacts = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 2px;
+  gap: 20px;
 
   background-color: var(--light);
 
@@ -111,6 +111,14 @@ export const ContainerContacts = styled.div`
     text-align: center;
     margin-top: 10px;
     overflow: hidden;
+  }
+
+  input {
+    width: 235px;
+  }
+
+  select {
+    width: 235px;
   }
 `;
 
@@ -168,31 +176,58 @@ export const Cep = styled.div`
   }
 `;
 
-export const ButtonCep = styled.button`
-  width: 130px;
-  height: 36px;
-  margin-top: 24px;
-  margin-left: 10px;
-  align-items: center;
-  justify-content: center;
-  overflow-y: hidden;
-  h3 {
-    font-size: 12px;
-  }
-`;
-
-export const Numero = styled.div`
+export const Neighborhood = styled.div`
   width: 400px;
-  height: 60px;
+  height: 70px;
   display: flex;
   align-items: center;
   flex-direction: row;
   overflow-y: hidden;
 
   background-color: var(--light);
+`;
+
+export const Bairro = styled.div`
+  width: 390px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+
+  background-color: var(--light);
 
   input {
-    width: 130px;
+    width: 300px;
+  }
+`;
+
+export const Numero = styled.div`
+  width: 100px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+
+  background-color: var(--light);
+
+  input {
+    width: 80px;
+  }
+`;
+
+export const Citys = styled.div`
+  width: 400px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow-y: hidden;
+  gap: 20px;
+
+  background-color: var(--light);
+
+  input {
+    width: 190px;
   }
 `;
 

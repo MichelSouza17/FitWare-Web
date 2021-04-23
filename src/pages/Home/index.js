@@ -8,8 +8,6 @@ import {
   ContainerSupport,
   Contacts,
   CardUnit,
-  CardUnit2,
-  CardUnit3,
   Description,
 } from "./styles";
 
