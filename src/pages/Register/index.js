@@ -28,6 +28,7 @@ import Select from "../../components/Select";
 import Modal from "../../components/Modal";
 import { useState } from "react";
 import { api } from "../../services/api";
+import { buscarViaCep } from "../../services/viaCep";
 
 function Register() {
   const [userStudent, setUserStudent] = useState({
@@ -57,6 +58,16 @@ function Register() {
     setUserStudent({ ...userStudent, [e.target.id]: e.target.value });
   };
 
+  const handleCep = async (e) => {
+    const cep = e.target.value;
+    setUserStudent({ ...userStudent, [e.target.id]: cep });
+
+    if (cep.length === 9) {
+      const response = await buscarViaCep(cep);
+      console.log(response.data);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -83,14 +94,10 @@ function Register() {
     }
   };
 
+  const handleBlur = (e) => setUserStudent(e.target.value);
+
   return (
     <>
-      {showCep && (
-        <Modal
-          title="Faça a busca de seu endereço pelo CEP"
-          handleClose={() => setShowCep(false)}
-        ></Modal>
-      )}
       <Header />
       <FormContainer>
         <ContainerUser>
@@ -182,18 +189,20 @@ function Register() {
             <Cep>
               <Input
                 id="cep"
-                label="Cep"
-                type="int"
+                label="CEP"
+                type="text"
                 value={userStudent.cep}
-                handler={handleInput}
+                handler={handleCep}
+                onblur={buscarViaCep.this}
+                onfocus=""
               />
             </Cep>
             <Input
               id="logradouro"
               label="Logradouro"
               type="text"
-              // value={userStudent}
-              // handler={handleInput}
+              value={userStudent.logradouro}
+              handler={handleCep}
             />
             <Neighborhood>
               <Bairro>
@@ -201,8 +210,8 @@ function Register() {
                   id="street"
                   label="Bairro"
                   type="text"
-                  value={userStudent.street}
-                  handler={handleInput}
+                  value={userStudent.bairro}
+                  handler={handleCep}
                 />
               </Bairro>
               <Numero>
@@ -210,8 +219,8 @@ function Register() {
                   id="numero"
                   label="Numero"
                   type="int"
-                  value={userStudent.numero}
-                  handler={handleInput}
+                  //value={userStudent.numero}
+                  // handler={handleCep}
                 />
               </Numero>
             </Neighborhood>
@@ -220,15 +229,15 @@ function Register() {
                 id="cidade"
                 label="Cidade"
                 type="int"
-                value=""
-                handler={handleInput}
+                value={userStudent.cidade}
+                handler={handleCep}
               />
               <Input
                 id="estado"
                 label="Estado"
                 type="int"
-                value=""
-                handler={handleInput}
+                value={userStudent.uf}
+                handler={handleCep}
               />
             </Citys>
           </ContainerAddress>
