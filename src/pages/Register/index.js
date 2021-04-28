@@ -25,7 +25,6 @@ import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Select from "../../components/Select";
-import Modal from "../../components/Modal";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
@@ -46,10 +45,12 @@ function Register() {
     city: "",
     street: "",
     cep: "",
+    logradouro: "",
+    bairro: "",
+    localidade: "",
+    uf: "",
     cpf: "",
   });
-
-  const [showCep, setShowCep] = useState(false);
 
   const confirmePassword = () =>
     userStudent.password === userStudent.validPassword ? true : false;
@@ -60,12 +61,20 @@ function Register() {
 
   const handleCep = async (e) => {
     const cep = e.target.value;
-    setUserStudent({ ...userStudent, [e.target.id]: cep });
 
     if (cep.length === 9) {
       const response = await buscarViaCep(cep);
-      console.log(response.data);
+
+      //aqui é o ponto onde você tem a resposta da api
+      //os seus campos do input estão ligados às variáveis de estado
+
+      //então basta você colocar o retorno da api nas variáveis de estados através do SET
+
+      setUserStudent({ ...userStudent, [e.target.id]: cep, logradouro: response.data.logradouro, bairro: response.data.bairro, localidade: response.data.localidade, uf: response.data.uf });
+    } else {
+      setUserStudent({ ...userStudent, [e.target.id]: cep });
     }
+
   };
 
   const handleSubmit = async (e) => {
@@ -94,8 +103,6 @@ function Register() {
     }
   };
 
-  const handleBlur = (e) => setUserStudent(e.target.value);
-
   return (
     <>
       <Header />
@@ -122,8 +129,8 @@ function Register() {
               id="sexo"
               label="Sexo"
               type="text"
-              // value={userStudent.sexo}
-              // handler={handleInput}
+            // value={userStudent.sexo}
+            // handler={handleInput}
             />
             <Input
               id="birthdate"
@@ -163,8 +170,8 @@ function Register() {
                 id="tipo"
                 label="Tipo"
                 type="text"
-                // value={}
-                // handler={handleInput}
+              // value={}
+              // handler={handleInput}
               />
             </ContainerContacts>
             <ContainerWeight>
@@ -191,10 +198,10 @@ function Register() {
                 id="cep"
                 label="CEP"
                 type="text"
+                maxLength="9"
                 value={userStudent.cep}
                 handler={handleCep}
-                onblur={buscarViaCep.this}
-                onfocus=""
+                required
               />
             </Cep>
             <Input
@@ -202,7 +209,7 @@ function Register() {
               label="Logradouro"
               type="text"
               value={userStudent.logradouro}
-              handler={handleCep}
+              required
             />
             <Neighborhood>
               <Bairro>
@@ -211,7 +218,7 @@ function Register() {
                   label="Bairro"
                   type="text"
                   value={userStudent.bairro}
-                  handler={handleCep}
+                  required
                 />
               </Bairro>
               <Numero>
@@ -219,8 +226,9 @@ function Register() {
                   id="numero"
                   label="Numero"
                   type="int"
-                  //value={userStudent.numero}
-                  // handler={handleCep}
+                  value={userStudent.numero}
+                  required
+
                 />
               </Numero>
             </Neighborhood>
@@ -229,15 +237,15 @@ function Register() {
                 id="cidade"
                 label="Cidade"
                 type="int"
-                value={userStudent.cidade}
-                handler={handleCep}
+                value={userStudent.localidade}
+                required
               />
               <Input
                 id="estado"
                 label="Estado"
                 type="int"
                 value={userStudent.uf}
-                handler={handleCep}
+                required
               />
             </Citys>
           </ContainerAddress>
@@ -250,8 +258,8 @@ function Register() {
             <Select
               id="academia"
               type="text"
-              // value={}
-              // handler={handleInput}
+            // value={}
+            // handler={handleInput}
             />
           </SelectAcademy>
         </ContainerAcademy>
