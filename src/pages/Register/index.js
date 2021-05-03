@@ -45,10 +45,10 @@ function Register() {
     city: "",
     street: "",
     cep: "",
-    logradouro: "",
-    bairro: "",
-    localidade: "",
-    uf: "",
+    // logradouro: "",
+    // bairro: "",
+    // localidade: "",
+    // uf: "",
     cpf: "",
   });
 
@@ -65,16 +65,17 @@ function Register() {
     if (cep.length === 9) {
       const response = await buscarViaCep(cep);
 
-      //aqui é o ponto onde você tem a resposta da api
-      //os seus campos do input estão ligados às variáveis de estado
-
-      //então basta você colocar o retorno da api nas variáveis de estados através do SET
-
-      setUserStudent({ ...userStudent, [e.target.id]: cep, logradouro: response.data.logradouro, bairro: response.data.bairro, localidade: response.data.localidade, uf: response.data.uf });
+      setUserStudent({
+        ...userStudent,
+        [e.target.id]: cep,
+        logradouro: response.data.logradouro,
+        bairro: response.data.bairro,
+        localidade: response.data.localidade,
+        uf: response.data.uf,
+      });
     } else {
       setUserStudent({ ...userStudent, [e.target.id]: cep });
     }
-
   };
 
   const handleSubmit = async (e) => {
@@ -91,9 +92,9 @@ function Register() {
         weight: userStudent.weight,
         numero: userStudent.numero,
         height: userStudent.height,
-        state: userStudent.state,
-        city: userStudent.city,
-        street: userStudent.street,
+        state: userStudent.uf,
+        city: userStudent.localidade,
+        street: userStudent.logradouro,
         cep: userStudent.cep,
         cpf: userStudent.cpf,
       });
@@ -128,28 +129,29 @@ function Register() {
             <Select
               id="sexo"
               label="Sexo"
-              type="text"
-            // value={userStudent.sexo}
-            // handler={handleInput}
+              type="int"
+              // value={userStudent.sexo}
+              // handler={handleInput}
             />
             <Input
               id="birthdate"
               label="Data de Nascimento"
-              type="text"
+              type="date"
               value={userStudent.birthdate}
               handler={handleInput}
             />
             <Input
               id="cpf"
               label="CPF"
-              type="int"
+              type="text"
+              maxLength="14"
               value={userStudent.cpf}
               handler={handleInput}
             />
             <Input
               id="email"
               label="E-mail"
-              type="text"
+              type="email"
               value={userStudent.email}
               handler={handleInput}
             />
@@ -162,16 +164,19 @@ function Register() {
               <Input
                 id="celular"
                 label="Celular"
-                type="int"
+                type="text"
+                placeholder="(11)99999-9999"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                maxLength="14"
                 value={userStudent.celular}
                 handler={handleInput}
               />
               <Select
                 id="tipo"
                 label="Tipo"
-                type="text"
-              // value={}
-              // handler={handleInput}
+                type="int"
+                // value={}
+                // handler={handleInput}
               />
             </ContainerContacts>
             <ContainerWeight>
@@ -225,10 +230,10 @@ function Register() {
                 <Input
                   id="numero"
                   label="Numero"
-                  type="int"
+                  type="number"
                   value={userStudent.numero}
+                  handler={handleInput}
                   required
-
                 />
               </Numero>
             </Neighborhood>
@@ -257,9 +262,9 @@ function Register() {
           <SelectAcademy>
             <Select
               id="academia"
-              type="text"
-            // value={}
-            // handler={handleInput}
+              type="int"
+              // value={}
+              // handler={handleInput}
             />
           </SelectAcademy>
         </ContainerAcademy>
@@ -267,14 +272,14 @@ function Register() {
           <Input
             id="password"
             label="Senha"
-            type="text"
+            type="password"
             value={userStudent.password}
             handler={handleInput}
           />
           <Input
             id="validPassword"
             label="Confirme sua Senha"
-            type="text"
+            type="password"
             value={userStudent.validPassword}
             handler={handleInput}
           />
