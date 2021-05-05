@@ -35,7 +35,6 @@ function Register() {
     surname: "",
     email: "",
     password: "",
-    validPassword: "",
     birthdate: "",
     celular: "",
     weight: "",
@@ -45,15 +44,52 @@ function Register() {
     city: "",
     street: "",
     cep: "",
-    // logradouro: "",
-    // bairro: "",
-    // localidade: "",
-    // uf: "",
+    confirmePassword: "",
     cpf: "",
   });
 
   const confirmePassword = () =>
-    userStudent.password === userStudent.validPassword ? true : false;
+    userStudent.password === userStudent.confirmePassword;
+
+  const buttonDisabled = () => {
+    const {
+      first_name,
+      surname,
+      email,
+      password,
+      birthdate,
+      celular,
+      weight,
+      numero,
+      height,
+      state,
+      city,
+      street,
+      cep,
+      cpf,
+    } = userStudent;
+
+    if (
+      !first_name ||
+      !surname ||
+      !email ||
+      !password ||
+      !birthdate ||
+      !celular ||
+      !weight ||
+      !numero ||
+      !height ||
+      !state ||
+      !city ||
+      !street ||
+      !cep ||
+      !cpf ||
+      !confirmePassword()
+    )
+      return true;
+
+    return false;
+  };
 
   const handleInput = (e) => {
     setUserStudent({ ...userStudent, [e.target.id]: e.target.value });
@@ -81,8 +117,10 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!confirmePassword()) return alert("As senhas precisam ser iguais!");
+
     try {
-      const response = await api.post("/UserAcademy", {
+      const response = await api.post("/userAcademy", {
         first_name: userStudent.first_name,
         surname: userStudent.surname,
         email: userStudent.email,
@@ -277,15 +315,20 @@ function Register() {
             handler={handleInput}
           />
           <Input
-            id="validPassword"
+            id="confirmePassword"
             label="Confirme sua Senha"
             type="password"
-            value={userStudent.validPassword}
+            onBlur={(e) => {
+              if (!confirmePassword()) alert("As senhas precisam ser iguais");
+              e.target.focus();
+            }}
+            value={userStudent.confirmePassword}
             handler={handleInput}
           />
         </ContainerPassword>
         <ContainerButtons onSubmit={handleSubmit}>
-          <ButtonSave disabled={confirmePassword}>Salvar</ButtonSave>
+          {/* disabled={buttonDisabled()} */}
+          <ButtonSave>Salvar</ButtonSave>
           <ButtonCancel>Cancelar</ButtonCancel>
         </ContainerButtons>
       </FormContainer>
