@@ -35,7 +35,7 @@ function Register() {
     surname: "",
     email: "",
     password: "",
-    birthdate: "",
+    birth_date: "",
     celular: "",
     weight: "",
     numero: "",
@@ -57,7 +57,7 @@ function Register() {
       surname,
       email,
       password,
-      birthdate,
+      birth_date,
       celular,
       weight,
       numero,
@@ -74,7 +74,7 @@ function Register() {
       !surname ||
       !email ||
       !password ||
-      !birthdate ||
+      !birth_date ||
       !celular ||
       !weight ||
       !numero ||
@@ -125,7 +125,7 @@ function Register() {
         surname: userStudent.surname,
         email: userStudent.email,
         password: userStudent.password,
-        birthdate: userStudent.birthdate,
+        birth_date: userStudent.birth_date,
         celular: userStudent.celular,
         weight: userStudent.weight,
         numero: userStudent.numero,
@@ -172,10 +172,10 @@ function Register() {
               // handler={handleInput}
             />
             <Input
-              id="birthdate"
+              id="birth_date"
               label="Data de Nascimento"
               type="date"
-              value={userStudent.birthdate}
+              value={userStudent.birth_date}
               handler={handleInput}
             />
             <Input
