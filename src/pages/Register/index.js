@@ -28,8 +28,12 @@ import Select from "../../components/Select";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
+import { maskCep, maskCel, maskCpf } from "../../utils/masks";
+import { useHistory } from "react-router-dom";
 
 function Register() {
+  const history = useHistory();
+
   const [userStudent, setUserStudent] = useState({
     first_name: "",
     surname: "",
@@ -62,9 +66,6 @@ function Register() {
       weight,
       numero,
       height,
-      state,
-      city,
-      street,
       cep,
       cpf,
     } = userStudent;
@@ -79,9 +80,6 @@ function Register() {
       !weight ||
       !numero ||
       !height ||
-      !state ||
-      !city ||
-      !street ||
       !cep ||
       !cpf ||
       !confirmePassword()
@@ -95,8 +93,20 @@ function Register() {
     setUserStudent({ ...userStudent, [e.target.id]: e.target.value });
   };
 
+  const handleCpf = (e) => {
+    let cpf = maskCpf(e.target.value);
+
+    setUserStudent({ ...userStudent, [e.target.id]: e.target.value, cpf });
+  };
+
+  const handleCel = (e) => {
+    let celular = maskCel(e.target.value);
+
+    setUserStudent({ ...userStudent, [e.target.id]: e.target.value, celular });
+  };
+
   const handleCep = async (e) => {
-    const cep = e.target.value;
+    let cep = maskCep(e.target.value);
 
     if (cep.length === 9) {
       const response = await buscarViaCep(cep);
@@ -136,6 +146,8 @@ function Register() {
         cep: userStudent.cep,
         cpf: userStudent.cpf,
       });
+
+      history.push("/");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -184,7 +196,7 @@ function Register() {
               type="text"
               maxLength="14"
               value={userStudent.cpf}
-              handler={handleInput}
+              handler={handleCpf}
             />
             <Input
               id="email"
@@ -204,10 +216,9 @@ function Register() {
                 label="Celular"
                 type="text"
                 placeholder="(11)99999-9999"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                maxLength="14"
+                maxLength="15"
                 value={userStudent.celular}
-                handler={handleInput}
+                handler={handleCel}
               />
               <Select
                 id="tipo"
@@ -221,7 +232,9 @@ function Register() {
               <Input
                 id="weight"
                 label="Peso"
+                placeholder="000"
                 type="double"
+                maxLength="3"
                 value={userStudent.weight}
                 handler={handleInput}
               />
@@ -229,6 +242,8 @@ function Register() {
                 id="height"
                 label="Altura"
                 type="double"
+                placeholder="0,00"
+                maxLength="4"
                 value={userStudent.height}
                 handler={handleInput}
               />
@@ -252,7 +267,6 @@ function Register() {
               label="Logradouro"
               type="text"
               value={userStudent.logradouro}
-              required
             />
             <Neighborhood>
               <Bairro>
@@ -261,7 +275,6 @@ function Register() {
                   label="Bairro"
                   type="text"
                   value={userStudent.bairro}
-                  required
                 />
               </Bairro>
               <Numero>
@@ -281,14 +294,12 @@ function Register() {
                 label="Cidade"
                 type="int"
                 value={userStudent.localidade}
-                required
               />
               <Input
                 id="estado"
                 label="Estado"
                 type="int"
                 value={userStudent.uf}
-                required
               />
             </Citys>
           </ContainerAddress>
@@ -327,8 +338,7 @@ function Register() {
           />
         </ContainerPassword>
         <ContainerButtons onSubmit={handleSubmit}>
-          {/* disabled={buttonDisabled()} */}
-          <ButtonSave>Salvar</ButtonSave>
+          <ButtonSave disabled={buttonDisabled()}>Salvar</ButtonSave>
           <ButtonCancel>Cancelar</ButtonCancel>
         </ContainerButtons>
       </FormContainer>

@@ -295,7 +295,7 @@ export const ContainerButtons = styled.form`
   width: 550px;
   min-height: 80px;
   height: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   gap: 15px;
 
   display: flex;
