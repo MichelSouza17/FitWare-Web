@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.div`
+export const ContainerGeral = styled.div`
   width: 100vw;
   min-height: 500px;
   height: auto;
   padding-top: 60px;
-  padding-bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: var(--light);
+`;
+
+export const FormContainer = styled.div`
+  width: 100vw;
+  min-height: 500px;
+  height: auto;
 
   display: flex;
   justify-content: center;
