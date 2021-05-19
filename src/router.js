@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Agendamentos from "./pages/Agendamentos";
+import Clients from "./pages/Clients";
 
 function Router() {
   return (
@@ -19,6 +20,9 @@ function Router() {
         </Route>
         <Route path="/agendamentos">
           <Agendamentos />
+        </Route>
+        <Route path="/clientes">
+          <Clients />
         </Route>
       </Switch>
     </BrowserRouter>

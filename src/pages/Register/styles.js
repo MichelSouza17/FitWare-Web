@@ -306,7 +306,7 @@ export const ContainerButtons = styled.form`
   width: 550px;
   min-height: 80px;
   height: auto;
-  margin-top: 50px;
+  margin-top: 10px;
   gap: 15px;
 
   display: flex;
@@ -328,7 +328,7 @@ export const ButtonCancel = styled.button`
   margin-top: 10px;
   align-items: center;
   justify-content: center;
-  background-color: #ff0000;
+  background-color: var(--blueLight);
 `;
 
 export const ContainerPassword = styled.div`
