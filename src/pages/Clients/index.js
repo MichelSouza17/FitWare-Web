@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "../../components/Header";
 import {
   Container,
@@ -12,8 +13,11 @@ import {
 } from "./styles";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
+import { getUser } from "../../services/security";
 
 function Clients() {
+  const [userStudent, setUsersStudent] = useState(getUser());
+
   return (
     <>
       <Header />
@@ -33,9 +37,11 @@ function Clients() {
               </Ids>
               <Informations>
                 <h4>Nome</h4>
+                {userStudent.name}
               </Informations>
               <Informations>
                 <h4>E-Mail</h4>
+                {userStudent.email}
               </Informations>
               <Informations>
                 <h4>Celular</h4>
