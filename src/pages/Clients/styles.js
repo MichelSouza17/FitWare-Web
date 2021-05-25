@@ -42,7 +42,7 @@ export const Title = styled.div`
     font-size: 15px;
     text-align: right;
     align-items: center;
-    padding-left: 600px;
+    padding-left: 500px;
     padding-top: 15px;
     color: var(--light);
   }
@@ -86,53 +86,24 @@ export const ContainerTable = styled.div`
   border-radius: 20px;
 
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   background-color: var(--DarkGray);
   gap: 10px;
-`;
 
-export const Table = styled.div`
-  width: 100%;
-  height: 50px;
-  align-self: flex-start;
+  > table{
+    width: 100%;
+        
+    th {
+      background-color: #dadada;
+      padding: 10px;
+    }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background-color: var(--DarkGray);
-  gap: 1px;
-`;
-export const Ids = styled.div`
-  width: 50px;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  background-color: #dadada;
-  border: black 1px;
-  border-radius: 10px 0 0 0;
-
-  h4 {
-    padding-top: 15px;
-    align-items: center;
-    text-align: center;
-  }
-`;
-
-export const Informations = styled.div`
-  width: 245px;
-  height: 50px;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  background-color: #dadada;
-  border: black 1px;
-
-  h4 {
-    padding-top: 15px;
-    align-items: center;
-    text-align: center;
+    td {
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid gray;
+    }
   }
 `;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import {
   Container,
@@ -13,10 +13,39 @@ import {
 } from "./styles";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
-import { getUser } from "../../services/security";
+import { api } from "../../services/api";
 
-function Clients() {
-  const [userStudent, setUsersStudent] = useState(getUser());
+function Clients(users) {
+
+  //a api retorna uma lista.. então isso deve ser uma lista vazia no começo
+  const [userStudents, setUserStudents] = useState([]);
+
+
+  //precisamos colocar tudo isso dentro de uma função async depois chamar ela
+  useEffect(() => {
+   const loadStudents = async () => {
+    try {
+    
+      //aqui consumimos a api, sempre dentro de um try catch 
+      const response = await api.get("/userAcademy");
+  
+      //dentro de response tem o data, que é o corpo da resposta
+      //que contém a lista, colocamos ela no state
+      // assim, que inicia vazio ne. isso, inicia vazio, depois substitui quando houver resposta.blz
+  
+      console.log(response.data);
+      setUserStudents(response.data);
+  
+     } catch (e) {
+       console.log(e)
+     }
+   }
+
+   loadStudents();
+  }, []);
+
+
+  //agora já temos a lista em mãos... só percorrer e mostrar na tela.
 
   return (
     <>
@@ -31,25 +60,28 @@ function Clients() {
             <Input id="client" placeholder="Pesquisar Cliente" type="text" />
           </Search>
           <ContainerTable>
-            <Table>
-              <Ids>
-                <h4>ID</h4>
-              </Ids>
-              <Informations>
-                <h4>Nome</h4>
-                {userStudent.name}
-              </Informations>
-              <Informations>
-                <h4>E-Mail</h4>
-                {userStudent.email}
-              </Informations>
-              <Informations>
-                <h4>Celular</h4>
-              </Informations>
-              <Informations>
-                <h4>Ações</h4>
-              </Informations>
-            </Table>
+            <table>
+              <tr>
+              
+                <th><h4>ID</h4></th>
+                <th><h4>Nome</h4> </th>
+                <th><h4>E-Mail</h4></th>
+                <th><h4>Celular</h4></th>
+                <th><h4>Ações</h4></th>
+              
+              </tr>
+              {userStudents.map(student => (
+                <tr>
+              
+                <td><h4>{student.id}</h4></td>
+                <td><h4>{student.first_name}</h4> </td>
+                <td><h4>{student.email}</h4></td>
+                <td><h4>{student.celular}</h4></td>
+                <td><h4>Ações</h4></td>
+              
+              </tr>
+              ))}
+            </table>
           </ContainerTable>
         </ContainerClients>
       </Container>

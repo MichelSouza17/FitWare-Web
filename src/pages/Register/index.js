@@ -149,7 +149,7 @@ function Register() {
         cpf: userStudent.cpf,
       });
 
-      history.push("/");
+      history.push("/clientes");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
