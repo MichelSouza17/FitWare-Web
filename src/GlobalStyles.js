@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
         --accentLight: #F6C1A7;
         --accentBlack: #F9B5AC;
         --blueLight: #23B0FF;
+        --accentGray: #E8E8E8;
     }
 
     *{

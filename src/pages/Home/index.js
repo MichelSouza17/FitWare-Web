@@ -11,7 +11,7 @@ import {
   Description,
 } from "./styles";
 
-import Header from "../../components/Header";
+import Header from "../../components/HeaderHome";
 import Footer from "../../components/Footer";
 import IconAgenda from "../../assets/iconAgenda.png";
 import IconControl from "../../assets/iconControl.png";
@@ -19,6 +19,7 @@ import IconHorario from "../../assets/iconHorario.png";
 import IconAula from "../../assets/iconAula.png";
 import IconRegras from "../../assets/iconRegras.png";
 import IconGym from "../../assets/iconGym.png";
+import exercicio from "../../assets/exercicio.gif";
 
 function Home() {
   return (
@@ -58,7 +59,17 @@ function Home() {
             <h3>Regras</h3>
           </ContainerFunctionalities>
         </ContainerIntroduction>
-        <ContainerBranco></ContainerBranco>
+        <ContainerBranco>
+          <h2>Leve agora a FitWare para a sua academia !</h2>
+          <p>
+            A Addmeans pensou esse sistema em pró das pequenas academias que não
+            possuem um sistema para controlar seu clientes,você pode assinar o
+            termos e conseguir sua assinatura para utilizar o sistema e o nosso
+            aplicativo que será direcionado para os clientes de sua academia.
+          </p>
+          <img src={exercicio} />
+          <button>Saber Mais</button>
+        </ContainerBranco>
         <ContainerSupport>
           <h1>Suporte</h1>
           <Contacts>

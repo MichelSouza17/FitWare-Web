@@ -122,15 +122,29 @@ export const ContainerFunctionalities = styled.div`
 
 export const ContainerBranco = styled.div`
   width: 100%;
-  height: 200px;
+  height: 850px;
   margin-top: 10px;
+  padding-top: 30px;
+  padding-right: 200px;
+  padding-left: 200px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-top: solid;
+  border-color: var(--blueLight);
 
   background-color: var(--light);
+
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    text-align: center;
+  }
 `;
 
 export const ContainerSupport = styled.div`
@@ -144,7 +158,7 @@ export const ContainerSupport = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: var(--DarkGray);
+  background-color: var(--accentGray);
 
   h1 {
     font-size: 22px;
