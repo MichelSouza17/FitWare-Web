@@ -6,9 +6,6 @@ function Header() {
   return (
     <Container>
       <img src={Imglogo} />
-
-      <button>Login</button>
-      <button>Cadastrar-se</button>
     </Container>
   );
 }

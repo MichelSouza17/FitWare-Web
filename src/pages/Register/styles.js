@@ -320,7 +320,7 @@ export const ButtonSave = styled.button`
   margin-top: 10px;
   align-items: center;
   justify-content: center;
-  background-color: #49c955; ;
+  background-color: #49c955;
 `;
 
 export const ButtonCancel = styled.button`

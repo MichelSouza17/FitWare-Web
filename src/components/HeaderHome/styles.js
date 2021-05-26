@@ -26,7 +26,9 @@ export const Container = styled.header`
       height: 52px;
     }
   }
+`;
 
-  button {
-  }
+export const ButtonsHome = styled.button`
+  width: 150px;
+  align-items: center;
 `;
