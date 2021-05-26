@@ -20,13 +20,16 @@ import IconAula from "../../assets/iconAula.png";
 import IconRegras from "../../assets/iconRegras.png";
 import IconGym from "../../assets/iconGym.png";
 import exercicio from "../../assets/exercicio.gif";
+import BackgroundVideo from "../../components/backgroundVideo/BackgroundVideo";
 
 function Home() {
   return (
     <>
       <Header />
       <Container>
-        <ContainerSlide></ContainerSlide>
+        <ContainerSlide>
+          <BackgroundVideo />
+        </ContainerSlide>
         <ContainerUnits>
           <CardUnit>
             <img src={IconGym} />

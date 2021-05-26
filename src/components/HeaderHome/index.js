@@ -1,4 +1,4 @@
-import { Container, ButtonsHome } from "./styles";
+import { Container, ButtonsContainer, ButtonHome } from "./styles";
 
 import Imglogo from "../../assets/fitware.png";
 
@@ -7,8 +7,10 @@ function Header() {
     <Container>
       <img src={Imglogo} />
 
-      <ButtonsHome>Login</ButtonsHome>
-      <ButtonsHome>Cadastrar-se</ButtonsHome>
+      <ButtonsContainer>
+        <ButtonHome>Login</ButtonHome>
+        <ButtonHome>cadastre-se</ButtonHome>
+      </ButtonsContainer>
     </Container>
   );
 }

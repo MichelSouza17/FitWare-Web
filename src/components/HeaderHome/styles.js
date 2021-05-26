@@ -28,7 +28,13 @@ export const Container = styled.header`
   }
 `;
 
-export const ButtonsHome = styled.button`
-  width: 150px;
-  align-items: center;
+export const ButtonsContainer = styled.div`
+  width: 20%;
+  display: flex;
+  overflow: hidden;
+`;
+
+export const ButtonHome = styled.button`
+  width: 40%;
+  margin-left: 10px;
 `;

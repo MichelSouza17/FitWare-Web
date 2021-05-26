@@ -124,12 +124,10 @@ export const ContainerBranco = styled.div`
   width: 100%;
   height: 850px;
   margin-top: 10px;
-  padding-top: 30px;
   padding-right: 200px;
   padding-left: 200px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   border-top: solid;
@@ -138,12 +136,20 @@ export const ContainerBranco = styled.div`
   background-color: var(--light);
 
   h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    width: 700px;
+    height: 50px;
+    padding-top: 10px;
+    text-align: center;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--blueLight);
+    margin-bottom: 50px;
   }
 
   p {
     text-align: center;
+    width: 50%;
   }
 `;
 
