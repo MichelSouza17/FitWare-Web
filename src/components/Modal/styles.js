@@ -3,30 +3,31 @@ import styled from "styled-components";
 export const Overlay = styled.div`
   position: absolute;
   width: 100vw;
-  height: 144vh;
-  z-index: 999;
+  height: 130vh;
+  z-index: 9;
 
-  background-color: var(--Dark);
+  background-color: #333c;
+
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const ModalContainer = styled.div`
-  min-width: 60%;
-  min-height: 60%;
-  max-height: calc(100vh -20px);
-  padding: 15px;
+export const ModalContainer = styled.section`
+  min-width: 650px;
+  min-height: 250px;
+  max-height: calc(100vh - 20px);
+  padding: 20px;
+
+  z-index: 19;
+
+  overflow-y: auto;
 
   background-color: var(--light);
-
+  box-shadow: 0px 0px 10px black;
   border-radius: 4px;
 
   position: relative;
-
-  z-index: 999;
-
-  overflow-y: auto;
 
   > span {
     position: absolute;
@@ -39,21 +40,15 @@ export const ModalContainer = styled.div`
     transition: 0.2s;
 
     :hover {
-      color: var(--blueLight);
-    }
-
-    > Input {
-      justify-content: center;
-      align-items: center;
-      margin-left: 50%;
+      color: var(--primary);
     }
   }
 
   > header {
+    font-weight: bold;
     font-size: 24px;
     text-align: center;
-    padding: 20px;
-    margin: 20px 20px 20px 30px;
-    border-bottom: solid 2px var(--blueLight);
+    margin: 0px 20px;
+    background-color: var(--blueLight);
   }
 `;

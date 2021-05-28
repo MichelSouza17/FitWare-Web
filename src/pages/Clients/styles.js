@@ -32,6 +32,7 @@ export const Title = styled.div`
   height: 50px;
   display: flex;
   margin-left: -10px;
+  flex-direction: row;
 
   align-self: flex-start;
   background-color: var(--blueLight);

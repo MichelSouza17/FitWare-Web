@@ -100,7 +100,7 @@ export const InsertAula = styled.div`
 
   h3 {
     font-size: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-right: 5px;
     text-align: center;
     color: black;
@@ -108,19 +108,57 @@ export const InsertAula = styled.div`
 `;
 
 export const ButtonAula = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   overflow-y: hidden;
+  margin-top: 5px;
 
-  border-radius: 50px;
+  border-radius: 20px;
   display: flex;
-  align-self: flex-end;
+  align-items: center;
   background-color: var(--primary);
 
-  h2 {
-    width: 50px;
-    text-align: center;
-    align-items: center;
+  p {
+    font-size: 15px;
+  }
+`;
+
+export const FormNewAula = styled.form`
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 15px;
+
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  input{
+        width: 98%;
+        font-weight: bold;
+    }
+
+    select{
+        width: 70%;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+`;
+
+export const InfoTreino = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  input{
+   width: 280px;
   }
 `;
 
@@ -129,7 +167,6 @@ export const ContainerTable = styled.div`
   height: 550px;
 
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   background-color: var(--DarkGray);

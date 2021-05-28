@@ -8,8 +8,8 @@ function Header() {
       <img src={Imglogo} />
 
       <ButtonsContainer>
-        <ButtonHome>Login</ButtonHome>
-        <ButtonHome>cadastre-se</ButtonHome>
+        <ButtonHome><h5>Login</h5></ButtonHome>
+        <ButtonHome><h5>Cadastre-se</h5></ButtonHome>
       </ButtonsContainer>
     </Container>
   );

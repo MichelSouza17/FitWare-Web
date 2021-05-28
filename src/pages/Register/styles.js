@@ -328,7 +328,7 @@ export const ButtonCancel = styled.button`
   margin-top: 10px;
   align-items: center;
   justify-content: center;
-  background-color: var(--blueLight);
+  background-color: var(--redLight);
 `;
 
 export const ContainerPassword = styled.div`

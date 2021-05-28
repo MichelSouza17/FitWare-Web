@@ -147,9 +147,14 @@ export const ContainerBranco = styled.div`
     margin-bottom: 50px;
   }
 
+  button {
+    overflow-y: hidden;
+  }
+
   p {
     text-align: center;
     width: 50%;
+    overflow-y: hidden;
   }
 `;
 

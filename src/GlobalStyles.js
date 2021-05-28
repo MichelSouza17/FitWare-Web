@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
         --primaryBlack: #5D61BB;
         --secondy: #6874F1;
         --secondyLight: #A9B8FC;
-        --redBlack: #C1153E;
+        --redLight: #ff6961;
         --accentLight: #F6C1A7;
         --accentBlack: #F9B5AC;
         --blueLight: #23B0FF;

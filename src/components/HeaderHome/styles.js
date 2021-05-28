@@ -5,6 +5,7 @@ export const Container = styled.header`
   height: 60px;
   background-color: var(--light);
   z-index: 9;
+  overflow-y: hidden;
 
   /* border-bottom: solid 1px; */
   display: flex;
@@ -31,10 +32,12 @@ export const Container = styled.header`
 export const ButtonsContainer = styled.div`
   width: 20%;
   display: flex;
-  overflow: hidden;
+  overflow-y: hidden;
 `;
 
 export const ButtonHome = styled.button`
   width: 40%;
+  height: 40px;
   margin-left: 10px;
+  overflow-y: hidden;
 `;

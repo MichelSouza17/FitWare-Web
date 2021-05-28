@@ -246,7 +246,7 @@ function Register() {
                   id="height"
                   label="Altura"
                   type="double"
-                  placeholder="0,00"
+                  placeholder="0.00"
                   maxLength="4"
                   value={userStudent.height}
                   handler={handleInput}
