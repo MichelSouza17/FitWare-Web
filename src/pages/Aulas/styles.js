@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  min-height: 700px;
+  min-height: 96vh;
   height: auto;
 
   display: flex;
@@ -130,24 +130,23 @@ export const FormNewAula = styled.form`
   gap: 10px;
   padding-left: 15px;
 
-
   > div {
     display: flex;
     flex-wrap: wrap;
   }
 
-  input{
-        width: 98%;
-        font-weight: bold;
-    }
+  input {
+    width: 98%;
+    font-weight: bold;
+  }
 
-    select{
-        width: 70%;
-    }
+  select {
+    width: 70%;
+  }
 
-    button {
-      margin-top: 20px;
-    }
+  button {
+    margin-top: 20px;
+  }
 `;
 
 export const InfoTreino = styled.div`
@@ -157,8 +156,8 @@ export const InfoTreino = styled.div`
   align-items: center;
   gap: 10px;
 
-  input{
-   width: 280px;
+  input {
+    width: 280px;
   }
 `;
 

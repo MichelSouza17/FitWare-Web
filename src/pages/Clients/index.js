@@ -11,6 +11,8 @@ import {
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import { api } from "../../services/api";
+import ImgDelete from "../../assets/iconDelete.png";
+import ImgEdit from "../../assets/iconEdit.png";
 
 function Clients(users) {
   //a api retorna uma lista.. então isso deve ser uma lista vazia no começo
@@ -85,7 +87,8 @@ function Clients(users) {
                     <h4>{student.celular}</h4>
                   </td>
                   <td>
-                    <h4>Ações</h4>
+                    <img src={ImgDelete} />
+                    <img src={ImgEdit} />
                   </td>
                 </tr>
               ))}

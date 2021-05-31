@@ -49,6 +49,5 @@ export const ModalContainer = styled.section`
     font-size: 24px;
     text-align: center;
     margin: 0px 20px;
-    background-color: var(--blueLight);
   }
 `;

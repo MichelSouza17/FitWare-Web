@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  min-height: 700px;
+  min-height: 96vh;
   height: auto;
 
   display: flex;
@@ -86,24 +86,35 @@ export const ContainerTable = styled.div`
   margin-top: 40px;
 
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   background-color: var(--DarkGray);
-  gap: 10px;
+  overflow-y: auto;
 
-  > table{
-    width: 100%;
-        
+  > table {
+    width: 90%;
+    margin-top: 30px;
+    background-color: var(--light);
+
     th {
-      background-color: #dadada;
+      background-color: var(--blueLight);
       padding: 10px;
     }
 
     td {
       text-align: center;
       padding: 10px;
-      border-bottom: 1px solid gray;
+      font-size: 12px;
+      background-color: var(--light);
+
+      img {
+        width: 30px;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
     }
   }
 `;
