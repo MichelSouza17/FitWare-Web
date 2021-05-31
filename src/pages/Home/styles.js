@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerSlide = styled.div`
-  width: 100%;
+  width: 100vw;
   min-height: 400px;
   height: auto;
   margin-top: 10px;

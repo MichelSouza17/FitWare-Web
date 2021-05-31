@@ -7,6 +7,7 @@ import {
   Search,
   ButtonSearch,
   ContainerTable,
+  TitleContainer,
 } from "./styles";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
@@ -45,7 +46,9 @@ function Clients(users) {
       <Container>
         <ContainerClients>
           <Title>
-            <h4>CLIENTES</h4>
+            <TitleContainer>
+              <h4>CLIENTES</h4>
+            </TitleContainer>
           </Title>
           <Search>
             <ButtonSearch>Buscar</ButtonSearch>

@@ -38,12 +38,15 @@ export const Title = styled.div`
   background-color: var(--blueLight);
   border: black 1px;
   border-radius: 10px;
+`;
+
+export const TitleContainer = styled.div`
+  height: 100%;
+  width: 90%;
 
   h4 {
     font-size: 15px;
     text-align: right;
-    align-items: center;
-    padding-left: 500px;
     padding-top: 15px;
     color: var(--light);
   }
@@ -92,9 +95,9 @@ export const ContainerTable = styled.div`
   background-color: var(--DarkGray);
   gap: 10px;
 
-  > table{
+  > table {
     width: 100%;
-        
+
     th {
       background-color: #dadada;
       padding: 10px;
