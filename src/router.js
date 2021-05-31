@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Clients from "./pages/Clients";
 import Aulas from "./pages/Aulas";
+import Agendamentos from "./pages/Agendamentos";
 
 function Router() {
   return (
@@ -23,6 +24,9 @@ function Router() {
         </Route>
         <Route path="/clientes">
           <Clients />
+        </Route>
+        <Route path="/agendamentos">
+          <Agendamentos />
         </Route>
       </Switch>
     </BrowserRouter>

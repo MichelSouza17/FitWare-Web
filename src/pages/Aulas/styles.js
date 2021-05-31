@@ -171,19 +171,4 @@ export const ContainerTable = styled.div`
   flex-direction: column;
   background-color: var(--DarkGray);
   gap: 10px;
-
-  > table {
-    width: 100%;
-
-    th {
-      background-color: var(--DarkGray);
-      padding: 10px;
-    }
-
-    td {
-      text-align: center;
-      padding: 10px;
-      border-bottom: 1px solid gray;
-    }
-  }
 `;

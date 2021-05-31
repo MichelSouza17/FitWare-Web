@@ -12,7 +12,7 @@ export const Container = styled.div`
   background-color: #dadada;
 `;
 
-export const ContainerClients = styled.div`
+export const ContainerAgendamentos = styled.div`
   width: 60vw;
   min-height: 700px;
   height: auto;
@@ -43,7 +43,7 @@ export const Title = styled.div`
     font-size: 15px;
     text-align: right;
     align-items: center;
-    padding-left: 500px;
+    padding-left: 400px;
     padding-top: 15px;
     color: var(--light);
   }
@@ -84,9 +84,9 @@ export const ContainerTable = styled.div`
   width: 57vw;
   height: 500px;
   margin-top: 40px;
-  border-radius: 20px;
 
   display: flex;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   background-color: var(--DarkGray);
