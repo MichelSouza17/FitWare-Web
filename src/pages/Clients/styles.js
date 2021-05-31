@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  min-height: 700px;
+  min-height: 96vh;
   height: auto;
 
   display: flex;
@@ -107,6 +107,11 @@ export const ContainerTable = styled.div`
       text-align: center;
       padding: 10px;
       border-bottom: 1px solid gray;
+
+      img {
+        width: 30px;
+        margin-left: 10px;
+      }
     }
   }
 `;

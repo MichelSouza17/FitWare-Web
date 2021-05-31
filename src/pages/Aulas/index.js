@@ -10,7 +10,7 @@ import {
   InsertAula,
   Functions,
   FormNewAula,
-  InfoTreino
+  InfoTreino,
 } from "./styles";
 import Footer from "../../components/Footer";
 import { useState } from "react";
@@ -19,7 +19,6 @@ import Input from "../../components/Input";
 import Select from "../../components/Select";
 
 function NewAula({ handleReload, setIsLoading }) {
-
   // const handleInput = (e) => {
   //   setNewQuestion({ ...newQuestion, [e.target.id]: e.target.value });
   // };
@@ -57,53 +56,31 @@ function NewAula({ handleReload, setIsLoading }) {
 
   return (
     <FormNewAula>
-      <Input
-        id="aula"
-        label="Aula:"
-      />
-      <Input
-        id="Professor"
-        label="Professor(a):"
-      />
+      <Input id="aula" label="Aula:" />
+      <Input id="Professor" label="Professor(a):" />
       <InfoTreino>
-      <Input
-        id="limite"
-        label="Limite de Pessoas:"
-      />
-      <Input
-        id="duration"
-        label="Duração:"
-      />
-      <Input
-        id="horario"
-        label="Horário:"
-      />
-      <Input
-        id="data"
-        label="Data:"
-      />
+        <Input id="limite" label="Limite de Pessoas:" />
+        <Input id="duration" label="Duração Horas:" />
+        <Input id="horario" label="Horário:" />
+        <Input id="data" label="Data:" />
       </InfoTreino>
-      <Select
-        id="typeTreino"
-        label="Tipo de Treino">
-      </Select>
+      <Select id="typeTreino" label="Tipo de Treino"></Select>
       <button>Enviar</button>
     </FormNewAula>
   );
 }
 
 function Aulas() {
-
   const [showNewQuestion, setShowNewQuestion] = useState(false);
 
   return (
     <>
-    {showNewQuestion && (
+      {showNewQuestion && (
         <Modal
           title="Novo Agendamento"
           handleClose={() => setShowNewQuestion(false)}
         >
-          <NewAula /> 
+          <NewAula />
         </Modal>
       )}
       <Header />

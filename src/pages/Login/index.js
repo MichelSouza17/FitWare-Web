@@ -1,37 +1,76 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Input from "../../components/Input";
 import Header from "../../components/Header";
+import { api } from "../../services/api";
+import { signIn } from "../../services/security";
 import { Container, FotoAcademy, FormLogin } from "./styles";
 
-import Imglogo from "../../assets/fitware.png";
 import AcademiaImage from "../../assets/academia.jpg";
 
 function Login() {
-    return (
-        <Container>
-            <Header />
-            <FotoAcademy src={AcademiaImage} />
-            <FormLogin>
-                <h1>Faça seu Login</h1>
-                <Input
-                    id="email"
-                    label="email"
-                    type="email"
-                    // value={}
-                    // handler={}
-                />
-                <Input
-                    id="password"
-                    label="password"
-                    type="password"
-                    // value={}
-                    // handler={}
-                />
-                <button>Entrar</button>
-                <Link to="/register">Não tenho Registro</Link>
-            </FormLogin>
-        </Container>
-    );
+  const history = useHistory();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [message, setMessage] = useState(undefined);
+
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+
+    try {
+      const response = await api.post("/sessions", login);
+
+      signIn(response.data);
+
+      setIsLoading(false);
+
+      history.push("/home");
+    } catch (error) {
+      console.error(error);
+      setMessage({ title: "Ops...", description: error.response.data.error });
+      setIsLoading(false);
+    }
+  };
+
+  const handleInput = (e) => {
+    setLogin({ ...login, [e.target.id]: e.target.value });
+  };
+
+  return (
+    <>
+      <Container>
+        <Header />
+        <FotoAcademy src={AcademiaImage} />
+        <FormLogin onSubmit={handleSubmit}>
+          <h1>Faça seu Login</h1>
+          <Input
+            id="email"
+            label="email"
+            type="email"
+            value={login.email}
+            handler={handleInput}
+          />
+          <Input
+            id="password"
+            label="password"
+            type="password"
+            value={login.password}
+            handler={handleInput}
+          />
+          <button>Entrar</button>
+          <Link to="/register">Não tenho Registro</Link>
+        </FormLogin>
+      </Container>
+    </>
+  );
 }
 
 export default Login;
