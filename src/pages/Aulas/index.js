@@ -11,6 +11,7 @@ import {
   Functions,
   FormNewAula,
   InfoTreino,
+  TitleContainer,
 } from "./styles";
 import Footer from "../../components/Footer";
 import { useState } from "react";
@@ -87,7 +88,9 @@ function Aulas() {
       <Container>
         <ContainerAulas>
           <Title>
-            <h4>AULAS</h4>
+            <TitleContainer>
+              <h4>AULAS</h4>
+            </TitleContainer>
           </Title>
           <Functions>
             <ContainerAbas>

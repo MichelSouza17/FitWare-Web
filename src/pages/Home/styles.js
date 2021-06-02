@@ -45,23 +45,56 @@ export const ContainerUnits = styled.div`
 
 export const CardUnit = styled.div`
   width: 300px;
-  height: 200px;
+  height: 50px;
   border-radius: 5px;
   box-shadow: 0 0 0.3em black;
 
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: #ff7171;
+  flex-direction: column;
+  color: white;
+  background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
+  transition: 1s;
 
   img {
     border: solid 2px black;
     border-radius: 50%;
-    margin-bottom: 120px;
+    height: 60px;
+    width: 60px;
     background-color: var(--DarkGray);
-    margin-top: -90px;
+    margin-top: -45px;
     position: absolute;
+    transition: 1s;
+  }
+
+  p {
+    margin: 10px 10px 10px 10px;
+    display: none;
+    text-align: center;
+    transition: 1s;
+  }
+
+  :hover {
+    height: 200px;
+    transition: 1s;
+
+    img {
+      margin-top: -90px;
+      transition: 1s;
+    }
+
+    p {
+      display: block;
+      transition: 1s;
+      overflow-y: hidden;
+    }
+
+    h3 {
+      overflow-y: hidden;
+      margin-top: 10px;
+      transition: 1s;
+    }
   }
 `;
 
@@ -120,7 +153,7 @@ export const ContainerFunctionalities = styled.div`
   }
 `;
 
-export const ContainerBranco = styled.div`
+export const ContainerDescricao = styled.div`
   width: 100%;
   height: 850px;
   margin-top: 10px;

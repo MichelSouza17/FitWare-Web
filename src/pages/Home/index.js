@@ -3,8 +3,8 @@ import {
   ContainerSlide,
   ContainerUnits,
   ContainerIntroduction,
+  ContainerDescricao,
   ContainerFunctionalities,
-  ContainerBranco,
   ContainerSupport,
   Contacts,
   CardUnit,
@@ -19,6 +19,8 @@ import IconHorario from "../../assets/iconHorario.png";
 import IconAula from "../../assets/iconAula.png";
 import IconRegras from "../../assets/iconRegras.png";
 import IconGym from "../../assets/iconGym.png";
+import IconAdmin from "../../assets/admin.png";
+import IconMobile from "../../assets/mobile.png";
 import exercicio from "../../assets/exercicio.gif";
 import BackgroundVideo from "../../components/backgroundVideo/BackgroundVideo";
 
@@ -33,12 +35,30 @@ function Home() {
         <ContainerUnits>
           <CardUnit>
             <img src={IconGym} />
+            <h3>Agendamentos</h3>
+            <p>
+              O sistema de agendamento da FitWare é a parte mais importante do
+              sistema, é o que fará o controle nas academias.
+            </p>
           </CardUnit>
           <CardUnit>
-            <img src={IconGym} />
+            <img src={IconAdmin} />
+            <h3>Administrador</h3>
+            <p>
+              O administrador terá poderá criar e excluir Agendamentos,
+              cadastrar seus personal trainers e clientes na sua academia e
+              supervisionar as aulas presenciais e onlines.
+            </p>
           </CardUnit>
           <CardUnit>
-            <img src={IconGym} />
+            <img src={IconMobile} />
+
+            <h3>Clientes</h3>
+            <p>
+              Seus clientes poderam ver quais aulas estão disponiveis através do
+              aplicativo mobile, aonde ele poderá cadastrar-se em aulas
+              presenciais ou onlines
+            </p>
           </CardUnit>
         </ContainerUnits>
         <ContainerIntroduction>
@@ -62,7 +82,7 @@ function Home() {
             <h3>Regras</h3>
           </ContainerFunctionalities>
         </ContainerIntroduction>
-        <ContainerBranco>
+        <ContainerDescricao>
           <h2>Leve agora a FitWare para a sua academia !</h2>
           <p>
             A Addmeans pensou esse sistema em pró das pequenas academias que não
@@ -72,7 +92,7 @@ function Home() {
           </p>
           <img src={exercicio} />
           <button>Saber Mais</button>
-        </ContainerBranco>
+        </ContainerDescricao>
         <ContainerSupport>
           <h1>Suporte</h1>
           <Contacts>

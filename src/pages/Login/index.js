@@ -32,7 +32,7 @@ function Login() {
 
       setIsLoading(false);
 
-      history.push("/home");
+      history.push("/");
     } catch (error) {
       console.error(error);
       setMessage({ title: "Ops...", description: error.response.data.error });

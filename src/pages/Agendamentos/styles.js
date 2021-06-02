@@ -38,12 +38,14 @@ export const Title = styled.div`
   background-color: var(--blueLight);
   border: black 1px;
   border-radius: 10px;
+`;
+export const TitleContainer = styled.div`
+  height: 100%;
+  width: 90%;
 
   h4 {
     font-size: 15px;
     text-align: right;
-    align-items: center;
-    padding-left: 400px;
     padding-top: 15px;
     color: var(--light);
   }
