@@ -171,3 +171,25 @@ export const ContainerTable = styled.div`
   background-color: var(--DarkGray);
   gap: 10px;
 `;
+
+export const CheckBox = styled.div`
+  width: 80%;
+  height: 50px;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+
+  input {
+    width: 40px;
+  }
+
+  label {
+    margin-left: -120px;
+  }
+
+  h5 {
+    margin-top: 12px;
+    font-weight: normal;
+  }
+`;

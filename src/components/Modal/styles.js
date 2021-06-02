@@ -15,7 +15,7 @@ export const Overlay = styled.div`
 
 export const ModalContainer = styled.section`
   min-width: 650px;
-  min-height: 250px;
+  min-height: 350px;
   max-height: calc(100vh - 20px);
   padding: 20px;
 
