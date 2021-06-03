@@ -11,6 +11,7 @@ import {
   Functions,
   FormNewAula,
   InfoTreino,
+  CheckBox,
   TitleContainer,
 } from "./styles";
 import Footer from "../../components/Footer";
@@ -18,55 +19,110 @@ import { useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import { api } from "../../services/api";
+import { useHistory } from "react-router-dom";
 
-function NewAula({ handleReload, setIsLoading }) {
-  // const handleInput = (e) => {
-  //   setNewQuestion({ ...newQuestion, [e.target.id]: e.target.value });
-  // };
+function NewAula() {
+  const history = useHistory();
+  const [schedule, setSchedule] = useState({
+    hour: "",
+    date: "",
+    limit_person: "",
+    duration: "",
+    traningCategory: "",
+    is_remote: "",
+    link: "",
+  });
 
-  // const handleAddNewQuestion = async (e) => {
-  //   e.preventDefault();
+  const handleInput = (e) => {
+    setSchedule({ ...schedule, [e.target.id]: e.target.value });
+  };
 
-  //   const data = new FormData();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   data.append("title", newQuestion.title);
-  //   data.append("description", newQuestion.description);
+    try {
+      const response = await api.post("/schedule", {
+        hour: schedule.hour,
+        date: schedule.date,
+        limit_person: schedule.limit_person,
+        duration: schedule.duration,
+        traningCategory: schedule.traningCategory,
+        is_remote: schedule.is_remote,
+        link: schedule.link,
+      });
 
-  //   const categories = categoriesSel.reduce((s, c) => (s += c.id + ","), "");
-
-  //   data.append("categories", categories.substr(0, categories.length - 1));
-
-  //   if (image) data.append("image", image);
-  //   if (newQuestion.gist) data.append("gist", newQuestion.gist);
-
-  //   setIsLoading(true);
-
-  //   try {
-  //     await api.post("/questions", data, {
-  //       headers: {
-  //         "Content-type": "multipart/form-data",
-  //       },
-  //     });
-
-  //     handleReload();
-  //   } catch (error) {
-  //     alert(error);
-  //     setIsLoading(false);
-  //   }
-  // };
-
+      history.push("/agendamentos");
+    } catch (error) {
+      console.error(error);
+      alert(error.response.data.error);
+    }
+  };
   return (
     <FormNewAula>
-      <Input id="aula" label="Aula:" />
-      <Input id="Professor" label="Professor(a):" />
+      <Input id="Professor" label="Professor(a):" value="" handler="" />
+
       <InfoTreino>
-        <Input id="limite" label="Limite de Pessoas:" />
-        <Input id="duration" label="Duração Horas:" />
-        <Input id="horario" label="Horário:" />
-        <Input id="data" label="Data:" />
+        <Input
+          id="limit_person"
+          label="Limite de Pessoas:"
+          value={schedule.limit_person}
+          handler={handleInput}
+        />
+
+        <Input
+          id="duration"
+          label="Duração Horas:"
+          value={schedule.duration}
+          handler={handleInput}
+        />
+
+        <Input
+          id="hour"
+          label="Horário:"
+          value={schedule.hour}
+          handler={handleInput}
+        />
+
+        <Input
+          id="date"
+          label="Data:"
+          type="date"
+          value={schedule.date}
+          handler={handleInput}
+        />
       </InfoTreino>
-      <Select id="typeTreino" label="Tipo de Treino"></Select>
-      <button>Enviar</button>
+      <Select
+        id="traningCategory"
+        label="Categoria de Treino:"
+        value={schedule.traningCategory}
+        handler={handleInput}
+      />
+
+      <CheckBox>
+        <Input
+          type="radio"
+          id="is_remote"
+          name="typeaula"
+          value={schedule.is_remote}
+          handler={handleInput}
+        />
+        <label for="presencial">
+          <h5>Presencial</h5>
+        </label>
+
+        <Input
+          type="radio"
+          id="is_remote"
+          name="typeaula"
+          value={schedule.is_remote}
+          handler={handleInput}
+        />
+        <label for="online">
+          <h5>Online</h5>
+        </label>
+      </CheckBox>
+      <button onSubmit={handleSubmit}>Enviar</button>
     </FormNewAula>
   );
 }

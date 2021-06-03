@@ -20,10 +20,16 @@ function Login() {
     password: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, req, res) => {
     e.preventDefault();
 
     setIsLoading(true);
+
+    // const { userPerfil } = req;
+
+    // if (userPerfil !== "admin" && userPerfil !== "PersonalTrainer") {
+    //   return res.status(401).send({ erro: "Acesso negado" });
+    // }
 
     try {
       const response = await api.post("/sessions", login);
@@ -47,20 +53,19 @@ function Login() {
   return (
     <>
       <Container>
-        <Header />
         <FotoAcademy src={AcademiaImage} />
         <FormLogin onSubmit={handleSubmit}>
           <h1>Faça seu Login</h1>
           <Input
             id="email"
-            label="email"
+            label="E-mail"
             type="email"
             value={login.email}
             handler={handleInput}
           />
           <Input
             id="password"
-            label="password"
+            label="Password"
             type="password"
             value={login.password}
             handler={handleInput}
