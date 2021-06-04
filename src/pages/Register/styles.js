@@ -13,6 +13,20 @@ export const ContainerGeral = styled.div`
   background-color: var(--light);
 `;
 
+export const Menu = styled.div`
+  width: 50px;
+  height: 40px;
+
+  display: flex;
+  align-self: flex-start;
+
+  img {
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+  }
+`;
+
 export const FormContainer = styled.div`
   width: 100vw;
   min-height: 500px;

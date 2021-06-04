@@ -1,4 +1,3 @@
-import Input from "../Input";
 import {Overlay, ModalContainer} from "./styles";
 
 

@@ -15,7 +15,7 @@ import { api } from "../../services/api";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 
-function Clients(users) {
+function Clients() {
   //a api retorna uma lista.. então isso deve ser uma lista vazia no começo
   const [userStudents, setUserStudents] = useState([]);
 
@@ -24,7 +24,7 @@ function Clients(users) {
     const loadStudents = async () => {
       try {
         //aqui consumimos a api, sempre dentro de um try catch
-        const response = await api.get("/userAcademy");
+        const response = await api.get("/userAcademy?search");
 
         //dentro de response tem o data, que é o corpo da resposta
         //que contém a lista, colocamos ela no state

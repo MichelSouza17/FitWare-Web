@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Input from "../../components/Input";
-import Header from "../../components/Header";
 import { api } from "../../services/api";
 import { signIn } from "../../services/security";
 import { Container, FotoAcademy, FormLogin } from "./styles";
@@ -38,7 +37,7 @@ function Login() {
 
       setIsLoading(false);
 
-      history.push("/");
+      history.push("/aulas");
     } catch (error) {
       console.error(error);
       setMessage({ title: "Ops...", description: error.response.data.error });
