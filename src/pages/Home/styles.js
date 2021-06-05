@@ -159,6 +159,7 @@ export const ContainerDescricao = styled.div`
   margin-top: 10px;
   padding-right: 200px;
   padding-left: 200px;
+  padding-bottom: 10px;
 
   display: flex;
   align-items: center;
@@ -169,7 +170,6 @@ export const ContainerDescricao = styled.div`
   background-color: var(--light);
 
   h2 {
-    margin-bottom: 20px;
     width: 700px;
     height: 50px;
     padding-top: 10px;
@@ -195,7 +195,6 @@ export const ContainerSupport = styled.div`
   width: 100%;
   min-height: 200px;
   height: auto;
-  margin-top: 10px;
 
   display: flex;
   justify-content: center;
@@ -203,6 +202,8 @@ export const ContainerSupport = styled.div`
   flex-direction: column;
 
   background-color: var(--accentGray);
+  border-top: solid;
+  border-color: var(--blueLight);
 
   h1 {
     font-size: 22px;
@@ -212,11 +213,20 @@ export const ContainerSupport = styled.div`
 `;
 
 export const Contacts = styled.div`
-  width: 500px;
+  width: 100%;
   height: 150px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+`;
+
+export const ContainerEmail = styled.div`
+  width: 50%;
+  text-align: center;
+`;
+
+export const ContainerTelefone = styled.div`
+  width: 50%;
+  text-align: center;
+  border-left: groove;
 `;

@@ -9,6 +9,8 @@ import {
   Contacts,
   CardUnit,
   Description,
+  ContainerEmail,
+  ContainerTelefone,
 } from "./styles";
 
 import Header from "../../components/HeaderHome";
@@ -96,10 +98,14 @@ function Home() {
         <ContainerSupport>
           <h1>Suporte</h1>
           <Contacts>
-            <h3>Email</h3>
-            <p>addmeans.support@gmail.com</p>
-            <h3>Telefone</h3>
-            <p> +55(11) 8008-5000</p>
+            <ContainerEmail>
+              <h3>Email</h3>
+              <p>addmeans.support@gmail.com</p>
+            </ContainerEmail>
+            <ContainerTelefone>
+              <h3>Telefone</h3>
+              <p> +55(11) 8008-5000</p>
+            </ContainerTelefone>
           </Contacts>
         </ContainerSupport>
       </Container>
