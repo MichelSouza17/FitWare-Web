@@ -175,7 +175,7 @@ export const ContainerTable = styled.div`
   gap: 10px;
 `;
 
-export const CheckBox = styled.div`
+export const Radios = styled.div`
   width: 80%;
   height: 50px;
   flex-direction: row;

@@ -20,6 +20,7 @@ import {
   Bairro,
   Neighborhood,
   Citys,
+  Menu,
 } from "./styles";
 
 import Input from "../../components/Input";
@@ -31,10 +32,13 @@ import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
 import { maskCep, maskCel, maskCpf } from "../../utils/masks";
 import { useHistory } from "react-router-dom";
-import Menu from "../../components/Menu";
+import MenuLateral from "../../components/MenuLateral";
+
+import Imglogo from "../../assets/menu.png";
 
 function Register() {
   const history = useHistory();
+  const [showMenu, setShowMenu] = useState(false);
 
   const [userStudent, setUserStudent] = useState({
     first_name: "",
@@ -160,7 +164,15 @@ function Register() {
     <>
       <Header />
       <ContainerGeral>
-        <Menu />
+      {showMenu && (
+        <MenuLateral
+          handleClose={() => setShowMenu(false)}
+        >
+        </MenuLateral>
+      )}
+        <Menu>
+        <img src={Imglogo} onClick={() => setShowMenu(true)}/>
+        </Menu>
         <FormContainer>
           <ContainerUser>
             <h1>Dados Pessoais</h1>

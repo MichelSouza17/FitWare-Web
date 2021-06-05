@@ -11,20 +11,23 @@ import {
   Functions,
   FormNewAula,
   InfoTreino,
-  CheckBox,
+  Radios,
   TitleContainer,
 } from "./styles";
 import Footer from "../../components/Footer";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import Tag from "../../components/Tag";
 import { api } from "../../services/api";
 import { useHistory } from "react-router-dom";
+import { signIn } from "../../services/security";
 
 function NewAula() {
   const history = useHistory();
   const [schedule, setSchedule] = useState({
+    personal_name: "",
     hour: "",
     date: "",
     limit_person: "",
@@ -34,6 +37,49 @@ function NewAula() {
     link: "",
   });
 
+   const [categories, setCategories] = useState([]);
+
+  const [categoriesSel, setCategoriesSel] = useState([]);
+
+  const categoriesRef = useRef();
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const response = await api.get("/traningCategories");
+
+        setCategories(response.data);
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+    loadCategories();
+  }, []);
+
+  const handleCategories = (e) => {
+    const idSel = e.target.value;
+
+    const categorySel = categories.find((c) => c.id.toString() === idSel);
+
+    if (categorySel && !categoriesSel.includes(categorySel))
+      setCategoriesSel([...categoriesSel, categorySel]);
+
+    e.target[e.target.selectedIndex].disabled = true;
+    e.target.value = "";
+  };
+
+
+  const handleUnselCategory = (idUnsel) => {
+    setCategoriesSel(categoriesSel.filter((c) => c.id !== idUnsel));
+
+    const { options } = categoriesRef.current;
+
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].value === idUnsel.toString()) options[i].disabled = false;
+    }
+  };
+
   const handleInput = (e) => {
     setSchedule({ ...schedule, [e.target.id]: e.target.value });
   };
@@ -41,16 +87,31 @@ function NewAula() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const data = new FormData();
+
+    const categories = categoriesSel.reduce((s, c) => (s += c.id + ","), "");
+
+    data.append("traningCategories", categories.substr(0, categories.length - 1));
+
+    //ou você envia como formData ou como json...
+
+    //você esta enviando como json, esse formData não esta sendo usuado
+
+    //tem ai o postman de como tem que ir essas categorias? Si, deixa eu ver se vai abrir
+
     try {
       const response = await api.post("/schedule", {
+        personal_name: schedule.personal_name,
         hour: schedule.hour,
         date: schedule.date,
         limit_person: schedule.limit_person,
         duration: schedule.duration,
-        traningCategory: schedule.traningCategory,
+        traningCategory: categoriesSel.map(c => c.id), 
         is_remote: schedule.is_remote,
         link: schedule.link,
       });
+
+      signIn(response.data);
 
       history.push("/agendamentos");
     } catch (error) {
@@ -59,8 +120,13 @@ function NewAula() {
     }
   };
   return (
-    <FormNewAula>
-      <Input id="Professor" label="Professor(a):" value="" handler="" />
+    <FormNewAula onSubmit={handleSubmit}>
+      <Input 
+      id="personal_name" 
+      label="Professor(a):" 
+      value={schedule.personal_name}
+      handler={handleInput} 
+      />
 
       <InfoTreino>
         <Input
@@ -95,16 +161,30 @@ function NewAula() {
       <Select
         id="traningCategory"
         label="Categoria de Treino:"
-        value={schedule.traningCategory}
-        handler={handleInput}
-      />
-
-      <CheckBox>
+        handler={handleCategories}
+        ref={categoriesRef}
+      >
+        <option value="">Selecione</option>
+        {categories.map((c) => (
+          <option key={c.id} value={c.id}>
+            {c.description}
+          </option>
+        ))}
+      </Select>
+      <div>
+        {categoriesSel.map((c) => (
+          <Tag
+            key={c.id}
+            info={c.description}
+            handleClose={() => handleUnselCategory(c.id)}></Tag>
+        ))}
+      </div>
+      <Radios>
         <Input
           type="radio"
           id="is_remote"
           name="typeaula"
-          value={schedule.is_remote}
+          value={schedule.is_remote = false}
           handler={handleInput}
         />
         <label for="presencial">
@@ -115,14 +195,14 @@ function NewAula() {
           type="radio"
           id="is_remote"
           name="typeaula"
-          value={schedule.is_remote}
+          value={schedule.is_remote = true}
           handler={handleInput}
         />
         <label for="online">
           <h5>Online</h5>
         </label>
-      </CheckBox>
-      <button onSubmit={handleSubmit}>Enviar</button>
+      </Radios>
+      <button>Enviar</button>
     </FormNewAula>
   );
 }
