@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  background-color: #dadada;
+  background-color: var(--accentGray);
 `;
 
 export const ContainerClients = styled.div`

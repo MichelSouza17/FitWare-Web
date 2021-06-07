@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
+import HomeAdmin from "./pages/HomeAdmin";
 import Clients from "./pages/Clients";
 import Aulas from "./pages/Aulas";
 import Agendamentos from "./pages/Agendamentos";
@@ -21,6 +22,9 @@ function Router() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/home">
+          <HomeAdmin />
         </Route>
         <Route path="/register">
           <Register />
