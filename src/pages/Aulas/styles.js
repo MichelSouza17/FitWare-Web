@@ -119,7 +119,7 @@ export const ButtonAula = styled.button`
   border-radius: 20px;
   display: flex;
   align-items: center;
-  background-color: var(--primary);
+  background-color: var(--blueLight);
 
   p {
     font-size: 15px;
@@ -164,17 +164,6 @@ export const InfoTreino = styled.div`
   }
 `;
 
-export const ContainerTable = styled.div`
-  width: 57vw;
-  height: 550px;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: var(--DarkGray);
-  gap: 10px;
-`;
-
 export const Radios = styled.div`
   width: 80%;
   height: 50px;
@@ -194,5 +183,43 @@ export const Radios = styled.div`
   h5 {
     margin-top: 12px;
     font-weight: normal;
+  }
+`;
+
+export const ContainerTable = styled.div`
+  width: 57vw;
+  height: 550px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--DarkGray);
+  overflow-y: auto;
+
+  > table {
+    width: 90%;
+    margin-top: 30px;
+    background-color: var(--light);
+
+    th {
+      background-color: var(--blueLight);
+      padding: 10px;
+    }
+
+    td {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      background-color: var(--light);
+
+      img {
+        width: 30px;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
 `;

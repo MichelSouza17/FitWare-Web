@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.section`
   width: 270px;
-  height: 700px;
+  height: 100%;
   padding: 20px;
   align-self: flex-start;
 
@@ -35,12 +35,11 @@ export const MenuContainer = styled.section`
   height: 500px;
   margin: 30px 10px;
 
-  background-color: #dadada;
+  background-color: var(--light);
   box-shadow: 0px 0px 10px black;
   border-radius: 4px;
 
   position: relative;
-
 `;
 
 export const ItensMenu = styled.div`
@@ -53,5 +52,4 @@ export const ItensMenu = styled.div`
   justify-content: center;
 
   background-color: var(--light);
-
 `;

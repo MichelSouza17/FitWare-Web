@@ -23,8 +23,10 @@ import Tag from "../../components/Tag";
 import { api } from "../../services/api";
 import { useHistory } from "react-router-dom";
 import { signIn } from "../../services/security";
+import ImgDelete from "../../assets/iconDelete.png";
+import ImgEdit from "../../assets/iconEdit.png";
 
-function NewAula() {
+function NewAula(handleReload) {
   const history = useHistory();
   const [schedule, setSchedule] = useState({
     personal_name: "",
@@ -37,9 +39,11 @@ function NewAula() {
     link: "",
   });
 
-   const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const [categoriesSel, setCategoriesSel] = useState([]);
+
+  const [isRemote, setIsRemote] = useState(false);
 
   const categoriesRef = useRef();
 
@@ -69,7 +73,6 @@ function NewAula() {
     e.target.value = "";
   };
 
-
   const handleUnselCategory = (idUnsel) => {
     setCategoriesSel(categoriesSel.filter((c) => c.id !== idUnsel));
 
@@ -91,13 +94,10 @@ function NewAula() {
 
     const categories = categoriesSel.reduce((s, c) => (s += c.id + ","), "");
 
-    data.append("traningCategories", categories.substr(0, categories.length - 1));
-
-    //ou você envia como formData ou como json...
-
-    //você esta enviando como json, esse formData não esta sendo usuado
-
-    //tem ai o postman de como tem que ir essas categorias? Si, deixa eu ver se vai abrir
+    data.append(
+      "traningCategories",
+      categories.substr(0, categories.length - 1)
+    );
 
     try {
       const response = await api.post("/schedule", {
@@ -106,26 +106,29 @@ function NewAula() {
         date: schedule.date,
         limit_person: schedule.limit_person,
         duration: schedule.duration,
-        traningCategory: categoriesSel.map(c => c.id), 
+        traningCategory: categoriesSel.map((c) => c.id),
         is_remote: schedule.is_remote,
         link: schedule.link,
       });
 
       signIn(response.data);
 
-      history.push("/agendamentos");
+      handleReload();
+
+      history.push("/aulas");
     } catch (error) {
       console.error(error);
-      alert(error.response.data.error);
+      alert(error.response?.data.error);
     }
   };
+
   return (
     <FormNewAula onSubmit={handleSubmit}>
-      <Input 
-      id="personal_name" 
-      label="Professor(a):" 
-      value={schedule.personal_name}
-      handler={handleInput} 
+      <Input
+        id="personal_name"
+        label="Professor(a):"
+        value={schedule.personal_name}
+        handler={handleInput}
       />
 
       <InfoTreino>
@@ -176,7 +179,8 @@ function NewAula() {
           <Tag
             key={c.id}
             info={c.description}
-            handleClose={() => handleUnselCategory(c.id)}></Tag>
+            handleClose={() => handleUnselCategory(c.id)}
+          ></Tag>
         ))}
       </div>
       <Radios>
@@ -184,7 +188,7 @@ function NewAula() {
           type="radio"
           id="is_remote"
           name="typeaula"
-          value={schedule.is_remote = false}
+          value={false}
           handler={handleInput}
         />
         <label for="presencial">
@@ -195,27 +199,35 @@ function NewAula() {
           type="radio"
           id="is_remote"
           name="typeaula"
-          value={schedule.is_remote = true}
+          value={true}
           handler={handleInput}
         />
         <label for="online">
           <h5>Online</h5>
         </label>
       </Radios>
+      {schedule.isRemote == true && (
+        <Input
+          id="link"
+          name="link"
+          value={schedule.link}
+          handler={handleInput}
+        />
+      )}
       <button>Enviar</button>
     </FormNewAula>
   );
 }
 
 function Aulas() {
-  const [showNewQuestion, setShowNewQuestion] = useState(false);
+  const [showNewAula, setShowNewAula] = useState(false);
 
   return (
     <>
-      {showNewQuestion && (
+      {showNewAula && (
         <Modal
           title="Novo Agendamento"
-          handleClose={() => setShowNewQuestion(false)}
+          handleClose={() => setShowNewAula(false)}
         >
           <NewAula />
         </Modal>
@@ -239,12 +251,77 @@ function Aulas() {
             </ContainerAbas>
             <InsertAula>
               <h3>Nova Aula</h3>
-              <ButtonAula onClick={() => setShowNewQuestion(true)}>
+              <ButtonAula onClick={() => setShowNewAula(true)}>
                 <p>+</p>
               </ButtonAula>
             </InsertAula>
           </Functions>
-          <ContainerTable></ContainerTable>
+          <ContainerTable>
+            <table>
+              <tr>
+                <th rowSpan="2">
+                  <h4>Presencial</h4>
+                </th>
+                <td>
+                  <h4>Aula: Zumba</h4>
+                </td>
+                <td>
+                  <h4>Cadastrados: 23/40</h4>
+                </td>
+                <td>
+                  <h4>31/05/2021</h4>
+                </td>
+                <td rowSpan="2">
+                  <h3>Opção</h3>
+                  <img src={ImgDelete} />
+                  <img src={ImgEdit} />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Professor(a): Lucas Mendes</h4>
+                </td>
+                <td>
+                  <h4>Duração: 3 horas</h4>
+                </td>
+                <td>
+                  <h4>13:55</h4>
+                </td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <th rowSpan="2">
+                  <h4>Online</h4>
+                </th>
+                <td>
+                  <h4>Aula: Zumba</h4>
+                </td>
+                <td>
+                  <h4>Cadastrados: 23/40</h4>
+                </td>
+                <td>
+                  <h4>31/05/2021</h4>
+                </td>
+                <td rowSpan="2">
+                  <h3>Opção</h3>
+                  <img src={ImgDelete} />
+                  <img src={ImgEdit} />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Professor(a): Lucas Mendes</h4>
+                </td>
+                <td>
+                  <h4>Duração: 3 horas</h4>
+                </td>
+                <td>
+                  <h4>13:55</h4>
+                </td>
+              </tr>
+            </table>
+          </ContainerTable>
         </ContainerAulas>
       </Container>
       <Footer />
