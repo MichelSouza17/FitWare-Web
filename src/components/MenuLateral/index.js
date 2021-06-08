@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { ModalContainer, MenuContainer, ItensMenu} from "./styles";
 
-function Modal({children, handleClose}) {
+function Modal({children}) {
   return (
       <ModalContainer>
-        <span onClick={handleClose}>&times;</span>
         {children}
         <MenuContainer>
         <ItensMenu>
@@ -13,6 +12,10 @@ function Modal({children, handleClose}) {
 
           <ItensMenu>
             <Link to="/register">Cadastrar Aluno</Link>
+          </ItensMenu>
+
+          <ItensMenu>
+            <Link to="/registerAcademy">Cadastrar Academia</Link>
           </ItensMenu>
 
           <ItensMenu>

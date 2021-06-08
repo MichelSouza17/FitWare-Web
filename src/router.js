@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import RegisterAcademy from "./pages/RegisterAcademy";
 import Home from "./pages/Home";
 import Clients from "./pages/Clients";
 import Aulas from "./pages/Aulas";
@@ -21,6 +22,9 @@ function Router() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/registerAcademy">
+          <RegisterAcademy />
         </Route>
         <Route path="/register">
           <Register />

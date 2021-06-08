@@ -45,7 +45,7 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const ContainerUser = styled.div`
+export const ContainerAcademy = styled.div`
   width: 1000px;
   min-height: 220px;
   height: auto;
@@ -70,7 +70,7 @@ export const ContainerUser = styled.div`
   }
 `;
 
-export const User = styled.div`
+export const Academy = styled.div`
   width: 100%;
   height: 100%;
   padding-left: 10px;
@@ -83,11 +83,7 @@ export const User = styled.div`
   flex-wrap: wrap;
 
   input {
-    min-width: 280px;
-    opacity: 60%;
-  }
-  select {
-    min-width: 280px;
+    min-width: 480px;
     opacity: 60%;
   }
 
@@ -97,45 +93,24 @@ export const User = styled.div`
   }
 `;
 
-export const ContainerInfo = styled.div`
-  width: 1005px;
-  min-height: 332px;
-  height: auto;
-  flex-wrap: wrap;
-
+export const ContainerAddress = styled.div`
+  width: 1000px;
+  height: 270px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
-`;
-
-export const ContainerDice = styled.div`
-  width: 480px;
-  height: 332px;
-  margin-right: 20px;
-  flex-wrap: wrap;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-export const ContainerContacts = styled.div`
-  width: 475px;
-  height: 237px;
-  margin-bottom: 10px;
-  padding-top: 5px;
+  gap: 5px;
   flex-wrap: wrap;
   border-radius: 5px;
   box-shadow: 0 0 0.3em black;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
+  padding-bottom: 10px;
 
   background-color: var(--light);
+
+  input {
+    width: 350px;
+  }
 
   > h1 {
     font-size: 22px;
@@ -143,126 +118,67 @@ export const ContainerContacts = styled.div`
     margin-top: 10px;
     overflow: hidden;
   }
+`;
+
+export const Cep = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  background-color: var(--light);
 
   input {
-    width: 235px;
-  }
-
-  select {
-    width: 235px;
+    width: 250px;
   }
 `;
 
-export const ContainerWeight = styled.div`
-  width: 475px;
-  height: 80px;
-  flex-wrap: wrap;
-  border-radius: 5px;
-  box-shadow: 0 0 0.3em black;
-
+export const Street = styled.div`
+  width: 520px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   gap: 10px;
 
   background-color: var(--light);
 `;
 
-export const ContainerAddress = styled.div`
-  width: 500px;
-  height: 327px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 2px;
-  padding-top: 15px;
-  flex-wrap: wrap;
-  border-radius: 5px;
-  box-shadow: 0 0 0.3em black;
-
-  background-color: var(--light);
-
-  input {
-    width: 400px;
-  }
-
-  > h1 {
-    font-size: 22px;
-    text-align: center;
-    overflow: hidden;
-  }
-`;
-
-export const Cep = styled.div`
-  width: 400px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  padding-top: 10px;
-
-  background-color: var(--light);
-
-  input {
-    width: 130px;
-  }
-`;
-
 export const Neighborhood = styled.div`
-  width: 400px;
-  height: 70px;
+  width: 70%;
   display: flex;
   align-items: center;
-  flex-direction: row;
   overflow-y: hidden;
-
-  background-color: var(--light);
 `;
 
 export const Bairro = styled.div`
-  width: 390px;
-  height: 60px;
+  width: 30%;
   display: flex;
   align-items: center;
   overflow-y: hidden;
 
-  background-color: var(--light);
-
   input {
-    width: 300px;
-  }
-`;
-
-export const Numero = styled.div`
-  width: 100px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  overflow-y: hidden;
-
-  background-color: var(--light);
-
-  input {
-    width: 80px;
+    width: 150px;
   }
 `;
 
 export const Citys = styled.div`
-  width: 400px;
+  width: 520px;
   height: 70px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   overflow-y: hidden;
-  gap: 20px;
-
-  background-color: var(--light);
+  gap: 5px;
 
   input {
-    width: 190px;
+    width: 150px;
   }
 `;
 
-export const ContainerAcademy = styled.div`
+export const ContainerPassword = styled.div`
   width: 1000px;
   height: 80px;
   margin-top: 10px;
@@ -276,49 +192,9 @@ export const ContainerAcademy = styled.div`
   flex-direction: column;
 
   background-color: var(--light);
-`;
 
-export const TextAcademy = styled.div`
-  width: 450px;
-  height: 80px;
-  flex-wrap: wrap;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background-color: var(--light);
-
-  > p {
-    font-size: 15px;
-    text-align: left;
-    align-self: flex-start;
-    overflow: hidden;
-    /* font-weight: bold; */
-    padding-inline-start: 20px;
-  }
-`;
-
-export const SelectAcademy = styled.div`
-  width: 550px;
-  height: 80px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  background-color: var(--light);
-
-  select {
-    width: 530px;
-    align-self: flex-end;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
+  input {
+    width: 400px;
   }
 `;
 
@@ -351,22 +227,4 @@ export const ButtonCancel = styled.button`
   background-color: var(--redLight);
 `;
 
-export const ContainerPassword = styled.div`
-  width: 1000px;
-  height: 80px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  border-radius: 5px;
-  box-shadow: 0 0 0.3em black;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background-color: var(--light);
-
-  input {
-    width: 300px;
-  }
-`;

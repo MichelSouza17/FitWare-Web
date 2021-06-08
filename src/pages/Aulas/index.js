@@ -122,6 +122,8 @@ function NewAula(handleReload) {
     }
   };
 
+  console.log(schedule);
+
   return (
     <FormNewAula onSubmit={handleSubmit}>
       <Input
@@ -206,7 +208,7 @@ function NewAula(handleReload) {
           <h5>Online</h5>
         </label>
       </Radios>
-      {schedule.isRemote == true && (
+      {schedule.is_remote === "true" && (
         <Input
           id="link"
           name="link"
