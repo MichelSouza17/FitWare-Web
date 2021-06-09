@@ -21,7 +21,6 @@ export const ContainerHome = styled.div`
   border-radius: 10px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: var(--light);
@@ -37,6 +36,7 @@ export const Title = styled.div`
   display: flex;
   margin-left: -10px;
   flex-direction: row;
+  margin-top: 50px;
 
   align-self: flex-start;
   background-color: var(--blueLight);
@@ -52,5 +52,54 @@ export const TitleContainer = styled.div`
     text-align: right;
     padding-top: 15px;
     color: var(--light);
+  }
+`;
+
+export const ContainerItensMenu = styled.div`
+  width: 57vw;
+  height: 450px;
+  margin-top: 40px;
+
+  display: flex;
+  align-items: left;
+  flex-direction: row;
+`;
+
+export const ContainerColuna = styled.div`
+  height: 100%;
+  width: 25%;
+  flex-direction: column;
+  overflow-y: hidden;
+`;
+
+export const ItemMenu = styled.div`
+  height: 40%;
+  width: 80%;
+  background-color: var(--blueLight);
+  margin: 20px;
+  border-radius: 10px;
+  transition: 1s;
+  :hover {
+    background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
+    height: 45%;
+    width: 85%;
+    transition: 0.9s;
+    box-shadow: 10px 10px 0 0;
+  }
+`;
+
+export const ItemMenuQRcode = styled.div`
+  height: 85%;
+  width: 80%;
+  background-color: var(--blueLight);
+  margin: 20px;
+  border-radius: 10px;
+  transition: 1s;
+  :hover {
+    background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
+    height: 90%;
+    width: 85%;
+    transition: 0.9s;
+    box-shadow: 10px 10px 0 0;
   }
 `;
