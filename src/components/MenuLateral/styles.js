@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.section`
   width: 270px;
+<<<<<<< HEAD
   min-height: 700px;
   max-height: 1000px;
+=======
+  height: 100%;
+>>>>>>> 803a8cce19ea64ac5ddcadd9b884e2e7c2d893b1
   padding: 20px;
   align-self: flex-start;
 
@@ -37,7 +41,7 @@ export const MenuContainer = styled.section`
   max-height: 800px;
   margin: 30px 10px;
 
-  background-color: #dadada;
+  background-color: var(--light);
   box-shadow: 0px 0px 10px black;
   border-radius: 4px;
 
