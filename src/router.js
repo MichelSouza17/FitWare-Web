@@ -26,9 +26,9 @@ function Router() {
         <Route path="/registerAcademy">
           <RegisterAcademy />
         </Route>
-        <Route path="/register">
+        <PrivateRoute path="/register">
           <Register />
-        </Route>
+        </PrivateRoute>
         <PrivateRoute path="/aulas">
           <Aulas />
         </PrivateRoute>

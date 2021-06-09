@@ -19,6 +19,8 @@ function Clients() {
   //a api retorna uma lista.. então isso deve ser uma lista vazia no começo
   const [userStudents, setUserStudents] = useState([]);
 
+  const [search, setSearch] = useState("");
+
   //precisamos colocar tudo isso dentro de uma função async depois chamar ela
   useEffect(() => {
     const loadStudents = async () => {
@@ -40,7 +42,30 @@ function Clients() {
     loadStudents();
   }, []);
 
+  const handleReload = () => {
+    setSearch("");
+  };
+
   //agora já temos a lista em mãos... só percorrer e mostrar na tela.
+
+  const handleSearch = async (e) => {
+    setSearch(e.target.value);
+
+    if (e.target.value.length === 0) handleReload();
+
+    if (e.target.value.length < 4) return;
+
+    try {
+      const response = await api.get("/userAcademy?search", {
+        params: { search: e.target.value },
+      });
+
+      setUserStudents(response.data);
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -54,7 +79,13 @@ function Clients() {
           </Title>
           <Search>
             <ButtonSearch>Buscar</ButtonSearch>
-            <Input id="client" placeholder="Pesquisar Cliente" type="text" />
+            <Input
+              id="client"
+              placeholder="Pesquisar Cliente"
+              type="text"
+              handler={handleSearch}
+              value={search}
+            />
           </Search>
           <ContainerTable>
             <table>

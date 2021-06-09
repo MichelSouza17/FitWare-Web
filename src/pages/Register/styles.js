@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerGeral = styled.div`
   width: 100vw;
-  min-height: 500px;
+  min-height: 900px;
   height: auto;
   padding-top: 60px;
 
@@ -39,7 +39,7 @@ export const FormContainer = styled.div`
   background-color: var(--light);
   margin-bottom: 20px;
 
-  h4{
+  h4 {
     color: red;
     font-family: Verdana;
   }
@@ -264,7 +264,7 @@ export const Citys = styled.div`
 
 export const ContainerAcademy = styled.div`
   width: 1000px;
-  height: 80px;
+  height: 100px;
   margin-top: 10px;
   flex-wrap: wrap;
   border-radius: 5px;
@@ -302,7 +302,7 @@ export const TextAcademy = styled.div`
 
 export const SelectAcademy = styled.div`
   width: 550px;
-  height: 80px;
+  height: 100px;
 
   display: flex;
   justify-content: center;

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.section`
   width: 270px;
-  height: 100%;
+  min-height: 880px;
+  height: auto;
   padding: 20px;
   align-self: flex-start;
 
@@ -32,8 +33,8 @@ export const ModalContainer = styled.section`
 
 export const MenuContainer = styled.section`
   width: 200px;
-  height: 500px;
-  margin: 30px 10px;
+  height: 790px;
+  margin-top: 30px;
 
   background-color: var(--light);
   box-shadow: 0px 0px 10px black;
@@ -44,7 +45,7 @@ export const MenuContainer = styled.section`
 
 export const ItensMenu = styled.div`
   width: 100%;
-  height: 50px;
+  height: 70px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid gray;

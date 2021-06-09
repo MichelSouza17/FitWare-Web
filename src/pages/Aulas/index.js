@@ -43,8 +43,6 @@ function NewAula(handleReload) {
 
   const [categoriesSel, setCategoriesSel] = useState([]);
 
-  const [isRemote, setIsRemote] = useState(false);
-
   const categoriesRef = useRef();
 
   useEffect(() => {
@@ -113,16 +111,12 @@ function NewAula(handleReload) {
 
       signIn(response.data);
 
-      handleReload();
-
       history.push("/aulas");
     } catch (error) {
       console.error(error);
       alert(error.response?.data.error);
     }
   };
-
-  console.log(schedule);
 
   return (
     <FormNewAula onSubmit={handleSubmit}>

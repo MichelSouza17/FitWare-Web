@@ -25,9 +25,9 @@ import {
 
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
+import { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import Select from "../../components/Select";
-import { useState } from "react";
 import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
 import { maskCep, maskCel, maskCpf } from "../../utils/masks";
@@ -35,6 +35,7 @@ import { useHistory } from "react-router-dom";
 import MenuLateral from "../../components/MenuLateral";
 
 import Imglogo from "../../assets/menu.png";
+import Tag from "../../components/Tag";
 
 function Register() {
   const history = useHistory();
@@ -56,7 +57,50 @@ function Register() {
     cep: "",
     confirmePassword: "",
     cpf: "",
+    academyCategory: "",
   });
+
+  const [categories, setCategories] = useState([]);
+
+  const [categoriesSel, setCategoriesSel] = useState([]);
+
+  const categoriesRef = useRef();
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const response = await api.get("/academy");
+
+        setCategories(response.data);
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+    loadCategories();
+  }, []);
+
+  const handleCategories = (e) => {
+    const idSel = e.target.value;
+
+    const categorySel = categories.find((c) => c.id.toString() === idSel);
+
+    if (categorySel && !categoriesSel.includes(categorySel))
+      setCategoriesSel([...categoriesSel, categorySel]);
+
+    e.target[e.target.selectedIndex].disabled = true;
+    e.target.value = "";
+  };
+
+  const handleUnselCategory = (idUnsel) => {
+    setCategoriesSel(categoriesSel.filter((c) => c.id !== idUnsel));
+
+    const { options } = categoriesRef.current;
+
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].value === idUnsel.toString()) options[i].disabled = false;
+    }
+  };
 
   const confirmePassword = () =>
     userStudent.password === userStudent.confirmePassword;
@@ -133,6 +177,12 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const data = new FormData();
+
+    const categories = categoriesSel.reduce((s, c) => (s += c.id + ","), "");
+
+    data.append("academy", categories.substr(0, categories.length - 1));
+
     if (!confirmePassword()) return alert("As senhas precisam ser iguais!");
 
     try {
@@ -151,6 +201,7 @@ function Register() {
         street: userStudent.logradouro,
         cep: userStudent.cep,
         cpf: userStudent.cpf,
+        academyCategory: categoriesSel.map((c) => c.id),
       });
 
       history.push("/clientes");
@@ -164,13 +215,11 @@ function Register() {
     <>
       <Header />
       <ContainerGeral>
-      {showMenu && (
-        <MenuLateral />
-      )}
+        {showMenu && <MenuLateral />}
         <Menu>
-        <img src={Imglogo} onClick={() => setShowMenu(true)}/>
+          <img src={Imglogo} onClick={() => setShowMenu(true)} />
         </Menu>
-        <FormContainer onClick={() => showMenu ? setShowMenu(false): ""}>
+        <FormContainer onClick={() => (showMenu ? setShowMenu(false) : "")}>
           <ContainerUser>
             <h1>Dados Pessoais</h1>
             <User>
@@ -325,9 +374,25 @@ function Register() {
               <Select
                 id="academia"
                 type="int"
-                // value={}
-                // handler={handleInput}
-              />
+                handler={handleCategories}
+                ref={categoriesRef}
+              >
+                <option value="">Selecione</option>
+                {categories.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </Select>
+              <div>
+                {categoriesSel.map((c) => (
+                  <Tag
+                    key={c.id}
+                    info={c.name}
+                    handleClose={() => handleUnselCategory(c.id)}
+                  ></Tag>
+                ))}
+              </div>
             </SelectAcademy>
           </ContainerAcademy>
           <ContainerPassword>
@@ -353,7 +418,6 @@ function Register() {
           <ContainerButtons onSubmit={handleSubmit}>
             <ButtonSave disabled={buttonDisabled()}>Salvar</ButtonSave>
             <ButtonCancel>Cancelar</ButtonCancel>
-            
           </ContainerButtons>
           <h4>*Todos os campos são obrigatórios</h4>
         </FormContainer>
