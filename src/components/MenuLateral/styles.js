@@ -35,7 +35,6 @@ export const MenuContainer = styled.section`
   width: 200px;
   height: 790px;
   margin-top: 30px;
-
   background-color: var(--light);
   box-shadow: 0px 0px 10px black;
   border-radius: 4px;
