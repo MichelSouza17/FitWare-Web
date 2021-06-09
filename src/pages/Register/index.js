@@ -165,15 +165,12 @@ function Register() {
       <Header />
       <ContainerGeral>
       {showMenu && (
-        <MenuLateral
-          handleClose={() => setShowMenu(false)}
-        >
-        </MenuLateral>
+        <MenuLateral />
       )}
         <Menu>
         <img src={Imglogo} onClick={() => setShowMenu(true)}/>
         </Menu>
-        <FormContainer>
+        <FormContainer onClick={() => showMenu ? setShowMenu(false): ""}>
           <ContainerUser>
             <h1>Dados Pessoais</h1>
             <User>
@@ -356,7 +353,9 @@ function Register() {
           <ContainerButtons onSubmit={handleSubmit}>
             <ButtonSave disabled={buttonDisabled()}>Salvar</ButtonSave>
             <ButtonCancel>Cancelar</ButtonCancel>
+            
           </ContainerButtons>
+          <h4>*Todos os campos são obrigatórios</h4>
         </FormContainer>
       </ContainerGeral>
       <Footer />

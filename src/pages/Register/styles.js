@@ -36,7 +36,13 @@ export const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--accentGray);
+  background-color: var(--light);
+  margin-bottom: 20px;
+
+  h4 {
+    color: red;
+    font-family: Verdana;
+  }
 `;
 
 export const ContainerUser = styled.div`
