@@ -26,7 +26,7 @@ import { signIn } from "../../services/security";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 
-function NewAula(handleReload) {
+function NewAula() {
   const history = useHistory();
   const [schedule, setSchedule] = useState({
     personal_name: "",

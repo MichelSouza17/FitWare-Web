@@ -103,3 +103,41 @@ export const ItemMenuQRcode = styled.div`
     box-shadow: 10px 10px 0 0;
   }
 `;
+
+export const FormNewPersonal = styled.form`
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 15px;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  input {
+    width: 98%;
+    font-weight: bold;
+  }
+
+  select {
+    width: 70%;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+`;
+
+export const InfoTreino = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  input {
+    width: 280px;
+  }
+`;

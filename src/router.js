@@ -24,9 +24,9 @@ function Router() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/home">
+        <PrivateRoute path="/home">
           <HomeAdmin />
-        </Route>
+        </PrivateRoute>
         <Route path="/registerAcademy">
           <RegisterAcademy />
         </Route>
@@ -36,12 +36,12 @@ function Router() {
         <PrivateRoute path="/aulas">
           <Aulas />
         </PrivateRoute>
-        <Route path="/clientes">
+        <PrivateRoute path="/clientes">
           <Clients />
-        </Route>
-        <Route path="/agendamentos">
+        </PrivateRoute>
+        <PrivateRoute path="/agendamentos">
           <Agendamentos />
-        </Route>
+        </PrivateRoute>
         <Route path="/">
           <Home />
         </Route>

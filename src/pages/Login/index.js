@@ -24,12 +24,6 @@ function Login() {
 
     setIsLoading(true);
 
-    // const { userPerfil } = req;
-
-    // if (userPerfil !== "admin" && userPerfil !== "PersonalTrainer") {
-    //   return res.status(401).send({ erro: "Acesso negado" });
-    // }
-
     try {
       const response = await api.post("/sessions", login);
 
@@ -37,7 +31,7 @@ function Login() {
 
       setIsLoading(false);
 
-      history.push("/aulas");
+      history.push("/home");
     } catch (error) {
       console.error(error);
       setMessage({ title: "Ops...", description: error.response.data.error });
@@ -70,7 +64,7 @@ function Login() {
             handler={handleInput}
           />
           <button>Entrar</button>
-          <Link to="/register">Não tenho Registro</Link>
+          <Link to="/registerAcademy">Não tenho Registro</Link>
         </FormLogin>
       </Container>
     </>

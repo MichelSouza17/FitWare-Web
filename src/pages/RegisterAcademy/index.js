@@ -94,12 +94,6 @@ function RegisterAcademy() {
     setAcademy({ ...academy, [e.target.id]: e.target.value, telefone });
   };
 
-  const handleCnpj = (e) => {
-    let cnpj = maskCpf(e.target.value);
-
-    setAcademy({ ...academy, [e.target.id]: e.target.value, cnpj });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -166,9 +160,9 @@ function RegisterAcademy() {
                 id="cnpj"
                 label="CNPJ"
                 type="text"
-                maxLength="14"
+                maxLength="18"
                 value={academy.cnpj}
-                handler={handleCnpj}
+                handler={handleInput}
               />
             </Academy>
           </ContainerAcademy>

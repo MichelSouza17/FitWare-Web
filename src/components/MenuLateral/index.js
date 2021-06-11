@@ -7,7 +7,7 @@ function Modal({children}) {
         {children}
         <MenuContainer>
         <ItensMenu>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </ItensMenu>
 
           <ItensMenu>
