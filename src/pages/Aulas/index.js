@@ -25,6 +25,9 @@ import { useHistory } from "react-router-dom";
 import { signIn } from "../../services/security";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
+import Presencial from "../../components/Presencial";
+import Online from "../../components/Online";
+import { format } from "date-fns";
 
 function NewAula() {
   const history = useHistory();
@@ -98,7 +101,7 @@ function NewAula() {
     );
 
     try {
-      const response = await api.post("/schedule", {
+      const response = await api.post("/academy/:id/schedule", {
         personal_name: schedule.personal_name,
         hour: schedule.hour,
         date: schedule.date,
@@ -217,6 +220,51 @@ function NewAula() {
 
 function Aulas() {
   const [showNewAula, setShowNewAula] = useState(false);
+  const [showPresencial, setShowPresencial] = useState(true);
+
+  const [aulasShow, setAulasShow] = useState([]);
+
+  const aulas = [
+    {
+      id: 1,
+      hour: "18:00",
+      date: "2021-02-05T00:00:00.000Z",
+      limit_person: 20,
+      duration: "10min",
+      is_remote: false,
+      TraningCategories: [
+        {
+          id: 1,
+          description: "Treino de força",
+        },
+      ],
+      PersonalTrainer: {
+        name: "Luiz",
+      },
+    },
+    {
+      id: 2,
+      hour: "18:00",
+      date: "2021-02-05T00:00:00.000Z",
+      limit_person: 20,
+      duration: "10min",
+      is_remote: true,
+      TraningCategories: [
+        {
+          id: 1,
+          description: "Treino de força",
+        },
+      ],
+      PersonalTrainer: {
+        name: "Luiz",
+      },
+    },
+  ];
+
+  useEffect(() => {
+    let aulasAux = aulas.filter((a) => a.is_remote === !showPresencial);
+    setAulasShow(aulasAux);
+  }, [showPresencial]);
 
   return (
     <>
@@ -238,10 +286,18 @@ function Aulas() {
           </Title>
           <Functions>
             <ContainerAbas>
-              <Abas>
+              <Abas
+                onClick={() => {
+                  setShowPresencial(true);
+                }}
+              >
                 <h4>Presenciais</h4>
               </Abas>
-              <Abas>
+              <Abas
+                onClick={() => {
+                  setShowPresencial(false);
+                }}
+              >
                 <h4>Onlines</h4>
               </Abas>
             </ContainerAbas>
@@ -253,70 +309,71 @@ function Aulas() {
             </InsertAula>
           </Functions>
           <ContainerTable>
-            <table>
-              <tr>
-                <th rowSpan="2">
-                  <h4>Presencial</h4>
-                </th>
-                <td>
-                  <h4>Aula: Zumba</h4>
-                </td>
-                <td>
-                  <h4>Cadastrados: 23/40</h4>
-                </td>
-                <td>
-                  <h4>31/05/2021</h4>
-                </td>
-                <td rowSpan="2">
-                  <h3>Opção</h3>
-                  <img src={ImgDelete} />
-                  <img src={ImgEdit} />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h4>Professor(a): Lucas Mendes</h4>
-                </td>
-                <td>
-                  <h4>Duração: 3 horas</h4>
-                </td>
-                <td>
-                  <h4>13:55</h4>
-                </td>
-              </tr>
-            </table>
-            <table>
-              <tr>
-                <th rowSpan="2">
-                  <h4>Online</h4>
-                </th>
-                <td>
-                  <h4>Aula: Zumba</h4>
-                </td>
-                <td>
-                  <h4>Cadastrados: 23/40</h4>
-                </td>
-                <td>
-                  <h4>31/05/2021</h4>
-                </td>
-                <td rowSpan="2">
-                  <h3>Opção</h3>
-                  <img src={ImgDelete} />
-                  <img src={ImgEdit} />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h4>Professor(a): Lucas Mendes</h4>
-                </td>
-                <td>
-                  <h4>Duração: 3 horas</h4>
-                </td>
-                <td>
-                  <h4>13:55</h4>
-                </td>
-              </tr>
-            </table>
+            {aulasShow.map((a) => (
+              <table>
+                <tr>
+                  <td>
+                    <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
+                  </td>
+                  <td>
+                    <h4>{a.personal_name}</h4>
+                  </td>
+                  <td>
+                    <h4>{a.traningCategory}</h4>
+                  </td>
+                  <td>
+                    <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>
+                  </td>
+                  <td>
+                    <h4>{a.limit_person}</h4>
+                  </td>
+                  <td>
+                    <h4>{a.duration}</h4>
+                  </td>
+                  <td>
+                    <img src={ImgDelete} />
+                    <img src={ImgEdit} />
+                  </td>
+                </tr>
+              </table>
+            ))}
+
+            {/* {showOnline && (
+              <Online>
+                <table>
+                  <tr>
+                    <th rowSpan="2">
+                      <h4>Online</h4>
+                    </th>
+                    <td>
+                      <h4>Aula: Zumba</h4>
+                    </td>
+                    <td>
+                      <h4>Cadastrados: 23/40</h4>
+                    </td>
+                    <td>
+                      <h4>31/05/2021</h4>
+                    </td>
+                    <td rowSpan="2">
+                      <h3>Opção</h3>
+                      <img src={ImgDelete} />
+                      <img src={ImgEdit} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>Professor(a): Lucas Mendes</h4>
+                    </td>
+                    <td>
+                      <h4>Duração: 3 horas</h4>
+                    </td>
+                    <td>
+                      <h4>13:55</h4>
+                    </td>
+                  </tr>
+                </table>
+              </Online>
+            )} */}
           </ContainerTable>
         </ContainerAulas>
       </Container>

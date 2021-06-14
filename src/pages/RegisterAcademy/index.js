@@ -22,7 +22,7 @@ import Header from "../../components/Header";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
-import { maskCep, maskCel, maskCpf } from "../../utils/masks";
+import { maskCep, maskCel } from "../../utils/masks";
 import { useHistory } from "react-router-dom";
 import MenuLateral from "../../components/MenuLateral";
 
@@ -49,13 +49,14 @@ function RegisterAcademy() {
   const confirmePassword = () => academy.password === academy.confirmePassword;
 
   const buttonDisabled = () => {
-    const { name, cnpj, telefone, email, numero, password } = academy;
+    const { name, cnpj, telefone, email, cep, numero, password } = academy;
 
     if (
       !name ||
       !cnpj ||
       !telefone ||
       !email ||
+      !cep ||
       !numero ||
       !password ||
       !confirmePassword()

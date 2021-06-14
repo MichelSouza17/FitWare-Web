@@ -99,8 +99,10 @@ export const ContainerTable = styled.div`
     background-color: var(--light);
 
     th {
-      background-color: var(--blueLight);
+      background-color: var(--DarkGray);
       padding: 10px;
+      color: var(--redLight);
+      font-weight: normal;
     }
 
     td {
@@ -108,6 +110,7 @@ export const ContainerTable = styled.div`
       padding: 10px;
       font-size: 12px;
       background-color: var(--light);
+      border-bottom: 1px solid gray;
 
       img {
         width: 30px;
