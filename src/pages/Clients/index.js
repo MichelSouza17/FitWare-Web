@@ -23,27 +23,26 @@ function Clients() {
 
   //precisamos colocar tudo isso dentro de uma função async depois chamar ela
   useEffect(() => {
-    const loadStudents = async () => {
-      try {
-        //aqui consumimos a api, sempre dentro de um try catch
-        const response = await api.get("/userAcademy?search");
-
-        //dentro de response tem o data, que é o corpo da resposta
-        //que contém a lista, colocamos ela no state
-        // assim, que inicia vazio ne. isso, inicia vazio, depois substitui quando houver resposta.blz
-
-        console.log(response.data);
-        setUserStudents(response.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
     loadStudents();
   }, []);
 
+  const loadStudents = async () => {
+    try {
+      //aqui consumimos a api, sempre dentro de um try catch
+      const response = await api.get("/userAcademy?search");
+
+      //dentro de response tem o data, que é o corpo da resposta
+      //que contém a lista, colocamos ela no state
+      // assim, que inicia vazio ne. isso, inicia vazio, depois substitui quando houver resposta.blz
+
+      setUserStudents(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const handleReload = () => {
-    setSearch("");
+    loadStudents();
   };
 
   //agora já temos a lista em mãos... só percorrer e mostrar na tela.
@@ -56,7 +55,7 @@ function Clients() {
     if (e.target.value.length < 4) return;
 
     try {
-      const response = await api.get("/userAcademy?search", {
+      const response = await api.get("/userAcademy", {
         params: { search: e.target.value },
       });
 

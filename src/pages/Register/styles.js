@@ -10,7 +10,6 @@ export const ContainerGeral = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  background-color: var(--accentGray);
 `;
 
 export const Menu = styled.div`

@@ -216,7 +216,7 @@ function Register() {
       <Header />
       <ContainerGeral>
         {showMenu && <MenuLateral />}
-        <Menu>
+        <Menu onClick={() => (showMenu ? setShowMenu(true) : "")}>
           <img src={Imglogo} onClick={() => setShowMenu(true)} />
         </Menu>
         <FormContainer onClick={() => (showMenu ? setShowMenu(false) : "")}>
