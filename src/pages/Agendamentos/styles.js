@@ -103,6 +103,7 @@ export const ContainerTable = styled.div`
       padding: 10px;
       color: var(--redLight);
       font-weight: normal;
+      border-radius: 10px;
     }
 
     td {
@@ -123,3 +124,26 @@ export const ContainerTable = styled.div`
     }
   }
 `;
+
+// export const Funcionalits = styled.div`
+//   height: 100%;
+//   width: 100%;
+
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   gap: 2px;
+//   background-color: var(--DarkGray);
+
+//   h3 {
+//     margin-top: 10px;
+//   }
+// `;
+
+// export const Cards = styled.div`
+//   height: 50px;
+//   width: 150px;
+//   overflow-y: hidden;
+//   background-color: var(--light);
+// `;

@@ -11,33 +11,32 @@ export const signIn = (user) => {
 };
 
 export const signOut = () => {
-    localStorage.removeItem(USER_KEY);
-  
-    api.defaults.headers.common["Authorization"] = undefined;
-  };
+  localStorage.removeItem(USER_KEY);
+
+  api.defaults.headers.common["Authorization"] = undefined;
+};
 
 export const getUser = () => {
-    const { student } = JSON.parse(localStorage.getItem(USER_KEY));
-  
-    return student;
-  };
+  const { user } = JSON.parse(localStorage.getItem(USER_KEY));
 
-  export const isSignedIn = () => {
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
-  
-    if (user && user.token) {
-      const jwtDecoded = jwtDecode(user.token);
-  
-      const nowTime = (Date.now() / 1000) | 0;
-  
-      if (jwtDecoded.exp < nowTime) {
-        return signOut();
-      }
-  
-      api.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
-      return true;
+  return user;
+};
+
+export const isSignedIn = () => {
+  const user = JSON.parse(localStorage.getItem(USER_KEY));
+
+  if (user && user.token) {
+    const jwtDecoded = jwtDecode(user.token);
+
+    const nowTime = (Date.now() / 1000) | 0;
+
+    if (jwtDecoded.exp < nowTime) {
+      return signOut();
     }
-  
-    return false;
-  };
-  
+
+    api.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
+    return true;
+  }
+
+  return false;
+};

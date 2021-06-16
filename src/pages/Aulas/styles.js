@@ -103,7 +103,7 @@ export const InsertAula = styled.div`
 
   h3 {
     font-size: 15px;
-    margin-top: 10px;
+    margin-top: 12px;
     margin-right: 5px;
     text-align: center;
     color: black;
@@ -123,6 +123,7 @@ export const ButtonAula = styled.button`
 
   p {
     font-size: 15px;
+    color: white;
   }
 `;
 
@@ -141,6 +142,7 @@ export const FormNewAula = styled.form`
   input {
     width: 98%;
     font-weight: bold;
+    opacity: 50%;
   }
 
   select {
@@ -197,13 +199,17 @@ export const ContainerTable = styled.div`
   overflow-y: auto;
 
   > table {
-    width: 90%;
-    margin-top: 30px;
+    width: 98%;
+    margin-top: 10px;
     background-color: var(--light);
+    border-radius: 5px;
 
     th {
-      background-color: var(--blueLight);
+      background-color: var(--DarkGray);
       padding: 10px;
+      color: var(--redLight);
+      font-weight: normal;
+      border-radius: 5px;
     }
 
     td {

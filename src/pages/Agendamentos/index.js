@@ -45,7 +45,7 @@ function Clients() {
           </Title>
           <Search>
             <ButtonSearch>Buscar</ButtonSearch>
-            <Input id="client" placeholder="Pesquisar Cliente" type="text" />
+            <Input id="client" placeholder="Pesquisar Aula" type="text" />
           </Search>
           <ContainerTable>
             <table>

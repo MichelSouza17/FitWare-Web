@@ -19,19 +19,18 @@ import { useEffect, useRef, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import Loading from "../../components/Loading";
 import Tag from "../../components/Tag";
 import { api } from "../../services/api";
-import { useHistory } from "react-router-dom";
-import { signIn } from "../../services/security";
+import { getUser } from "../../services/security";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 import Presencial from "../../components/Presencial";
 import { format } from "date-fns";
 
-function NewAula() {
-  const history = useHistory();
+function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
-    personal_name: "",
+    personal_id: "",
     hour: "",
     date: "",
     limit_person: "",
@@ -47,7 +46,7 @@ function NewAula() {
 
   const [categoriesSel, setCategoriesSel] = useState([]);
 
-  const [personalSel, setPersonalSel] = useState([]);
+  const [personalSel, setPersonalSel] = useState(null);
 
   const categoriesRef = useRef();
 
@@ -79,13 +78,14 @@ function NewAula() {
     loadPersonal();
   }, []);
 
-  const handleCategories = (e) => {
+  const handlePersonal = (e) => {
     const idSel = e.target.value;
 
-    const personalTrainerSel = personal.find((c) => c.id.toString() === idSel);
+    setPersonalSel(idSel);
+  };
 
-    if (personalTrainerSel && !personalSel.includes(personalTrainerSel))
-      setPersonalSel([...personalSel, personalTrainerSel]);
+  const handleCategories = (e) => {
+    const idSel = e.target.value;
 
     const categorySel = categories.find((c) => c.id.toString() === idSel);
 
@@ -114,24 +114,13 @@ function NewAula() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
+    const user = await getUser();
 
-    const categories = categoriesSel.reduce((s, c) => (s += c.id + ","), "");
-
-    data.append(
-      "traningCategories",
-      categories.substr(0, categories.length - 1)
-    );
-
-    data.append(
-      "personalTrainer",
-      personal.substr(0, personal.length - 1)
-    );
+    setIsLoading(true);
 
     try {
-      const response = await api.post("/academy/:id/schedule", {
-        params: { academy_id: e.target.id },
-        personal_id: personalSel.map((c) => c.id),
+      const response = await api.post(`/academy/${user.userId}/schedule`, {
+        personal_id: personalSel,
         hour: schedule.hour,
         date: schedule.date,
         limit_person: schedule.limit_person,
@@ -141,12 +130,16 @@ function NewAula() {
         link: schedule.link,
       });
 
-      signIn(response.data);
+      //fechar o modal
 
-      history.push("/aulas");
+      //exibir mensagem de sucesso
+
+      //atualizar a lista
+      handleReload();
     } catch (error) {
       console.error(error);
       alert(error.response?.data.error);
+      setIsLoading(false);
     }
   };
 
@@ -155,7 +148,7 @@ function NewAula() {
       <Select
         id="personal_id"
         label="Professor(a):"
-        handler={handleCategories}
+        handler={handlePersonal}
         ref={categoriesRef}
       >
         <option value="">Selecione</option>
@@ -165,15 +158,6 @@ function NewAula() {
           </option>
         ))}
       </Select>
-      <div>
-        {personalSel.map((c) => (
-          <Tag
-            key={c.id}
-            info={c.name}
-            handleClose={() => handleUnselCategory(c.id)}
-          ></Tag>
-          ))}
-          </div>
 
       <InfoTreino>
         <Input
@@ -264,61 +248,46 @@ function NewAula() {
 }
 
 function Aulas() {
+  const [isLoading, setIsLoading] = useState(false);
   const [showNewAula, setShowNewAula] = useState(false);
   const [showPresencial, setShowPresencial] = useState(true);
 
   const [aulasShow, setAulasShow] = useState([]);
 
-  const aulas = [
-    {
-      id: 1,
-      hour: "18:00",
-      date: "2021-02-05T00:00:00.000Z",
-      limit_person: 20,
-      duration: "10min",
-      is_remote: false,
-      TraningCategories: [
-        {
-          id: 1,
-          description: "Treino de força",
-        },
-      ],
-      PersonalTrainer: {
-        name: "Luiz",
-      },
-    },
-    {
-      id: 2,
-      hour: "18:00",
-      date: "2021-02-05T00:00:00.000Z",
-      limit_person: 20,
-      duration: "10min",
-      is_remote: true,
-      TraningCategories: [
-        {
-          id: 1,
-          description: "Treino de força",
-        },
-      ],
-      PersonalTrainer: {
-        name: "Luiz",
-      },
-    },
-  ];
+  //trazer as aulas da api loadSchedules()
 
-  useEffect(() => {
-    let aulasAux = aulas.filter((a) => a.is_remote === !showPresencial);
-    setAulasShow(aulasAux);
-  }, [showPresencial]);
+  const loadSchedules = async () => {
+    try {
+      const response = await api.get("/schedules");
+
+      //dentro de response tem o data, que é o corpo da resposta
+      //que contém a lista, colocamos ela no state
+      // assim, que inicia vazio ne. isso, inicia vazio, depois substitui quando houver resposta.blz
+
+      setAulasShow(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleReload = () => {
+    setIsLoading(false);
+  };
+
+  // useEffect(() => {
+  //   let aulasAux = aulas.filter((a) => a.is_remote === !showPresencial);
+  //   setAulasShow(aulasAux);
+  // }, [showPresencial]);
 
   return (
     <>
+      {isLoading && <Loading />}
       {showNewAula && (
         <Modal
           title="Novo Agendamento"
           handleClose={() => setShowNewAula(false)}
         >
-          <NewAula />
+          <NewAula handleReload={handleReload} setIsLoading={setIsLoading} />
         </Modal>
       )}
       <Header />
@@ -354,14 +323,38 @@ function Aulas() {
             </InsertAula>
           </Functions>
           <ContainerTable>
-            {aulasShow.map((a) => (
-              <table>
+            <table>
+              <tr>
+                <th>
+                  <h4>Tipo de Aula</h4>
+                </th>
+                <th>
+                  <h4>Nome do personal</h4>
+                </th>
+                <th>
+                  <h4>Categoria de Treino</h4>
+                </th>
+                <th>
+                  <h4>Data</h4>
+                </th>
+                <th>
+                  <h4>Limite Alunos</h4>
+                </th>
+                <th>
+                  <h4>Duração</h4>
+                </th>
+                <th>
+                  <h4>Ações</h4>
+                </th>
+              </tr>
+
+              {aulasShow.map((a) => (
                 <tr>
                   <td>
                     <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
                   </td>
                   <td>
-                    <h4>{a.personal_name}</h4>
+                    <h4>{a.personal_id}</h4>
                   </td>
                   <td>
                     <h4>{a.traningCategory}</h4>
@@ -380,8 +373,8 @@ function Aulas() {
                     <img src={ImgEdit} />
                   </td>
                 </tr>
-              </table>
-            ))}
+              ))}
+            </table>
           </ContainerTable>
         </ContainerAulas>
       </Container>
