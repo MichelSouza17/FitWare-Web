@@ -26,7 +26,6 @@ import { signIn } from "../../services/security";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 import Presencial from "../../components/Presencial";
-import Online from "../../components/Online";
 import { format } from "date-fns";
 
 function NewAula() {
@@ -44,7 +43,11 @@ function NewAula() {
 
   const [categories, setCategories] = useState([]);
 
+  const [personal, setPersonal] = useState([]);
+
   const [categoriesSel, setCategoriesSel] = useState([]);
+
+  const [personalSel, setPersonalSel] = useState([]);
 
   const categoriesRef = useRef();
 
@@ -62,8 +65,27 @@ function NewAula() {
     loadCategories();
   }, []);
 
+  useEffect(() => {
+    const loadPersonal = async () => {
+      try {
+        const response = await api.get("/personalTrainer");
+
+        setPersonal(response.data);
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+    loadPersonal();
+  }, []);
+
   const handleCategories = (e) => {
     const idSel = e.target.value;
+
+    const personalTrainerSel = personal.find((c) => c.id.toString() === idSel);
+
+    if (personalTrainerSel && !personalSel.includes(personalTrainerSel))
+      setPersonalSel([...personalSel, personalTrainerSel]);
 
     const categorySel = categories.find((c) => c.id.toString() === idSel);
 
@@ -76,6 +98,7 @@ function NewAula() {
 
   const handleUnselCategory = (idUnsel) => {
     setCategoriesSel(categoriesSel.filter((c) => c.id !== idUnsel));
+    setPersonalSel(personalSel.filter((c) => c.id !== idUnsel));
 
     const { options } = categoriesRef.current;
 
@@ -100,9 +123,15 @@ function NewAula() {
       categories.substr(0, categories.length - 1)
     );
 
+    data.append(
+      "personalTrainer",
+      personal.substr(0, personal.length - 1)
+    );
+
     try {
       const response = await api.post("/academy/:id/schedule", {
-        personal_name: schedule.personal_name,
+        params: { academy_id: e.target.id },
+        personal_id: personalSel.map((c) => c.id),
         hour: schedule.hour,
         date: schedule.date,
         limit_person: schedule.limit_person,
@@ -123,12 +152,28 @@ function NewAula() {
 
   return (
     <FormNewAula onSubmit={handleSubmit}>
-      <Input
-        id="personal_name"
+      <Select
+        id="personal_id"
         label="Professor(a):"
-        value={schedule.personal_name}
-        handler={handleInput}
-      />
+        handler={handleCategories}
+        ref={categoriesRef}
+      >
+        <option value="">Selecione</option>
+        {personal.map((c) => (
+          <option key={c.id} value={c.id}>
+            {c.name}
+          </option>
+        ))}
+      </Select>
+      <div>
+        {personalSel.map((c) => (
+          <Tag
+            key={c.id}
+            info={c.name}
+            handleClose={() => handleUnselCategory(c.id)}
+          ></Tag>
+          ))}
+          </div>
 
       <InfoTreino>
         <Input
@@ -337,43 +382,6 @@ function Aulas() {
                 </tr>
               </table>
             ))}
-
-            {/* {showOnline && (
-              <Online>
-                <table>
-                  <tr>
-                    <th rowSpan="2">
-                      <h4>Online</h4>
-                    </th>
-                    <td>
-                      <h4>Aula: Zumba</h4>
-                    </td>
-                    <td>
-                      <h4>Cadastrados: 23/40</h4>
-                    </td>
-                    <td>
-                      <h4>31/05/2021</h4>
-                    </td>
-                    <td rowSpan="2">
-                      <h3>Opção</h3>
-                      <img src={ImgDelete} />
-                      <img src={ImgEdit} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h4>Professor(a): Lucas Mendes</h4>
-                    </td>
-                    <td>
-                      <h4>Duração: 3 horas</h4>
-                    </td>
-                    <td>
-                      <h4>13:55</h4>
-                    </td>
-                  </tr>
-                </table>
-              </Online>
-            )} */}
           </ContainerTable>
         </ContainerAulas>
       </Container>

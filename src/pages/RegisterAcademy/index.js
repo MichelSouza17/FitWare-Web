@@ -109,12 +109,12 @@ function RegisterAcademy() {
         password: academy.password,
         cep: academy.cep,
         street: academy.logradouro,
-        numero: academy.numero,
+        number: academy.numero,
         state: academy.uf,
         city: academy.localidade,
       });
 
-      history.push("/home");
+      history.push("/login");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -205,7 +205,6 @@ function RegisterAcademy() {
                 type="number"
                 value={academy.numero}
                 handler={handleInput}
-                required
               />
               <Input
                 id="cidade"

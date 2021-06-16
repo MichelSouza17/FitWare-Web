@@ -79,7 +79,7 @@ function Clients() {
                     <h2>Presencial</h2>
                   </td>
                   <td>
-                    <h4>{training.personal_name}</h4>
+                    <h4>{training.personal_id}</h4>
                   </td>
                   <td>
                     <h4>{training.traningCategory}</h4>
