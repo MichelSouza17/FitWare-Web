@@ -125,10 +125,6 @@ function RegisterAcademy() {
     <>
       <Header />
       <ContainerGeral>
-        {showMenu && <MenuLateral />}
-        <Menu>
-          <img src={Imglogo} onClick={() => setShowMenu(true)} />
-        </Menu>
         <FormContainer onClick={() => (showMenu ? setShowMenu(false) : "")}>
           <ContainerAcademy>
             <h1>Cadastre sua Academia</h1>

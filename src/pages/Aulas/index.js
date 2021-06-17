@@ -27,6 +27,7 @@ import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 import Presencial from "../../components/Presencial";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
@@ -281,7 +282,7 @@ function Aulas() {
 
   return (
     <>
-      {isLoading && <Loading />}
+      {/* {isLoading && <Loading />} */}
       {showNewAula && (
         <Modal
           title="Novo Agendamento"

@@ -78,6 +78,7 @@ export const ItemMenu = styled.div`
   background-color: var(--blueLight);
   margin: 20px;
   border-radius: 10px;
+  text-decoration: none;
   transition: 1s;
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
@@ -85,6 +86,19 @@ export const ItemMenu = styled.div`
     width: 85%;
     transition: 0.9s;
     box-shadow: 10px 10px 0 0;
+  }
+
+  img {
+    margin-left: 50px;
+    height: 60px;
+    width: 60px;
+    margin-top: 50px;
+  }
+
+  h4 {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--light);
   }
 `;
 
@@ -101,6 +115,19 @@ export const ItemMenuQRcode = styled.div`
     width: 85%;
     transition: 0.9s;
     box-shadow: 10px 10px 0 0;
+  }
+
+  img {
+    margin-left: 10px;
+    height: 150px;
+    width: 150px;
+    margin-top: 100px;
+  }
+
+  h4 {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--light);
   }
 `;
 
