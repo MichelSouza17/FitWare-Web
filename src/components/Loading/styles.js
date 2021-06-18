@@ -29,6 +29,6 @@ export const Container = styled.div`
     margin-bottom: 10px;
     border: 2px solid var(--dark);
 
-    animation: ${spin} 1s linear infinite;
+    animation: ${spin} 3s linear infinite;
   }
 `;

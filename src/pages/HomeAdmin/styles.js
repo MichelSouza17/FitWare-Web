@@ -146,6 +146,7 @@ export const FormNewPersonal = styled.form`
   input {
     width: 98%;
     font-weight: bold;
+    opacity: 50%;
   }
 
   select {

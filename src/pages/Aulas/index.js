@@ -25,9 +25,7 @@ import { api } from "../../services/api";
 import { getUser } from "../../services/security";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
-import Presencial from "../../components/Presencial";
 import { format } from "date-fns";
-import { Link } from "react-router-dom";
 
 function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
@@ -249,40 +247,59 @@ function NewAula({ handleReload, setIsLoading }) {
 }
 
 function Aulas() {
+
+  const [reload, setReload] = useState(null);
+
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingFeed, setIsLoadingFeed] = useState(false);
+
   const [showNewAula, setShowNewAula] = useState(false);
   const [showPresencial, setShowPresencial] = useState(true);
 
   const [aulasShow, setAulasShow] = useState([]);
 
+  const [aulas, setAulas] = useState([]);
+
   //trazer as aulas da api loadSchedules()
 
   const loadSchedules = async () => {
-    try {
-      const response = await api.get("/schedules");
 
-      //dentro de response tem o data, que é o corpo da resposta
-      //que contém a lista, colocamos ela no state
-      // assim, que inicia vazio ne. isso, inicia vazio, depois substitui quando houver resposta.blz
+    if (isLoadingFeed) return;
 
-      setAulasShow(response.data);
-    } catch (e) {
-      console.log(e);
-    }
+    setIsLoadingFeed(true);
+      const response = await api.get("/schedule");
+
+      setAulas(response.data);
+
+      setIsLoadingFeed(false);
+    
   };
+
+  useEffect(() => {
+    console.log(showPresencial);
+    if(aulas.length > 0){
+      if(showPresencial){
+        setAulasShow(aulas.filter(a => !a.is_remote));
+      }else{
+        setAulasShow(aulas.filter(a => a.is_remote));
+      }
+    }
+  },[aulas, showPresencial])
+
+  useEffect(() => {
+    loadSchedules();
+  }, [reload]);
 
   const handleReload = () => {
+    setShowNewAula(false);
     setIsLoading(false);
+    setAulasShow([]);
+    setReload(Math.random());
   };
-
-  // useEffect(() => {
-  //   let aulasAux = aulas.filter((a) => a.is_remote === !showPresencial);
-  //   setAulasShow(aulasAux);
-  // }, [showPresencial]);
 
   return (
     <>
-      {/* {isLoading && <Loading />} */}
+      {isLoading && <Loading />}
       {showNewAula && (
         <Modal
           title="Novo Agendamento"

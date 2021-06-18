@@ -26,27 +26,128 @@ import IconAulas from "../../assets/aula.png";
 import IconDia from "../../assets/dia.png";
 import IconAdmin from "../../assets/admin.png";
 import IconMobile from "../../assets/mobile.png";
+import { api } from "../../services/api";
+import Loading from "../../components/Loading";
 
-function NewPersonal() {
+function NewPersonal({ handleReload, setIsLoading }) {
+  const [personal, setPersonal] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmePassword: "",
+    specialty: "",
+  });
+
+  const confirmePassword = () =>
+    personal.password === personal.confirmePassword;
+
+  const buttonDisabled = () => {
+    const {
+      name,
+      email,
+      password,
+      specialty,
+    } = personal;
+
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !specialty ||
+      !confirmePassword()
+    )
+      return true;
+
+    return false;
+  };
+
+  const handleInput = (e) => {
+    setPersonal({ ...personal, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!confirmePassword()) return alert("As senhas precisam ser iguais!");
+
+    setIsLoading(true);
+
+    try {
+      const response = await api.post(`/personalTrainer`, {
+        name: personal.name,
+    email: personal.email,
+    password: personal.password,
+    specialty: personal.specialty,
+      });
+
+      handleReload();
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data.error);
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <FormNewPersonal>
-      <Input id="personal_name" label="Nome:" />
+    <FormNewPersonal onSubmit={handleSubmit}>
+      <Input 
+      id="name" 
+      label="Nome:"
+      value={personal.name}
+          handler={handleInput} 
+      />
 
-      <Input id="email" label="E-mail:" type="email" />
+      <Input 
+      id="email" 
+      label="E-mail:" 
+      type="email"
+      value={personal.email}
+          handler={handleInput}  
+      />
+
+      <Input 
+      id="specialty" 
+      label="Especialidade:"
+      value={personal.specialty}
+          handler={handleInput} 
+      />
 
       <InfoTreino>
-        <Input id="password" label="Senha:" type="password" />
+        <Input 
+        id="password" 
+        label="Senha:" 
+        type="password" 
+        value={personal.password}
+          handler={handleInput} 
+        />
 
-        <Input id="confirmepassword" label="Confirmar Senha:" type="password" />
+        <Input 
+        id="confirmePassword" 
+        label="Confirmar Senha:"
+         type="password" 
+         onBlur={(e) => {
+          if (!confirmePassword()) alert("As senhas precisam ser iguais");
+          e.target.focus();
+        }}
+         value={personal.confirmePassword}
+          handler={handleInput} 
+         />
       </InfoTreino>
-      <Select id="especiality" label="Especialidade:"></Select>
-      <button>Enviar</button>
+
+      <button disabled={buttonDisabled()}>Enviar</button>
     </FormNewPersonal>
   );
 }
 
 function HomeAdmin() {
+  const [isLoading, setIsLoading] = useState(false);
+  
   const [showPersonal, setShowPersonal] = useState(false);
+
+  const handleReload = () => {
+    setShowPersonal(false);
+    setIsLoading(false);
+  };
   return (
     <>
       {showPersonal && (
@@ -54,7 +155,7 @@ function HomeAdmin() {
           title="Cadastrar Personal Trainer"
           handleClose={() => setShowPersonal(false)}
         >
-          <NewPersonal />
+          <NewPersonal handleReload={handleReload} setIsLoading={setIsLoading} />
         </Modal>
       )}
       <Header />

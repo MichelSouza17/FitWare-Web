@@ -194,7 +194,7 @@ function Register() {
         birth_date: userStudent.birth_date,
         celular: userStudent.celular,
         weight: userStudent.weight,
-        numero: userStudent.numero,
+        number: userStudent.numero,
         height: userStudent.height,
         state: userStudent.uf,
         city: userStudent.localidade,
@@ -216,8 +216,8 @@ function Register() {
       <Header />
       <ContainerGeral>
         {showMenu && <MenuLateral />}
-        <Menu onClick={() => (showMenu ? setShowMenu(true) : "")}>
-          <img src={Imglogo} onClick={() => setShowMenu(true)} />
+        <Menu onClick={() => setShowMenu(true)}>
+          {!showMenu && <img src={Imglogo}  onClick={() => (showMenu ? setShowMenu(true) : "")}/>}
         </Menu>
         <FormContainer onClick={() => (showMenu ? setShowMenu(false) : "")}>
           <ContainerUser>

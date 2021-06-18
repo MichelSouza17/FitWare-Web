@@ -1,11 +1,11 @@
 import { Container } from "./styles";
 
-import imgLogo from "../../assets/iconDelete.png";
+import imgLoading from "../../assets/iconLoading.png";
 
 function Loading() {
   return (
     <Container>
-      <img src={imgLogo} />
+      <img src={imgLoading} />
       Carregando...
     </Container>
   );

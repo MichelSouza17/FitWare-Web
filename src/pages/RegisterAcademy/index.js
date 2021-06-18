@@ -12,7 +12,6 @@ import {
   Bairro,
   Neighborhood,
   Citys,
-  Menu,
   Street,
 } from "./styles";
 
@@ -24,9 +23,6 @@ import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
 import { maskCep, maskCel } from "../../utils/masks";
 import { useHistory } from "react-router-dom";
-import MenuLateral from "../../components/MenuLateral";
-
-import Imglogo from "../../assets/menu.png";
 
 function RegisterAcademy() {
   const history = useHistory();
@@ -125,7 +121,7 @@ function RegisterAcademy() {
     <>
       <Header />
       <ContainerGeral>
-        <FormContainer onClick={() => (showMenu ? setShowMenu(false) : "")}>
+        <FormContainer>
           <ContainerAcademy>
             <h1>Cadastre sua Academia</h1>
             <Academy>
