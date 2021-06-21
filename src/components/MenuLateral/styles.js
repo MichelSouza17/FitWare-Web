@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalContainer = styled.section`
-  width: 270px;
+  width: 300px;
   min-height: 880px;
   height: auto;
   padding: 20px;
@@ -32,7 +32,6 @@ export const ModalContainer = styled.section`
 `;
 
 export const MenuContainer = styled.section`
-  width: 200px;
   height: 790px;
   margin-top: 30px;
   background-color: var(--light);
@@ -48,8 +47,21 @@ export const ItensMenu = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid gray;
-  text-align: center;
-  justify-content: center;
+  text-align: left;
+  padding-left: 5px;
 
   background-color: var(--light);
+
+  > a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: bold;
+
+    transition: 0.2s;
+  }
+
+  > a:hover {
+    color: var(--primaryBlack);
+    transform: translate(10px);
+  }
 `;

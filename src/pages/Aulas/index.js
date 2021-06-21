@@ -384,10 +384,14 @@ function Aulas() {
                       <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
                     </td>
                     <td>
-                      <h4>{a.personal_id}</h4>
+                      <h4>{a.PersonalTrainer.name}</h4>
                     </td>
                     <td>
-                      <h4>{a.traningCategory}</h4>
+                      <h4>
+                        {a.TraningCategories.map((t) => (
+                          <li>{t.description}</li>
+                        ))}
+                      </h4>
                     </td>
                     <td>
                       <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>

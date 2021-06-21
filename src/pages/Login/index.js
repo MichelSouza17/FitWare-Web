@@ -32,7 +32,10 @@ function Login() {
 
       setIsLoading(false);
 
+      //verificar se o perfil é um personal ou uma academia
       history.push("/home");
+
+      //se for personal, manda para home de personal
     } catch (error) {
       console.error(error);
       setMessage({ title: "Ops...", description: error.response.data.error });

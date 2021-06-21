@@ -26,4 +26,15 @@ export const Container = styled.header`
       height: 52px;
     }
   }
+
+  a {
+    margin-right: 15px;
+    color: var(--primary);
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
 `;

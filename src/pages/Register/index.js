@@ -55,6 +55,8 @@ function Register() {
     city: "",
     street: "",
     cep: "",
+    gender: "",
+    contact_type: "",
     confirmePassword: "",
     cpf: "",
     academyCategory: "",
@@ -118,6 +120,8 @@ function Register() {
       height,
       cep,
       cpf,
+      gender,
+      contact_type,
     } = userStudent;
 
     if (
@@ -132,6 +136,8 @@ function Register() {
       !height ||
       !cep ||
       !cpf ||
+      !gender ||
+      !contact_type ||
       !confirmePassword()
     )
       return true;
@@ -192,6 +198,7 @@ function Register() {
         email: userStudent.email,
         password: userStudent.password,
         birth_date: userStudent.birth_date,
+        gender: userStudent.gender,
         celular: userStudent.celular,
         weight: userStudent.weight,
         number: userStudent.numero,
@@ -200,6 +207,7 @@ function Register() {
         city: userStudent.localidade,
         street: userStudent.logradouro,
         cep: userStudent.cep,
+        contact_type: userStudent.contact_type,
         cpf: userStudent.cpf,
         academyCategory: categoriesSel.map((c) => c.id),
       });
@@ -217,7 +225,12 @@ function Register() {
       <ContainerGeral>
         {showMenu && <MenuLateral />}
         <Menu onClick={() => setShowMenu(true)}>
-          {!showMenu && <img src={Imglogo}  onClick={() => (showMenu ? setShowMenu(true) : "")}/>}
+          {!showMenu && (
+            <img
+              src={Imglogo}
+              onClick={() => (showMenu ? setShowMenu(true) : "")}
+            />
+          )}
         </Menu>
         <FormContainer onClick={() => (showMenu ? setShowMenu(false) : "")}>
           <ContainerUser>
@@ -238,13 +251,12 @@ function Register() {
                 handler={handleInput}
               />
 
-              <Select
-                id="sexo"
-                label="Sexo"
-                type="int"
-                // value={userStudent.sexo}
-                // handler={handleInput}
-              />
+              <Select id="gender" label="Sexo" type="int" handler={handleInput}>
+                <option value="">Selecione</option>
+                <option value="F">Feminino</option>
+                <option value="M">Masculino</option>
+                <option value="O">Outros</option>
+              </Select>
               <Input
                 id="birth_date"
                 label="Data de Nascimento"
@@ -283,12 +295,16 @@ function Register() {
                   handler={handleCel}
                 />
                 <Select
-                  id="tipo"
+                  id="contact_type"
                   label="Tipo"
-                  type="int"
-                  // value={}
-                  // handler={handleInput}
-                />
+                  type="text"
+                  handler={handleInput}
+                >
+                  <option value="">Selecione</option>
+                  <option value="Ce">Celular</option>
+                  <option value="R">Residencial</option>
+                  <option value="C">Comercial</option>
+                </Select>
               </ContainerContacts>
               <ContainerWeight>
                 <Input
