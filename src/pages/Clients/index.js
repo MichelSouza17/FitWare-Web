@@ -74,7 +74,7 @@ function Clients() {
   return (
     <>
       <Header />
-      <Container>
+      <Container onClick={() => (showMenu ? setShowMenu(false) : "")}>
         {showMenu && <MenuLateral />}
         <Menu onClick={() => setShowMenu(true)}>
           {!showMenu && (

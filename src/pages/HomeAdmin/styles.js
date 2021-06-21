@@ -26,7 +26,13 @@ export const ContainerHome = styled.div`
   background-color: var(--light);
 
   h3 {
-    margin-top: 50px;
+    background-color: var(--blueLight);
+    height: 50px;
+    width: 60%;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 0 0 10px 10px;
+    color: var(--light);
   }
 `;
 
@@ -57,7 +63,7 @@ export const TitleContainer = styled.div`
 
 export const ContainerItensMenu = styled.div`
   width: 57vw;
-  height: 450px;
+  height: 600px;
   margin-top: 40px;
 
   display: flex;
@@ -78,21 +84,21 @@ export const ItemMenu = styled.div`
   background-color: var(--blueLight);
   margin: 20px;
   border-radius: 10px;
-  text-decoration: none;
   transition: 1s;
+
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
     height: 45%;
     width: 85%;
     transition: 0.9s;
-    box-shadow: 10px 10px 0 0;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }
 
   img {
-    margin-left: 50px;
+    margin-left: 35%;
     height: 60px;
     width: 60px;
-    margin-top: 50px;
+    margin-top: 65px;
   }
 
   h4 {
@@ -114,11 +120,11 @@ export const ItemMenuQRcode = styled.div`
     height: 90%;
     width: 85%;
     transition: 0.9s;
-    box-shadow: 10px 10px 0 0;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }
 
   img {
-    margin-left: 10px;
+    margin-left: 15%;
     height: 150px;
     width: 150px;
     margin-top: 100px;

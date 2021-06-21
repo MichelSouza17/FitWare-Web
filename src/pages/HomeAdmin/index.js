@@ -17,6 +17,7 @@ import { useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import IconUser from "../../assets/iconUser.png";
 import IconList from "../../assets/list.png";
@@ -136,6 +137,20 @@ function HomeAdmin() {
     setShowPersonal(false);
     setIsLoading(false);
   };
+
+  const history = useHistory();
+  const handleChangeAula = async (e) => {
+    history.push("/aulas");
+  };
+  const handleChangeCadastroAluno = async (e) => {
+    history.push("/register");
+  };
+  const handleChangeAgendamento = async (e) => {
+    history.push("/agendamentos");
+  };
+  const handleChangeListaClients = async (e) => {
+    history.push("/clientes");
+  };
   return (
     <>
       {isLoading && <Loading />}
@@ -153,46 +168,34 @@ function HomeAdmin() {
       <Header />
       <Container>
         <ContainerHome>
-          <Title>
+          {/* <Title>
             <TitleContainer>
               <h4>Menu Principal</h4>
             </TitleContainer>
-          </Title>
+          </Title> */}
           <h3>Bem Vindo Ao Fitware!</h3>
           <ContainerItensMenu>
             <ContainerColuna>
-              <Link to to="/aulas">
-                <ItemMenu>
-                  <img src={IconAulas} />
-                  <h4>Aulas</h4>
-                </ItemMenu>
-              </Link>
-              <Link to="/clientes">
-                <ItemMenu>
-                  <img src={IconList} />
-                  <h4>Lista de Clientes</h4>
-                </ItemMenu>
-              </Link>
+              <ItemMenu onClick={handleChangeAula}>
+                <img src={IconAulas} />
+                <h4>Aulas</h4>
+              </ItemMenu>
+              <ItemMenu onClick={handleChangeListaClients}>
+                <img src={IconList} />
+                <h4>Lista de Clientes</h4>
+              </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
-              <Link to="/register">
-                <ItemMenu>
-                  <img src={IconUser} />
-                  <h4>Cadastrar Aluno</h4>
-                </ItemMenu>
-              </Link>
+              <ItemMenu onClick={handleChangeCadastroAluno}>
+                <img src={IconUser} />
+                <h4>Cadastrar Aluno</h4>
+              </ItemMenu>
               <ItemMenu onClick={() => setShowPersonal(true)}>
                 <img src={IconCadastro} />
                 <h4>Cadastrar Personal Trainer</h4>
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
-              <Link to="/agendamentos">
-                <ItemMenu>
-                  <img src={IconDia} />
-                  <h4>Agendamentos do dia</h4>
-                </ItemMenu>
-              </Link>
               <ItemMenu>
                 <img src={IconAdmin} />
                 <h4>Perfil</h4>
