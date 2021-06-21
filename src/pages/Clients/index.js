@@ -8,14 +8,19 @@ import {
   ButtonSearch,
   ContainerTable,
   TitleContainer,
+  Menu,
 } from "./styles";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import { api } from "../../services/api";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
+import Imglogo from "../../assets/menu.png";
+import MenuLateral from "../../components/MenuLateral";
+import { Content } from "../Aulas/styles";
 
 function Clients() {
+  const [showMenu, setShowMenu] = useState(false);
   //a api retorna uma lista.. então isso deve ser uma lista vazia no começo
   const [userStudents, setUserStudents] = useState([]);
 
@@ -70,64 +75,75 @@ function Clients() {
     <>
       <Header />
       <Container>
-        <ContainerClients>
-          <Title>
-            <TitleContainer>
-              <h4>CLIENTES</h4>
-            </TitleContainer>
-          </Title>
-          <Search>
-            <ButtonSearch>Buscar</ButtonSearch>
-            <Input
-              id="client"
-              placeholder="Pesquisar Cliente"
-              type="text"
-              handler={handleSearch}
-              value={search}
+        {showMenu && <MenuLateral />}
+        <Menu onClick={() => setShowMenu(true)}>
+          {!showMenu && (
+            <img
+              src={Imglogo}
+              onClick={() => (showMenu ? setShowMenu(true) : "")}
             />
-          </Search>
-          <ContainerTable>
-            <table>
-              <tr>
-                <th>
-                  <h4>ID</h4>
-                </th>
-                <th>
-                  <h4>Nome</h4>{" "}
-                </th>
-                <th>
-                  <h4>E-Mail</h4>
-                </th>
-                <th>
-                  <h4>Celular</h4>
-                </th>
-                <th>
-                  <h4>Ações</h4>
-                </th>
-              </tr>
-              {userStudents.map((student) => (
+          )}
+        </Menu>
+        <Content>
+          <ContainerClients>
+            <Title>
+              <TitleContainer>
+                <h4>CLIENTES</h4>
+              </TitleContainer>
+            </Title>
+            <Search>
+              <ButtonSearch>Buscar</ButtonSearch>
+              <Input
+                id="client"
+                placeholder="Pesquisar Cliente"
+                type="text"
+                handler={handleSearch}
+                value={search}
+              />
+            </Search>
+            <ContainerTable>
+              <table>
                 <tr>
-                  <td>
-                    <h4>{student.id}</h4>
-                  </td>
-                  <td>
-                    <h4>{student.first_name + " " + student.surname}</h4>
-                  </td>
-                  <td>
-                    <h4>{student.email}</h4>
-                  </td>
-                  <td>
-                    <h4>{student.celular}</h4>
-                  </td>
-                  <td>
-                    <img src={ImgDelete} />
-                    <img src={ImgEdit} />
-                  </td>
+                  <th>
+                    <h4>ID</h4>
+                  </th>
+                  <th>
+                    <h4>Nome</h4>{" "}
+                  </th>
+                  <th>
+                    <h4>E-Mail</h4>
+                  </th>
+                  <th>
+                    <h4>Celular</h4>
+                  </th>
+                  <th>
+                    <h4>Ações</h4>
+                  </th>
                 </tr>
-              ))}
-            </table>
-          </ContainerTable>
-        </ContainerClients>
+                {userStudents.map((student) => (
+                  <tr>
+                    <td>
+                      <h4>{student.id}</h4>
+                    </td>
+                    <td>
+                      <h4>{student.first_name + " " + student.surname}</h4>
+                    </td>
+                    <td>
+                      <h4>{student.email}</h4>
+                    </td>
+                    <td>
+                      <h4>{student.celular}</h4>
+                    </td>
+                    <td>
+                      <img src={ImgDelete} />
+                      <img src={ImgEdit} />
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </ContainerTable>
+          </ContainerClients>
+        </Content>
       </Container>
       <Footer />
     </>

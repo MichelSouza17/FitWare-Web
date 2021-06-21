@@ -13,6 +13,8 @@ import {
   InfoTreino,
   Radios,
   TitleContainer,
+  Menu,
+  Content,
 } from "./styles";
 import Footer from "../../components/Footer";
 import { useEffect, useRef, useState } from "react";
@@ -26,6 +28,8 @@ import { getUser } from "../../services/security";
 import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 import { format } from "date-fns";
+import Imglogo from "../../assets/menu.png";
+import MenuLateral from "../../components/MenuLateral";
 
 function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
@@ -247,7 +251,7 @@ function NewAula({ handleReload, setIsLoading }) {
 }
 
 function Aulas() {
-
+  const [showMenu, setShowMenu] = useState(false);
   const [reload, setReload] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -263,28 +267,26 @@ function Aulas() {
   //trazer as aulas da api loadSchedules()
 
   const loadSchedules = async () => {
-
     if (isLoadingFeed) return;
 
     setIsLoadingFeed(true);
-      const response = await api.get("/schedule");
+    const response = await api.get("/schedule");
 
-      setAulas(response.data);
+    setAulas(response.data);
 
-      setIsLoadingFeed(false);
-    
+    setIsLoadingFeed(false);
   };
 
   useEffect(() => {
     console.log(showPresencial);
-    if(aulas.length > 0){
-      if(showPresencial){
-        setAulasShow(aulas.filter(a => !a.is_remote));
-      }else{
-        setAulasShow(aulas.filter(a => a.is_remote));
+    if (aulas.length > 0) {
+      if (showPresencial) {
+        setAulasShow(aulas.filter((a) => !a.is_remote));
+      } else {
+        setAulasShow(aulas.filter((a) => a.is_remote));
       }
     }
-  },[aulas, showPresencial])
+  }, [aulas, showPresencial]);
 
   useEffect(() => {
     loadSchedules();
@@ -309,92 +311,103 @@ function Aulas() {
         </Modal>
       )}
       <Header />
-      <Container>
-        <ContainerAulas>
-          <Title>
-            <TitleContainer>
-              <h4>AULAS</h4>
-            </TitleContainer>
-          </Title>
-          <Functions>
-            <ContainerAbas>
-              <Abas
-                onClick={() => {
-                  setShowPresencial(true);
-                }}
-              >
-                <h4>Presenciais</h4>
-              </Abas>
-              <Abas
-                onClick={() => {
-                  setShowPresencial(false);
-                }}
-              >
-                <h4>Onlines</h4>
-              </Abas>
-            </ContainerAbas>
-            <InsertAula>
-              <h3>Nova Aula</h3>
-              <ButtonAula onClick={() => setShowNewAula(true)}>
-                <p>+</p>
-              </ButtonAula>
-            </InsertAula>
-          </Functions>
-          <ContainerTable>
-            <table>
-              <tr>
-                <th>
-                  <h4>Tipo de Aula</h4>
-                </th>
-                <th>
-                  <h4>Nome do personal</h4>
-                </th>
-                <th>
-                  <h4>Categoria de Treino</h4>
-                </th>
-                <th>
-                  <h4>Data</h4>
-                </th>
-                <th>
-                  <h4>Limite Alunos</h4>
-                </th>
-                <th>
-                  <h4>Duração</h4>
-                </th>
-                <th>
-                  <h4>Ações</h4>
-                </th>
-              </tr>
-
-              {aulasShow.map((a) => (
+      <Container onClick={() => (showMenu ? setShowMenu(false) : "")}>
+        {showMenu && <MenuLateral />}
+        <Menu onClick={() => setShowMenu(true)}>
+          {!showMenu && (
+            <img
+              src={Imglogo}
+              onClick={() => (showMenu ? setShowMenu(true) : "")}
+            />
+          )}
+        </Menu>
+        <Content>
+          <ContainerAulas>
+            <Title>
+              <TitleContainer>
+                <h4>AULAS</h4>
+              </TitleContainer>
+            </Title>
+            <Functions>
+              <ContainerAbas>
+                <Abas
+                  onClick={() => {
+                    setShowPresencial(true);
+                  }}
+                >
+                  <h4>Presenciais</h4>
+                </Abas>
+                <Abas
+                  onClick={() => {
+                    setShowPresencial(false);
+                  }}
+                >
+                  <h4>Onlines</h4>
+                </Abas>
+              </ContainerAbas>
+              <InsertAula>
+                <h3>Nova Aula</h3>
+                <ButtonAula onClick={() => setShowNewAula(true)}>
+                  <p>+</p>
+                </ButtonAula>
+              </InsertAula>
+            </Functions>
+            <ContainerTable>
+              <table>
                 <tr>
-                  <td>
-                    <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
-                  </td>
-                  <td>
-                    <h4>{a.personal_id}</h4>
-                  </td>
-                  <td>
-                    <h4>{a.traningCategory}</h4>
-                  </td>
-                  <td>
-                    <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>
-                  </td>
-                  <td>
-                    <h4>{a.limit_person}</h4>
-                  </td>
-                  <td>
-                    <h4>{a.duration}</h4>
-                  </td>
-                  <td>
-                    <img src={ImgDelete} />
-                    <img src={ImgEdit} />
-                  </td>
+                  <th>
+                    <h4>Tipo de Aula</h4>
+                  </th>
+                  <th>
+                    <h4>Nome do personal</h4>
+                  </th>
+                  <th>
+                    <h4>Categoria de Treino</h4>
+                  </th>
+                  <th>
+                    <h4>Data</h4>
+                  </th>
+                  <th>
+                    <h4>Limite Alunos</h4>
+                  </th>
+                  <th>
+                    <h4>Duração</h4>
+                  </th>
+                  <th>
+                    <h4>Ações</h4>
+                  </th>
                 </tr>
-              ))}
-            </table>
-          </ContainerTable>
-        </ContainerAulas>
+
+                {aulasShow.map((a) => (
+                  <tr>
+                    <td>
+                      <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
+                    </td>
+                    <td>
+                      <h4>{a.personal_id}</h4>
+                    </td>
+                    <td>
+                      <h4>{a.traningCategory}</h4>
+                    </td>
+                    <td>
+                      <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>
+                    </td>
+                    <td>
+                      <h4>{a.limit_person}</h4>
+                    </td>
+                    <td>
+                      <h4>{a.duration}</h4>
+                    </td>
+                    <td>
+                      <img src={ImgDelete} />
+                      <img src={ImgEdit} />
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </ContainerTable>
+          </ContainerAulas>
+        </Content>
       </Container>
       <Footer />
     </>

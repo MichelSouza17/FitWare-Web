@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100vw;
   min-height: 96vh;
   height: auto;
+  padding-top: 60px;
 
   display: flex;
   justify-content: center;
@@ -12,11 +13,35 @@ export const Container = styled.div`
   background-color: var(--accentGray);
 `;
 
+export const Menu = styled.div`
+  width: 50px;
+  height: 40px;
+
+  display: flex;
+  align-self: flex-start;
+
+  img {
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+  }
+`;
+
+export const Content = styled.div`
+  width: 100vw;
+  min-height: 700px;
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const ContainerAulas = styled.div`
   width: 60vw;
   min-height: 700px;
   height: auto;
-  margin-top: 80px;
   margin-bottom: 20px;
   border-radius: 10px;
 

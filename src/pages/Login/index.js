@@ -6,6 +6,7 @@ import { signIn } from "../../services/security";
 import { Container, FotoAcademy, FormLogin } from "./styles";
 
 import AcademiaImage from "../../assets/academia.jpg";
+import Loading from "../../components/Loading";
 
 function Login() {
   const history = useHistory();
@@ -45,6 +46,7 @@ function Login() {
 
   return (
     <>
+      {isLoading && <Loading />}
       <Container>
         <FotoAcademy src={AcademiaImage} />
         <FormLogin onSubmit={handleSubmit}>

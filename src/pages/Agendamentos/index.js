@@ -8,6 +8,7 @@ import {
   ButtonSearch,
   ContainerTable,
   TitleContainer,
+  Menu,
 } from "./styles";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
@@ -15,8 +16,12 @@ import ImgDelete from "../../assets/iconDelete.png";
 import ImgEdit from "../../assets/iconEdit.png";
 import { api } from "../../services/api";
 import { format } from "date-fns";
+import Imglogo from "../../assets/menu.png";
+import MenuLateral from "../../components/MenuLateral";
+import { Content } from "../Aulas/styles";
 
 function Clients() {
+  const [showMenu, setShowMenu] = useState(false);
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
@@ -37,71 +42,82 @@ function Clients() {
     <>
       <Header />
       <Container>
-        <ContainerAgendamentos>
-          <Title>
-            <TitleContainer>
-              <h4>AGENDAMENTOS DO DIA</h4>
-            </TitleContainer>
-          </Title>
-          <Search>
-            <ButtonSearch>Buscar</ButtonSearch>
-            <Input id="client" placeholder="Pesquisar Aula" type="text" />
-          </Search>
-          <ContainerTable>
-            <table>
-              <tr>
-                <th>
-                  <h4>Tipo de Aula:</h4>
-                </th>
-                <th>
-                  <h4>Nome do personal</h4>
-                </th>
-                <th>
-                  <h4>Categoria de Treino:</h4>
-                </th>
-                <th>
-                  <h4>Data:</h4>
-                </th>
-                <th>
-                  <h4>Limite Alunos:</h4>
-                </th>
-                <th>
-                  <h4>Duração:</h4>
-                </th>
-                <th>
-                  <h4>Ações</h4>
-                </th>
-              </tr>
-
-              {schedule.map((training) => (
+        {showMenu && <MenuLateral />}
+        <Menu onClick={() => setShowMenu(true)}>
+          {!showMenu && (
+            <img
+              src={Imglogo}
+              onClick={() => (showMenu ? setShowMenu(true) : "")}
+            />
+          )}
+        </Menu>
+        <Content>
+          <ContainerAgendamentos>
+            <Title>
+              <TitleContainer>
+                <h4>AGENDAMENTOS DO DIA</h4>
+              </TitleContainer>
+            </Title>
+            <Search>
+              <ButtonSearch>Buscar</ButtonSearch>
+              <Input id="client" placeholder="Pesquisar Aula" type="text" />
+            </Search>
+            <ContainerTable>
+              <table>
                 <tr>
-                  <td>
-                    <h2>Presencial</h2>
-                  </td>
-                  <td>
-                    <h4>{training.personal_id}</h4>
-                  </td>
-                  <td>
-                    <h4>{training.traningCategory}</h4>
-                  </td>
-                  <td>
-                    <h4>{format(new Date(training.date), "dd/MM/yyyy")}</h4>
-                  </td>
-                  <td>
-                    <h4>{training.limit_person}</h4>
-                  </td>
-                  <td>
-                    <h4>{training.duration}</h4>
-                  </td>
-                  <td>
-                    <img src={ImgDelete} />
-                    <img src={ImgEdit} />
-                  </td>
+                  <th>
+                    <h4>Tipo de Aula:</h4>
+                  </th>
+                  <th>
+                    <h4>Nome do personal</h4>
+                  </th>
+                  <th>
+                    <h4>Categoria de Treino:</h4>
+                  </th>
+                  <th>
+                    <h4>Data:</h4>
+                  </th>
+                  <th>
+                    <h4>Limite Alunos:</h4>
+                  </th>
+                  <th>
+                    <h4>Duração:</h4>
+                  </th>
+                  <th>
+                    <h4>Ações</h4>
+                  </th>
                 </tr>
-              ))}
-            </table>
-          </ContainerTable>
-        </ContainerAgendamentos>
+
+                {schedule.map((training) => (
+                  <tr>
+                    <td>
+                      <h2>Presencial</h2>
+                    </td>
+                    <td>
+                      <h4>{training.personal_id}</h4>
+                    </td>
+                    <td>
+                      <h4>{training.traningCategory}</h4>
+                    </td>
+                    <td>
+                      <h4>{format(new Date(training.date), "dd/MM/yyyy")}</h4>
+                    </td>
+                    <td>
+                      <h4>{training.limit_person}</h4>
+                    </td>
+                    <td>
+                      <h4>{training.duration}</h4>
+                    </td>
+                    <td>
+                      <img src={ImgDelete} />
+                      <img src={ImgEdit} />
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </ContainerTable>
+          </ContainerAgendamentos>
+        </Content>
       </Container>
       <Footer />
     </>

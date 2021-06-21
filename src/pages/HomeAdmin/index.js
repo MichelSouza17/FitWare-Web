@@ -16,7 +16,6 @@ import {
 import { useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
-import Select from "../../components/Select";
 import { Link } from "react-router-dom";
 
 import IconUser from "../../assets/iconUser.png";
@@ -42,20 +41,9 @@ function NewPersonal({ handleReload, setIsLoading }) {
     personal.password === personal.confirmePassword;
 
   const buttonDisabled = () => {
-    const {
-      name,
-      email,
-      password,
-      specialty,
-    } = personal;
+    const { name, email, password, specialty } = personal;
 
-    if (
-      !name ||
-      !email ||
-      !password ||
-      !specialty ||
-      !confirmePassword()
-    )
+    if (!name || !email || !password || !specialty || !confirmePassword())
       return true;
 
     return false;
@@ -75,9 +63,9 @@ function NewPersonal({ handleReload, setIsLoading }) {
     try {
       const response = await api.post(`/personalTrainer`, {
         name: personal.name,
-    email: personal.email,
-    password: personal.password,
-    specialty: personal.specialty,
+        email: personal.email,
+        password: personal.password,
+        specialty: personal.specialty,
       });
 
       handleReload();
@@ -90,48 +78,48 @@ function NewPersonal({ handleReload, setIsLoading }) {
 
   return (
     <FormNewPersonal onSubmit={handleSubmit}>
-      <Input 
-      id="name" 
-      label="Nome:"
-      value={personal.name}
-          handler={handleInput} 
+      <Input
+        id="name"
+        label="Nome:"
+        value={personal.name}
+        handler={handleInput}
       />
 
-      <Input 
-      id="email" 
-      label="E-mail:" 
-      type="email"
-      value={personal.email}
-          handler={handleInput}  
+      <Input
+        id="email"
+        label="E-mail:"
+        type="email"
+        value={personal.email}
+        handler={handleInput}
       />
 
-      <Input 
-      id="specialty" 
-      label="Especialidade:"
-      value={personal.specialty}
-          handler={handleInput} 
+      <Input
+        id="specialty"
+        label="Especialidade:"
+        value={personal.specialty}
+        handler={handleInput}
       />
 
       <InfoTreino>
-        <Input 
-        id="password" 
-        label="Senha:" 
-        type="password" 
-        value={personal.password}
-          handler={handleInput} 
+        <Input
+          id="password"
+          label="Senha:"
+          type="password"
+          value={personal.password}
+          handler={handleInput}
         />
 
-        <Input 
-        id="confirmePassword" 
-        label="Confirmar Senha:"
-         type="password" 
-         onBlur={(e) => {
-          if (!confirmePassword()) alert("As senhas precisam ser iguais");
-          e.target.focus();
-        }}
-         value={personal.confirmePassword}
-          handler={handleInput} 
-         />
+        <Input
+          id="confirmePassword"
+          label="Confirmar Senha:"
+          type="password"
+          onBlur={(e) => {
+            if (!confirmePassword()) alert("As senhas precisam ser iguais");
+            e.target.focus();
+          }}
+          value={personal.confirmePassword}
+          handler={handleInput}
+        />
       </InfoTreino>
 
       <button disabled={buttonDisabled()}>Enviar</button>
@@ -141,7 +129,7 @@ function NewPersonal({ handleReload, setIsLoading }) {
 
 function HomeAdmin() {
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const [showPersonal, setShowPersonal] = useState(false);
 
   const handleReload = () => {
@@ -150,12 +138,16 @@ function HomeAdmin() {
   };
   return (
     <>
+      {isLoading && <Loading />}
       {showPersonal && (
         <Modal
           title="Cadastrar Personal Trainer"
           handleClose={() => setShowPersonal(false)}
         >
-          <NewPersonal handleReload={handleReload} setIsLoading={setIsLoading} />
+          <NewPersonal
+            handleReload={handleReload}
+            setIsLoading={setIsLoading}
+          />
         </Modal>
       )}
       <Header />

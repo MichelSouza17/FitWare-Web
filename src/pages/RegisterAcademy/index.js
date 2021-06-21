@@ -26,7 +26,6 @@ import { useHistory } from "react-router-dom";
 
 function RegisterAcademy() {
   const history = useHistory();
-  const [showMenu, setShowMenu] = useState(false);
 
   const [academy, setAcademy] = useState({
     name: "",
