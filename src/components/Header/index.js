@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 
 import Imglogo from "../../assets/fitware.png";
+import Sair from "../../assets/signOut.png";
 import { Link } from "react-router-dom";
 import { signOut } from "../../services/security";
 
@@ -13,7 +14,7 @@ function Header() {
     <Container>
       <img src={Imglogo} />
       <Link onClick={handlerLogout} to="/">
-        Sair
+      <img src={Sair}/>
       </Link>
     </Container>
   );

@@ -8,6 +8,7 @@ import Clients from "./pages/Clients";
 import Aulas from "./pages/Aulas";
 import SchedulesPersonal from "./pages/SchedulesPersonal";
 import { isSignedIn } from "./services/security";
+import HomePersonal from "./pages/homePersonal";
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -38,6 +39,9 @@ function Router() {
         </PrivateRoute>
         <PrivateRoute path="/clientes">
           <Clients />
+        </PrivateRoute>
+        <PrivateRoute path="/homePersonal">
+          <HomePersonal />
         </PrivateRoute>
         <PrivateRoute path="/schedulesPersonal">
           <SchedulesPersonal />

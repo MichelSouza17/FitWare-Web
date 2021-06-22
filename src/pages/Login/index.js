@@ -33,10 +33,26 @@ function Login() {
 
       setIsLoading(false);
 
-      //verificar se o perfil é um personal ou uma academia
-      history.push("/home");
+      // if (login.userPerfil = "admin") {
+      //   history.push("/home");
+      // } else {
+      //   (login.userPerfil = "PersonalTrainer")
+      //   history.push("/");      
+      // }
 
-      //se for personal, manda para home de personal
+      //verificar se o perfil é um personal ou uma academia
+      
+      // if (login.userPerfil = "admin") {
+      //   history.push("/home");
+      // }
+
+      // //se for personal, manda para home de personal
+      // if (login.userPerfil = "PersonalTrainer") {
+      // history.push("/homePersonal");
+      // }
+
+      history.push("/homePersonal")
+
     } catch (error) {
       console.error(error);
       setMessage({ title: "Ops... E-mail ou senha inválidos", description: error.response.data.error });

@@ -24,25 +24,12 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
-export const Menu = styled.div`
-  width: 50px;
-  height: 40px;
-
-  display: flex;
-  align-self: flex-start;
-
-  img {
-    width: 50px;
-    height: 40px;
-    padding: 5px;
-  }
-`;
-
 export const ContainerAgendamentos = styled.div`
   width: 60vw;
   min-height: 700px;
   height: auto;
   margin-bottom: 20px;
+  margin-top: 30px;
   border-radius: 10px;
 
   display: flex;

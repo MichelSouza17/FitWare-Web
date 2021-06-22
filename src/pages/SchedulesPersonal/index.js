@@ -42,15 +42,6 @@ function Clients() {
     <>
       <Header />
       <Container>
-        {showMenu && <MenuLateral />}
-        <Menu onClick={() => setShowMenu(true)}>
-          {!showMenu && (
-            <img
-              src={Imglogo}
-              onClick={() => (showMenu ? setShowMenu(true) : "")}
-            />
-          )}
-        </Menu>
         <Content>
           <ContainerAgendamentos>
             <Title>
@@ -63,58 +54,6 @@ function Clients() {
               <Input id="client" placeholder="Pesquisar Aula" type="text" />
             </Search>
             <ContainerTable>
-              <table>
-                <tr>
-                  <th>
-                    <h4>Tipo de Aula:</h4>
-                  </th>
-                  <th>
-                    <h4>Nome do personal</h4>
-                  </th>
-                  <th>
-                    <h4>Categoria de Treino:</h4>
-                  </th>
-                  <th>
-                    <h4>Data:</h4>
-                  </th>
-                  <th>
-                    <h4>Limite Alunos:</h4>
-                  </th>
-                  <th>
-                    <h4>Duração:</h4>
-                  </th>
-                  <th>
-                    <h4>Ações</h4>
-                  </th>
-                </tr>
-
-                {schedule.map((training) => (
-                  <tr>
-                    <td>
-                      <h2>Presencial</h2>
-                    </td>
-                    <td>
-                      <h4>{training.personal_id}</h4>
-                    </td>
-                    <td>
-                      <h4>{training.traningCategory}</h4>
-                    </td>
-                    <td>
-                      <h4>{format(new Date(training.date), "dd/MM/yyyy")}</h4>
-                    </td>
-                    <td>
-                      <h4>{training.limit_person}</h4>
-                    </td>
-                    <td>
-                      <h4>{training.duration}</h4>
-                    </td>
-                    <td>
-                      <img src={ImgDelete} />
-                      <img src={ImgEdit} />
-                    </td>
-                  </tr>
-                ))}
-              </table>
             </ContainerTable>
           </ContainerAgendamentos>
         </Content>

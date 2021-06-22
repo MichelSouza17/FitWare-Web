@@ -28,13 +28,11 @@ export const Container = styled.header`
   }
 
   a {
-    margin-right: 15px;
-    color: var(--primary);
-    text-decoration: none;
-    transition: 0.2s;
-  }
+    margin-right: 5px;
 
-  a:hover {
-    transform: scale(1.1);
+    img {
+      width: 50px;
+    height: 50px;
+    }
   }
 `;
