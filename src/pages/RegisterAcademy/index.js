@@ -22,7 +22,7 @@ import { useState } from "react";
 import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
 import { maskCep, maskCel } from "../../utils/masks";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function RegisterAcademy() {
   const history = useHistory();
@@ -228,7 +228,11 @@ function RegisterAcademy() {
           </ContainerPassword>
           <ContainerButtons onSubmit={handleSubmit}>
             <ButtonSave disabled={buttonDisabled()}>Salvar</ButtonSave>
-            <ButtonCancel>Cancelar</ButtonCancel>
+            <ButtonCancel>
+            <Link to="/home">
+              Cancelar
+            </Link> 
+            </ButtonCancel>
           </ContainerButtons>
           <h4>*Todos os campos são obrigatórios</h4>
         </FormContainer>

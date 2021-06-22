@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerGeral = styled.div`
   width: 100vw;
-  min-height: 900px;
+  min-height: 800px;
   height: auto;
   padding-top: 60px;
 
@@ -225,4 +225,9 @@ export const ButtonCancel = styled.button`
   align-items: center;
   justify-content: center;
   background-color: var(--redLight);
+
+  > a {
+    text-decoration: none;
+    color: black;
+  }
 `;

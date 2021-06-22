@@ -33,25 +33,20 @@ function Login() {
 
       setIsLoading(false);
 
-      // if (login.userPerfil = "admin") {
-      //   history.push("/home");
-      // } else {
-      //   (login.userPerfil = "PersonalTrainer")
-      //   history.push("/");      
-      // }
-
       //verificar se o perfil é um personal ou uma academia
-      
-      // if (login.userPerfil = "admin") {
-      //   history.push("/home");
-      // }
 
-      // //se for personal, manda para home de personal
-      // if (login.userPerfil = "PersonalTrainer") {
-      // history.push("/homePersonal");
-      // }
+      if (response.data.perfil === "admin") {
+        history.push("/home");
+      }
 
-      history.push("/homePersonal")
+      if (response.data.perfil === "PersonalTrainer") {
+        history.push("/homePersonal");
+      }
+
+      if (response.data.perfil === "student") {
+        setMessage({ title: "Ops... Usuário não Autorizado!" });
+      }
+
 
     } catch (error) {
       console.error(error);
