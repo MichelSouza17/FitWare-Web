@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import HomeAdmin from "./pages/HomeAdmin";
 import Clients from "./pages/Clients";
 import Aulas from "./pages/Aulas";
-import Agendamentos from "./pages/Agendamentos";
+import SchedulesPersonal from "./pages/SchedulesPersonal";
 import { isSignedIn } from "./services/security";
 
 function PrivateRoute({ children, ...rest }) {
@@ -39,8 +39,8 @@ function Router() {
         <PrivateRoute path="/clientes">
           <Clients />
         </PrivateRoute>
-        <PrivateRoute path="/agendamentos">
-          <Agendamentos />
+        <PrivateRoute path="/schedulesPersonal">
+          <SchedulesPersonal />
         </PrivateRoute>
         <Route path="/">
           <Home />

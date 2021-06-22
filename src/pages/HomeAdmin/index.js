@@ -3,8 +3,6 @@ import Footer from "../../components/Footer";
 import {
   Container,
   ContainerHome,
-  TitleContainer,
-  Title,
   ItemMenu,
   ContainerItensMenu,
   ContainerColuna,
@@ -23,7 +21,6 @@ import IconUser from "../../assets/iconUser.png";
 import IconList from "../../assets/list.png";
 import IconCadastro from "../../assets/cadastro.png";
 import IconAulas from "../../assets/aula.png";
-import IconDia from "../../assets/dia.png";
 import IconAdmin from "../../assets/admin.png";
 import IconMobile from "../../assets/mobile.png";
 import { api } from "../../services/api";
@@ -168,11 +165,6 @@ function HomeAdmin() {
       <Header />
       <Container>
         <ContainerHome>
-          {/* <Title>
-            <TitleContainer>
-              <h4>Menu Principal</h4>
-            </TitleContainer>
-          </Title> */}
           <h3>Bem Vindo Ao Fitware!</h3>
           <ContainerItensMenu>
             <ContainerColuna>

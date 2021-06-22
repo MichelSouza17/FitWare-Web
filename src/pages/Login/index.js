@@ -7,6 +7,7 @@ import { Container, FotoAcademy, FormLogin } from "./styles";
 
 import AcademiaImage from "../../assets/academia.jpg";
 import Loading from "../../components/Loading";
+import Alert from "../../components/Alert";
 
 function Login() {
   const history = useHistory();
@@ -38,7 +39,7 @@ function Login() {
       //se for personal, manda para home de personal
     } catch (error) {
       console.error(error);
-      setMessage({ title: "Ops...", description: error.response.data.error });
+      setMessage({ title: "Ops... E-mail ou senha inválidos", description: error.response.data.error });
       setIsLoading(false);
     }
   };
@@ -49,6 +50,7 @@ function Login() {
 
   return (
     <>
+      <Alert message={message} type="error" handleClose={setMessage} />
       {isLoading && <Loading />}
       <Container>
         <FotoAcademy src={AcademiaImage} />

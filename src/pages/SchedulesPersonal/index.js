@@ -55,7 +55,7 @@ function Clients() {
           <ContainerAgendamentos>
             <Title>
               <TitleContainer>
-                <h4>AGENDAMENTOS DO DIA</h4>
+                <h4>AULAS DO PERSONAL</h4>
               </TitleContainer>
             </Title>
             <Search>

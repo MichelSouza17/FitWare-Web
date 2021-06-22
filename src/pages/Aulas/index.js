@@ -133,11 +133,6 @@ function NewAula({ handleReload, setIsLoading }) {
         link: schedule.link,
       });
 
-      //fechar o modal
-
-      //exibir mensagem de sucesso
-
-      //atualizar a lista
       handleReload();
     } catch (error) {
       console.error(error);
@@ -263,8 +258,6 @@ function Aulas() {
   const [aulasShow, setAulasShow] = useState([]);
 
   const [aulas, setAulas] = useState([]);
-
-  //trazer as aulas da api loadSchedules()
 
   const loadSchedules = async () => {
     if (isLoadingFeed) return;
