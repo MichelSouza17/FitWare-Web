@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerHome = styled.div`
-  width: 60vw;
+  width: 80vw;
   min-height: 700px;
   height: auto;
   margin-top: 80px;
@@ -37,7 +37,7 @@ export const ContainerHome = styled.div`
 `;
 
 export const ContainerItensMenu = styled.div`
-  width: 57vw;
+  width: 80vw;
   height: 600px;
   margin-top: 40px;
 
@@ -90,6 +90,7 @@ export const ItemMenuQRcode = styled.div`
   margin: 20px;
   border-radius: 10px;
   transition: 1s;
+  align-items: center;
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
     height: 90%;

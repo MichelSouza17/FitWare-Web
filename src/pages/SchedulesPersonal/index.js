@@ -17,18 +17,18 @@ function SchedulesPersonal() {
 
   useEffect(() => {
     loadSchedules();
-  }, []); 
+  }, []);
 
-    const loadSchedules = async () => {
-      try {
-        const response = await api.get("/schedules");
+  const loadSchedules = async () => {
+    try {
+      const response = await api.get("/schedules");
 
-        console.log(response.data);
-        setSchedules(response.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
+      console.log(response.data);
+      setSchedules(response.data.Schedules);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -42,19 +42,16 @@ function SchedulesPersonal() {
               </TitleContainer>
             </Title>
             <ContainerTable>
-            <table>
+              <table>
                 <tr>
                   <th>
                     <h4>Tipo de Aula</h4>
                   </th>
                   {Schedules.is_remote === "true" && (
-                      <th>
+                    <th>
                       <h4>Link Aula</h4>
                     </th>
-                    )}
-                  <th>
-                    <h4>Nome do personal</h4>
-                  </th>
+                  )}
                   <th>
                     <h4>Categoria de Treino</h4>
                   </th>
@@ -71,16 +68,21 @@ function SchedulesPersonal() {
                 {Schedules.map((a) => (
                   <tr>
                     <td>
-                      <h2>{a.is_remote}</h2>
+                      <h2>
+                        {a.is_remote ? (
+                          <a href={a.link} target="_blank">
+                            Remota
+                          </a>
+                        ) : (
+                          "Presencial "
+                        )}
+                      </h2>
                     </td>
                     {a.is_remote === "true" && (
                       <td>
-                      <h2>{a.link}</h2>
+                        <h2>{a.link}</h2>
                       </td>
                     )}
-                    <td>
-                      <h4>{a.PersonalTrainer.name}</h4>
-                    </td>
                     <td>
                       <h4>
                         {a.TraningCategories.map((t) => (

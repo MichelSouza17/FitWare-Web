@@ -351,11 +351,6 @@ function Aulas() {
                   <th>
                     <h4>Tipo de Aula</h4>
                   </th>
-                  {aulasShow === "Online" && (
-                      <th>
-                      <h4>Link Aula</h4>
-                    </th>
-                    )}
                   <th>
                     <h4>Nome do personal</h4>
                   </th>
@@ -379,13 +374,16 @@ function Aulas() {
                 {aulasShow.map((a) => (
                   <tr>
                     <td>
-                      <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
+                      <h2>
+                        {a.is_remote ? (
+                          <a href={a.link} target="_blank">
+                            Remota
+                          </a>
+                        ) : (
+                          "Presencial"
+                        )}
+                      </h2>
                     </td>
-                    {a.is_remote === "Online" && (
-                      <td>
-                      <h2>{a.link}</h2>
-                      </td>
-                    )}
                     <td>
                       <h4>{a.PersonalTrainer.name}</h4>
                     </td>

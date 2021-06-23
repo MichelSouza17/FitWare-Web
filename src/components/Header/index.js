@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 
 import Imglogo from "../../assets/fitware.png";
-import Sair from "../../assets/signOut.png";
+import Sair from "../../assets/signOut.svg";
 import { Link, useHistory } from "react-router-dom";
 import { signOut } from "../../services/security";
 

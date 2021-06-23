@@ -19,12 +19,8 @@ import Input from "../../components/Input";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import IconUser from "../../assets/iconUser.png";
-import IconAgenda from "../../assets/iconAgenda.png";
-import IconCadastro from "../../assets/cadastro.png";
-import IconAulas from "../../assets/aula.png";
-import IconAdmin from "../../assets/admin.png";
-import IconMobile from "../../assets/mobile.png";
+import IconAgenda from "../../assets/iconAgenda.svg";
+import IconAulas from "../../assets/aula.svg";
 import { api } from "../../services/api";
 import Loading from "../../components/Loading";
 import { getUser } from "../../services/security";
@@ -269,16 +265,16 @@ function HomePersonal() {
         <ContainerHome>
           <h3>Bem Vindo Ao Fitware!</h3>
           <ContainerItensMenu>
-              <ItemMenu onClick={() => setShowNewAula(true)}>
-                <img src={IconAulas} />
-                <h4>Aulas</h4>
-              </ItemMenu>
-              <ItemMenu>
+            <ItemMenu onClick={() => setShowNewAula(true)}>
+              <img src={IconAulas} />
+              <h4>Criar Aulas</h4>
+            </ItemMenu>
+            <ItemMenu>
               <Link to="/schedulesPersonal">
                 <img src={IconAgenda} />
                 <h4>Aulas Personal</h4>
-                </Link>
-              </ItemMenu>
+              </Link>
+            </ItemMenu>
           </ContainerItensMenu>
         </ContainerHome>
       </Container>

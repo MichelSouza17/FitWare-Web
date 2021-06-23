@@ -88,14 +88,14 @@ function Clients() {
           <ContainerClients>
             <Title>
               <TitleContainer>
-                <h4>CLIENTES</h4>
+                <h4>ALUNOS</h4>
               </TitleContainer>
             </Title>
             <Search>
               <ButtonSearch>Buscar</ButtonSearch>
               <Input
                 id="client"
-                placeholder="Pesquisar Cliente"
+                placeholder="Pesquisar Alunos"
                 type="text"
                 handler={handleSearch}
                 value={search}

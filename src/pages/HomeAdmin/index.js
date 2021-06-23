@@ -126,6 +126,8 @@ function NewPersonal({ handleReload, setIsLoading }) {
 }
 
 function HomeAdmin() {
+  const history = useHistory();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [showPersonal, setShowPersonal] = useState(false);
@@ -135,16 +137,13 @@ function HomeAdmin() {
     setIsLoading(false);
   };
 
-  const history = useHistory();
   const handleChangeAula = async (e) => {
     history.push("/aulas");
   };
   const handleChangeCadastroAluno = async (e) => {
     history.push("/register");
   };
-  const handleChangeAgendamento = async (e) => {
-    history.push("/agendamentos");
-  };
+
   const handleChangeListaClients = async (e) => {
     history.push("/clientes");
   };
