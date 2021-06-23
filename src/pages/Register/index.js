@@ -31,7 +31,7 @@ import Select from "../../components/Select";
 import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
 import { maskCep, maskCel, maskCpf } from "../../utils/masks";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import MenuLateral from "../../components/MenuLateral";
 
 import Imglogo from "../../assets/menu.png";
@@ -433,7 +433,11 @@ function Register() {
           </ContainerPassword>
           <ContainerButtons onSubmit={handleSubmit}>
             <ButtonSave disabled={buttonDisabled()}>Salvar</ButtonSave>
-            <ButtonCancel>Cancelar</ButtonCancel>
+            <ButtonCancel>
+            <Link to="/home">
+              Cancelar
+            </Link>
+            </ButtonCancel>
           </ContainerButtons>
           <h4>*Todos os campos são obrigatórios</h4>
         </FormContainer>

@@ -16,17 +16,17 @@ function Header() {
 
   return (
     <>
-    <Container>
-      <img src={Imglogo} />
-      <ButtonsContainer>
-        <ButtonHome onClick={handleSubmitLogin}>
-          <h5>Login</h5>
-        </ButtonHome>
-        <ButtonHome onClick={handleSubmitAcademy}>
-          <h5>Cadastre-se</h5>
-        </ButtonHome>
-      </ButtonsContainer>
-    </Container>
+      <Container>
+        <img src={Imglogo} />
+        <ButtonsContainer>
+          <ButtonHome onClick={handleSubmitLogin}>
+            <h5>Login</h5>
+          </ButtonHome>
+          <ButtonHome onClick={handleSubmitAcademy}>
+            <h5>Cadastre-se</h5>
+          </ButtonHome>
+        </ButtonsContainer>
+      </Container>
     </>
   );
 }

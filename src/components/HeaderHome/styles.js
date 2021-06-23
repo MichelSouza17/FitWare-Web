@@ -40,4 +40,9 @@ export const ButtonHome = styled.button`
   height: 40px;
   margin-left: 10px;
   overflow-y: hidden;
+  color: var(--light);
+
+  h5 {
+    font-size: 13px;
+  }
 `;

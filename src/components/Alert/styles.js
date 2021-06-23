@@ -1,46 +1,47 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
 
-  z-index: 8;
   width: 0px;
-  height: 80px;
-  margin: 80px 10px 10px 10px;
+  height: 50px;
+  margin: 10px;
 
   transition: width 0.4s;
+
+  border-radius: 4px;
+  background-color: ${(props) =>
+    props.type === "error" ? "#23B0FF" : "#ffffff"};
 
   white-space: nowrap;
   overflow: hidden;
 
-  border-radius: 4px;
-  background-color: ${(props) =>
-    props.type === "error" ? "#D90429cc" : "#04d929cc"};
-
   > h1 {
-    font-size: 18px;
-    margin: 5px;
+    font-size: 17px;
+    margin: 15px;
+    color: #ffffff;
+    font-style: normal;
   }
 
   > p {
     font-size: 14px;
-    margin: 5px;
+    margin-left: 5px;
   }
 
   > span {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 2px;
+    right: 5px;
 
-    font-size: 30px;
+    font-size: 20px;
 
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.1s;
 
     :hover {
-      color: var(--Dark);
+      color: var(--light);
     }
   }
 `;

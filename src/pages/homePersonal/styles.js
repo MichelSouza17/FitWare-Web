@@ -39,18 +39,12 @@ export const ContainerHome = styled.div`
 export const ContainerItensMenu = styled.div`
   width: 57vw;
   height: 600px;
-  margin-top: 40px;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
   align-items: left;
   flex-direction: row;
-`;
-
-export const ContainerColuna = styled.div`
-  height: 100%;
-  width: 25%;
-  flex-direction: column;
-  overflow-y: hidden;
 `;
 
 export const ItemMenu = styled.div`
@@ -70,9 +64,9 @@ export const ItemMenu = styled.div`
   }
 
   img {
-    margin-left: 35%;
-    height: 90px;
-    width: 90px;
+    margin-left: 42%;
+    height: 60px;
+    width: 60px;
     margin-top: 65px;
   }
 
@@ -81,38 +75,13 @@ export const ItemMenu = styled.div`
     margin-top: 10px;
     color: var(--light);
   }
-`;
 
-export const ItemMenuQRcode = styled.div`
-  height: 85%;
-  width: 80%;
-  background-color: var(--blueLight);
-  margin: 20px;
-  border-radius: 10px;
-  transition: 1s;
-  :hover {
-    background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
-    height: 90%;
-    width: 85%;
-    transition: 0.9s;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  }
-
-  img {
-    margin-left: 15%;
-    height: 150px;
-    width: 150px;
-    margin-top: 100px;
-  }
-
-  h4 {
-    text-align: center;
-    margin-top: 60px;
-    color: var(--light);
+  > a {
+    text-decoration: none;
   }
 `;
 
-export const FormNewPersonal = styled.form`
+export const FormNewAula = styled.form`
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -148,5 +117,27 @@ export const InfoTreino = styled.div`
 
   input {
     width: 280px;
+  }
+`;
+
+export const Radios = styled.div`
+  width: 80%;
+  height: 50px;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+
+  input {
+    width: 40px;
+  }
+
+  label {
+    margin-left: -120px;
+  }
+
+  h5 {
+    margin-top: 12px;
+    font-weight: normal;
   }
 `;

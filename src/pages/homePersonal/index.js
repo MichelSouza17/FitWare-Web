@@ -1,35 +1,35 @@
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import {
   Container,
-  ContainerAulas,
-  Title,
-  ContainerTable,
-  ContainerAbas,
-  Abas,
-  ButtonAula,
-  InsertAula,
-  Functions,
-  FormNewAula,
+  ContainerHome,
+  ItemMenu,
+  ContainerItensMenu,
+  ContainerColuna,
+  ItemMenuQRcode,
+  FormNewPersonal,
   InfoTreino,
+  FormNewAula,
   Radios,
-  TitleContainer,
-  Menu,
-  Content,
 } from "./styles";
-import Footer from "../../components/Footer";
+
 import { useEffect, useRef, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
-import Select from "../../components/Select";
-import Loading from "../../components/Loading";
-import Tag from "../../components/Tag";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import IconUser from "../../assets/iconUser.png";
+import IconAgenda from "../../assets/iconAgenda.png";
+import IconCadastro from "../../assets/cadastro.png";
+import IconAulas from "../../assets/aula.png";
+import IconAdmin from "../../assets/admin.png";
+import IconMobile from "../../assets/mobile.png";
 import { api } from "../../services/api";
+import Loading from "../../components/Loading";
 import { getUser } from "../../services/security";
-import ImgDelete from "../../assets/iconDelete.png";
-import ImgEdit from "../../assets/iconEdit.png";
-import { format } from "date-fns";
-import Imglogo from "../../assets/menu.png";
-import MenuLateral from "../../components/MenuLateral";
+import Select from "../../components/Select";
+import Tag from "../../components/Tag";
 
 function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
@@ -245,55 +245,17 @@ function NewAula({ handleReload, setIsLoading }) {
   );
 }
 
-function Aulas() {
-  const [showMenu, setShowMenu] = useState(false);
-  const [reload, setReload] = useState(null);
-
+function HomePersonal() {
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingFeed, setIsLoadingFeed] = useState(false);
-
   const [showNewAula, setShowNewAula] = useState(false);
-  const [showPresencial, setShowPresencial] = useState(true);
-
-  const [aulasShow, setAulasShow] = useState([]);
-
-  const [aulas, setAulas] = useState([]);
-
-  const loadSchedules = async () => {
-    if (isLoadingFeed) return;
-
-    setIsLoadingFeed(true);
-    const response = await api.get("/schedule");
-
-    setAulas(response.data);
-
-    setIsLoadingFeed(false);
-  };
-
-  useEffect(() => {
-    console.log(showPresencial);
-    if (aulas.length > 0) {
-      if (showPresencial) {
-        setAulasShow(aulas.filter((a) => !a.is_remote));
-      } else {
-        setAulasShow(aulas.filter((a) => a.is_remote));
-      }
-    }
-  }, [aulas, showPresencial]);
-
-  useEffect(() => {
-    loadSchedules();
-  }, [reload]);
-
   const handleReload = () => {
     setShowNewAula(false);
     setIsLoading(false);
-    setAulasShow([]);
-    setReload(Math.random());
   };
 
   return (
     <>
+      <Header />
       {isLoading && <Loading />}
       {showNewAula && (
         <Modal
@@ -303,122 +265,26 @@ function Aulas() {
           <NewAula handleReload={handleReload} setIsLoading={setIsLoading} />
         </Modal>
       )}
-      <Header />
-      <Container onClick={() => (showMenu ? setShowMenu(false) : "")}>
-        {showMenu && <MenuLateral />}
-        <Menu onClick={() => setShowMenu(true)}>
-          {!showMenu && (
-            <img
-              src={Imglogo}
-              onClick={() => (showMenu ? setShowMenu(true) : "")}
-            />
-          )}
-        </Menu>
-        <Content>
-          <ContainerAulas>
-            <Title>
-              <TitleContainer>
-                <h4>AULAS</h4>
-              </TitleContainer>
-            </Title>
-            <Functions>
-              <ContainerAbas>
-                <Abas
-                  onClick={() => {
-                    setShowPresencial(true);
-                  }}
-                >
-                  <h4>Presenciais</h4>
-                </Abas>
-                <Abas
-                  onClick={() => {
-                    setShowPresencial(false);
-                  }}
-                >
-                  <h4>Onlines</h4>
-                </Abas>
-              </ContainerAbas>
-              <InsertAula>
-                <h3>Nova Aula</h3>
-                <ButtonAula onClick={() => setShowNewAula(true)}>
-                  <p>+</p>
-                </ButtonAula>
-              </InsertAula>
-            </Functions>
-            <ContainerTable>
-              <table>
-                <tr>
-                  <th>
-                    <h4>Tipo de Aula</h4>
-                  </th>
-                  {aulasShow === "Online" && (
-                      <th>
-                      <h4>Link Aula</h4>
-                    </th>
-                    )}
-                  <th>
-                    <h4>Nome do personal</h4>
-                  </th>
-                  <th>
-                    <h4>Categoria de Treino</h4>
-                  </th>
-                  <th>
-                    <h4>Data</h4>
-                  </th>
-                  <th>
-                    <h4>Limite Alunos</h4>
-                  </th>
-                  <th>
-                    <h4>Duração</h4>
-                  </th>
-                  <th>
-                    <h4>Ações</h4>
-                  </th>
-                </tr>
-
-                {aulasShow.map((a) => (
-                  <tr>
-                    <td>
-                      <h2>{a.is_remote ? "Online" : "Presencial"}</h2>
-                    </td>
-                    {a.is_remote === "Online" && (
-                      <td>
-                      <h2>{a.link}</h2>
-                      </td>
-                    )}
-                    <td>
-                      <h4>{a.PersonalTrainer.name}</h4>
-                    </td>
-                    <td>
-                      <h4>
-                        {a.TraningCategories.map((t) => (
-                          <li>{t.description}</li>
-                        ))}
-                      </h4>
-                    </td>
-                    <td>
-                      <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>
-                    </td>
-                    <td>
-                      <h4>{a.limit_person}</h4>
-                    </td>
-                    <td>
-                      <h4>{a.duration}</h4>
-                    </td>
-                    <td>
-                      <img src={ImgDelete} />
-                      <img src={ImgEdit} />
-                    </td>
-                  </tr>
-                ))}
-              </table>
-            </ContainerTable>
-          </ContainerAulas>
-        </Content>
+      <Container>
+        <ContainerHome>
+          <h3>Bem Vindo Ao Fitware!</h3>
+          <ContainerItensMenu>
+              <ItemMenu onClick={() => setShowNewAula(true)}>
+                <img src={IconAulas} />
+                <h4>Aulas</h4>
+              </ItemMenu>
+              <ItemMenu>
+              <Link to="/schedulesPersonal">
+                <img src={IconAgenda} />
+                <h4>Aulas Personal</h4>
+                </Link>
+              </ItemMenu>
+          </ContainerItensMenu>
+        </ContainerHome>
       </Container>
       <Footer />
     </>
   );
 }
 
-export default Aulas;
+export default HomePersonal;

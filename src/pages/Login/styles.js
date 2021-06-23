@@ -38,7 +38,8 @@ export const FormLogin = styled.form`
   overflow-y: hidden;
 
   input {
-    opacity: 90%;
+    /* opacity: 90%; */
+    border: solid 1px;
   }
 
   label {

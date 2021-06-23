@@ -25,10 +25,7 @@ function Modal({ children }) {
         <ItensMenu>
           <Link to="/clientes">Clientes</Link>
         </ItensMenu>
-
-        <ItensMenu>
-          <Link to="/agendamentos">Agendamentos do Dia</Link>
-        </ItensMenu>
+        
       </MenuContainer>
     </ModalContainer>
   );

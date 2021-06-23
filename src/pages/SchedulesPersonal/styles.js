@@ -24,25 +24,12 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
-export const Menu = styled.div`
-  width: 50px;
-  height: 40px;
-
-  display: flex;
-  align-self: flex-start;
-
-  img {
-    width: 50px;
-    height: 40px;
-    padding: 5px;
-  }
-`;
-
 export const ContainerAgendamentos = styled.div`
   width: 60vw;
   min-height: 700px;
   height: auto;
   margin-bottom: 20px;
+  margin-top: 30px;
   border-radius: 10px;
 
   display: flex;
@@ -76,37 +63,6 @@ export const TitleContainer = styled.div`
   }
 `;
 
-export const Search = styled.div`
-  width: 60%;
-  height: 40px;
-  display: flex;
-  margin-left: 70px;
-  margin-top: 50px;
-
-  align-self: flex-start;
-  background-color: var(--light);
-  box-shadow: 1px 1px 10px 1px black;
-  border-radius: 10px;
-
-  input {
-    width: 500px;
-    margin-top: -8px;
-    padding-left: 20px;
-    border: none;
-    font-size: 22px;
-  }
-`;
-
-export const ButtonSearch = styled.button`
-  width: 100px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--blueLight);
-  border: black 1px;
-  border-radius: 10px 0 0 0;
-`;
-
 export const ContainerTable = styled.div`
   width: 57vw;
   height: 500px;
@@ -137,10 +93,6 @@ export const ContainerTable = styled.div`
       font-size: 12px;
       background-color: var(--light);
       border-bottom: 1px solid gray;
-
-      img {
-        width: 30px;
-      }
     }
 
     h3 {
@@ -149,26 +101,3 @@ export const ContainerTable = styled.div`
     }
   }
 `;
-
-// export const Funcionalits = styled.div`
-//   height: 100%;
-//   width: 100%;
-
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   gap: 2px;
-//   background-color: var(--DarkGray);
-
-//   h3 {
-//     margin-top: 10px;
-//   }
-// `;
-
-// export const Cards = styled.div`
-//   height: 50px;
-//   width: 150px;
-//   overflow-y: hidden;
-//   background-color: var(--light);
-// `;

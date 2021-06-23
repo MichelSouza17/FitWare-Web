@@ -225,4 +225,9 @@ export const ButtonCancel = styled.button`
   align-items: center;
   justify-content: center;
   background-color: var(--redLight);
+
+  > a {
+    text-decoration: none;
+    color: black;
+  }
 `;
