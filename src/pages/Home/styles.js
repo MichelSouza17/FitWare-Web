@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--DarkGray);
+  background-color: var(--light);
 `;
 
 export const ContainerSlide = styled.div`
@@ -40,7 +40,7 @@ export const ContainerUnits = styled.div`
   flex-wrap: wrap;
   gap: 20px;
 
-  background-color: var(--DarkGray);
+  background-color: var(--light);
 `;
 
 export const CardUnit = styled.div`
@@ -109,7 +109,7 @@ export const ContainerIntroduction = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: var(--DarkGray);
+  background-color: var(--light);
 `;
 
 export const Description = styled.div`
@@ -122,7 +122,7 @@ export const Description = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: var(--DarkGray);
+  background-color: var(--light);
 
   h1 {
     font-size: 22px;
@@ -146,7 +146,7 @@ export const ContainerFunctionalities = styled.div`
   flex-wrap: wrap;
   gap: 50px;
 
-  background-color: var(--DarkGray);
+  background-color: var(--light);
 
   img {
     margin: 10px 10px 10px 10px;

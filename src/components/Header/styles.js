@@ -32,7 +32,7 @@ export const Container = styled.header`
 
     img {
       width: 50px;
-    height: 50px;
+      height: 50px;
     }
   }
 `;

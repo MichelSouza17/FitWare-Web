@@ -17,7 +17,7 @@ const BackgroundVideo = () => {
         <div className={classes.SubContent}>
           <h1>Fitware</h1>
           <p>Sistema de controle para academias</p>
-          <a href="/register">
+          <a href="/registerAcademy">
             <button type="button" className="btn btn-outline-dark">
               Assinar agora
             </button>
