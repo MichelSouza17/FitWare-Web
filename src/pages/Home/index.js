@@ -21,8 +21,8 @@ import IconHorario from "../../assets/iconHorario.png";
 import IconAula from "../../assets/iconAula.png";
 import IconRegras from "../../assets/iconRegras.png";
 import IconGym from "../../assets/iconGym.png";
-import IconAdmin from "../../assets/admin.png";
-import IconMobile from "../../assets/mobile.png";
+import IconAdmin from "../../assets/admin.svg";
+import IconMobile from "../../assets/mobile.svg";
 import exercicio from "../../assets/exercicio.gif";
 import BackgroundVideo from "../../components/backgroundVideo/BackgroundVideo";
 

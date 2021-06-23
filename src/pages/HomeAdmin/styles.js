@@ -96,8 +96,8 @@ export const ItemMenu = styled.div`
 
   img {
     margin-left: 35%;
-    height: 60px;
-    width: 60px;
+    height: 90px;
+    width: 90px;
     margin-top: 65px;
   }
 

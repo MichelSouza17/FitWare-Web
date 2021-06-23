@@ -19,13 +19,13 @@ import Input from "../../components/Input";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import IconUser from "../../assets/iconUser.png";
-import IconList from "../../assets/list.png";
-import IconCadastro from "../../assets/cadastro.png";
-import IconAulas from "../../assets/aula.png";
+import IconUser from "../../assets/userIconWhite.svg";
+import IconList from "../../assets/list.svg";
+import IconCadastro from "../../assets/cadastro.svg";
+import IconAulas from "../../assets/aula.svg";
 import IconDia from "../../assets/dia.png";
-import IconAdmin from "../../assets/admin.png";
-import IconMobile from "../../assets/mobile.png";
+import IconAdmin from "../../assets/admin.svg";
+import IconMobile from "../../assets/mobile.svg";
 import { api } from "../../services/api";
 import Loading from "../../components/Loading";
 
@@ -196,10 +196,10 @@ function HomeAdmin() {
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
-              <ItemMenu>
+              <ItemMenuQRcode>
                 <img src={IconAdmin} />
                 <h4>Perfil</h4>
-              </ItemMenu>
+              </ItemMenuQRcode>
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenuQRcode>
