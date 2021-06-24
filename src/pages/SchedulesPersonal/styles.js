@@ -13,23 +13,11 @@ export const Container = styled.div`
   background-color: var(--accentGray);
 `;
 
-export const Content = styled.div`
-  width: 100vw;
-  min-height: 700px;
-  height: auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
 export const ContainerAgendamentos = styled.div`
   width: 60vw;
-  min-height: 700px;
+  min-height: 620px;
   height: auto;
   margin-bottom: 20px;
-  margin-top: 30px;
   border-radius: 10px;
 
   display: flex;
@@ -73,18 +61,20 @@ export const ContainerTable = styled.div`
   flex-direction: column;
   background-color: var(--DarkGray);
   overflow-y: auto;
+  border-radius: 10px;
 
   > table {
-    width: 90%;
-    margin-top: 30px;
+    width: 98%;
+    margin-top: 10px;
     background-color: var(--light);
+    border-radius: 10px;
 
     th {
-      background-color: var(--DarkGray);
+      background-color: var(--blueLight);
       padding: 10px;
-      color: var(--redLight);
+      color: var(--light);
       font-weight: normal;
-      border-radius: 10px;
+      border-radius: 5px;
     }
 
     td {

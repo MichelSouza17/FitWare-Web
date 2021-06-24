@@ -230,9 +230,9 @@ export const ContainerTable = styled.div`
     border-radius: 5px;
 
     th {
-      background-color: var(--DarkGray);
+      background-color: var(--blueLight);
       padding: 10px;
-      color: var(--redLight);
+      color: var(--light);
       font-weight: normal;
       border-radius: 5px;
     }

@@ -93,18 +93,22 @@ function Home() {
             aplicativo que será direcionado para os clientes de sua academia.
           </p>
           <img src={exercicio} />
-          <button>Saber Mais</button>
         </ContainerDescricao>
         <ContainerSupport>
-          <h1>Suporte</h1>
+          <h1>Contatos</h1>
           <Contacts>
             <ContainerEmail>
               <h3>Email</h3>
               <p>addmeans.support@gmail.com</p>
+              <h3>Instagram</h3>
+              <p>@AddMeans_Oficial</p>
             </ContainerEmail>
             <ContainerTelefone>
               <h3>Telefone</h3>
               <p> +55(11) 8008-5000</p>
+              <h3>Endereço</h3>
+              <p> Avenida Paulista, 1001</p>
+              <p> São Paulo - SP</p>
             </ContainerTelefone>
           </Contacts>
         </ContainerSupport>

@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const ContainerHome = styled.div`
   width: 60vw;
-  min-height: 700px;
+  min-height: 660px;
   height: auto;
   margin-top: 80px;
   margin-bottom: 20px;
@@ -38,7 +38,7 @@ export const ContainerHome = styled.div`
 
 export const ContainerItensMenu = styled.div`
   width: 57vw;
-  height: 600px;
+  height: 590px;
 
   display: flex;
   justify-content: center;

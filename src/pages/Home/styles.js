@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 100vw;
   min-height: 500px;
   height: auto;
-  padding-bottom: 5px;
 
   display: flex;
   justify-content: center;
@@ -58,7 +57,6 @@ export const CardUnit = styled.div`
   transition: 1s;
 
   img {
-    border: solid 2px black;
     border-radius: 50%;
     height: 60px;
     width: 60px;
@@ -201,7 +199,7 @@ export const ContainerSupport = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: var(--accentGray);
+  background-color: var(--light);
   border-top: solid;
   border-color: var(--blueLight);
 

@@ -10,7 +10,6 @@ import {
 import Footer from "../../components/Footer";
 import { api } from "../../services/api";
 import { format } from "date-fns";
-import { Content } from "../Aulas/styles";
 
 function SchedulesPersonal() {
   const [Schedules, setSchedules] = useState([]);
@@ -34,7 +33,6 @@ function SchedulesPersonal() {
     <>
       <Header />
       <Container>
-        <Content>
           <ContainerAgendamentos>
             <Title>
               <TitleContainer>
@@ -104,7 +102,6 @@ function SchedulesPersonal() {
               </table>
             </ContainerTable>
           </ContainerAgendamentos>
-        </Content>
       </Container>
       <Footer />
     </>

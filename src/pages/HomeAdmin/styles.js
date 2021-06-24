@@ -40,6 +40,7 @@ export const ContainerItensMenu = styled.div`
   width: 80vw;
   height: 600px;
   margin-top: 40px;
+  margin-left: 20px;
 
   display: flex;
   align-items: left;
@@ -55,9 +56,10 @@ export const ContainerColuna = styled.div`
 
 export const ItemMenu = styled.div`
   height: 40%;
-  width: 80%;
+  width: 85%;
   background-color: var(--blueLight);
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 12px;
   border-radius: 10px;
   transition: 1s;
 
@@ -70,7 +72,7 @@ export const ItemMenu = styled.div`
   }
 
   img {
-    margin-left: 35%;
+    margin-left: 30%;
     height: 90px;
     width: 90px;
     margin-top: 65px;
@@ -84,10 +86,10 @@ export const ItemMenu = styled.div`
 `;
 
 export const ItemMenuQRcode = styled.div`
-  height: 85%;
-  width: 80%;
+  height: 84%;
+  width: 87%;
   background-color: var(--blueLight);
-  margin: 20px;
+  margin-top: 20px;
   border-radius: 10px;
   transition: 1s;
   align-items: center;

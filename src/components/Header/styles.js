@@ -33,6 +33,11 @@ export const Container = styled.header`
     img {
       width: 50px;
       height: 50px;
+
+      :hover {
+        width: 55px;
+        height: 52px;
+      }
     }
   }
 `;
