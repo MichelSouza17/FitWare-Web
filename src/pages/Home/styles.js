@@ -57,11 +57,10 @@ export const CardUnit = styled.div`
   transition: 1s;
 
   img {
-    border-radius: 50%;
+    border-radius: 40%;
     height: 60px;
     width: 60px;
-    background-color: var(--DarkGray);
-    margin-top: -45px;
+    margin-top: -42px;
     position: absolute;
     transition: 1s;
   }

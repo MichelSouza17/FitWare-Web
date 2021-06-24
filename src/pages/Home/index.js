@@ -21,8 +21,8 @@ import IconHorario from "../../assets/iconHorario.png";
 import IconAula from "../../assets/iconAula.png";
 import IconRegras from "../../assets/iconRegras.png";
 import IconGym from "../../assets/iconGym.png";
-import IconAdmin from "../../assets/admin.svg";
-import IconMobile from "../../assets/mobile.svg";
+import IconAdmin from "../../assets/admin.png";
+import IconMobile from "../../assets/mobile.png";
 import exercicio from "../../assets/exercicio.gif";
 import BackgroundVideo from "../../components/backgroundVideo/BackgroundVideo";
 
@@ -55,9 +55,9 @@ function Home() {
           <CardUnit>
             <img src={IconMobile} alt="iconMobile" />
 
-            <h3>Clientes</h3>
+            <h3>Alunos</h3>
             <p>
-              Seus clientes poderam ver quais aulas estão disponiveis através do
+              Seus alunos poderam ver quais aulas estão disponiveis através do
               aplicativo mobile, aonde ele poderá cadastrar-se em aulas
               presenciais ou onlines
             </p>

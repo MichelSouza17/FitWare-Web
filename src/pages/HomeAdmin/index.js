@@ -9,6 +9,7 @@ import {
   ItemMenuQRcode,
   FormNewPersonal,
   InfoTreino,
+  ItemMenuPerfil,
 } from "./styles";
 
 import { useState } from "react";
@@ -186,10 +187,10 @@ function HomeAdmin() {
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
-              <ItemMenuQRcode>
+              <ItemMenuPerfil>
                 <img src={IconAdmin} alt="iconAdmin" />
                 <h4>Perfil</h4>
-              </ItemMenuQRcode>
+              </ItemMenuPerfil>
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenuQRcode>

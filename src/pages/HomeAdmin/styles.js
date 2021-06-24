@@ -85,6 +85,37 @@ export const ItemMenu = styled.div`
   }
 `;
 
+export const ItemMenuPerfil = styled.div`
+  height: 84%;
+  width: 87%;
+  background-color: var(--blueLight);
+  margin-top: 20px;
+  border-radius: 10px;
+  transition: 1s;
+  align-items: center;
+  :hover {
+    background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
+    height: 90%;
+    width: 85%;
+    transition: 0.9s;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    margin-left: 25%;
+    height: 100px;
+    width: 100px;
+    margin-top: 120px;
+  }
+
+  h4 {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--light);
+    width: 220px;
+  }
+`;
+
 export const ItemMenuQRcode = styled.div`
   height: 84%;
   width: 87%;
@@ -112,6 +143,7 @@ export const ItemMenuQRcode = styled.div`
     text-align: center;
     margin-top: 60px;
     color: var(--light);
+    width: 220px;
   }
 `;
 
