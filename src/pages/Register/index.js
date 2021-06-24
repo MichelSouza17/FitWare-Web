@@ -228,6 +228,7 @@ function Register() {
           {!showMenu && (
             <img
               src={Imglogo}
+              alt="iconLogo"
               onClick={() => (showMenu ? setShowMenu(true) : "")}
             />
           )}
@@ -434,9 +435,7 @@ function Register() {
           <ContainerButtons onSubmit={handleSubmit}>
             <ButtonSave disabled={buttonDisabled()}>Salvar</ButtonSave>
             <ButtonCancel>
-            <Link to="/home">
-              Cancelar
-            </Link>
+              <Link to="/home">Cancelar</Link>
             </ButtonCancel>
           </ContainerButtons>
           <h4>*Todos os campos são obrigatórios</h4>

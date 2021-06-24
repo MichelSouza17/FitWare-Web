@@ -18,9 +18,9 @@ function Header() {
 
   return (
     <Container>
-      <img src={Imglogo} onClick={handleReload} />
+      <img src={Imglogo} onClick={handleReload} alt="logo" />
       <Link onClick={handlerLogout}>
-        <img src={Sair} />
+        <img src={Sair} alt="signOut" />
       </Link>
     </Container>
   );

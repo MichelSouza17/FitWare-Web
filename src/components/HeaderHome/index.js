@@ -17,7 +17,7 @@ function Header() {
   return (
     <>
       <Container>
-        <img src={Imglogo} />
+        <img src={Imglogo} alt="logo" />
         <ButtonsContainer>
           <ButtonHome onClick={handleSubmitLogin}>
             <h5>Login</h5>

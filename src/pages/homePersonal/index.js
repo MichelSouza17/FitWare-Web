@@ -5,9 +5,6 @@ import {
   ContainerHome,
   ItemMenu,
   ContainerItensMenu,
-  ContainerColuna,
-  ItemMenuQRcode,
-  FormNewPersonal,
   InfoTreino,
   FormNewAula,
   Radios,
@@ -17,7 +14,6 @@ import { useEffect, useRef, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 import IconAgenda from "../../assets/iconAgenda.svg";
 import IconAulas from "../../assets/aula.svg";
@@ -266,12 +262,12 @@ function HomePersonal() {
           <h3>Bem Vindo Ao Fitware!</h3>
           <ContainerItensMenu>
             <ItemMenu onClick={() => setShowNewAula(true)}>
-              <img src={IconAulas} />
+              <img src={IconAulas} alt="Aulas" />
               <h4>Criar Aulas</h4>
             </ItemMenu>
             <ItemMenu>
               <Link to="/schedulesPersonal">
-                <img src={IconAgenda} />
+                <img src={IconAgenda} alt="iconAgenda" />
                 <h4>Aulas Personal</h4>
               </Link>
             </ItemMenu>

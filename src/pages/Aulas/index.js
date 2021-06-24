@@ -310,6 +310,7 @@ function Aulas() {
           {!showMenu && (
             <img
               src={Imglogo}
+              alt="logo"
               onClick={() => (showMenu ? setShowMenu(true) : "")}
             />
           )}
@@ -404,8 +405,8 @@ function Aulas() {
                       <h4>{a.duration}</h4>
                     </td>
                     <td>
-                      <img src={ImgDelete} />
-                      <img src={ImgEdit} />
+                      <img src={ImgDelete} alt="delete" />
+                      <img src={ImgEdit} alt="edit" />
                     </td>
                   </tr>
                 ))}

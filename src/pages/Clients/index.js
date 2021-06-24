@@ -21,24 +21,18 @@ import { Content } from "../Aulas/styles";
 
 function Clients() {
   const [showMenu, setShowMenu] = useState(false);
-  //a api retorna uma lista.. então isso deve ser uma lista vazia no começo
+
   const [userStudents, setUserStudents] = useState([]);
 
   const [search, setSearch] = useState("");
 
-  //precisamos colocar tudo isso dentro de uma função async depois chamar ela
   useEffect(() => {
     loadStudents();
   }, []);
 
   const loadStudents = async () => {
     try {
-      //aqui consumimos a api, sempre dentro de um try catch
       const response = await api.get("/userAcademy?search");
-
-      //dentro de response tem o data, que é o corpo da resposta
-      //que contém a lista, colocamos ela no state
-      // assim, que inicia vazio ne. isso, inicia vazio, depois substitui quando houver resposta.blz
 
       setUserStudents(response.data);
     } catch (e) {
@@ -49,8 +43,6 @@ function Clients() {
   const handleReload = () => {
     loadStudents();
   };
-
-  //agora já temos a lista em mãos... só percorrer e mostrar na tela.
 
   const handleSearch = async (e) => {
     setSearch(e.target.value);
@@ -80,6 +72,7 @@ function Clients() {
           {!showMenu && (
             <img
               src={Imglogo}
+              alt="logo"
               onClick={() => (showMenu ? setShowMenu(true) : "")}
             />
           )}
@@ -135,8 +128,8 @@ function Clients() {
                       <h4>{student.celular}</h4>
                     </td>
                     <td>
-                      <img src={ImgDelete} />
-                      <img src={ImgEdit} />
+                      <img src={ImgDelete} alt="imgDelete" />
+                      <img src={ImgEdit} alt="imgEdit" />
                     </td>
                   </tr>
                 ))}

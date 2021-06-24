@@ -14,7 +14,6 @@ import {
 import { useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 import IconUser from "../../assets/userIconWhite.svg";
@@ -168,33 +167,33 @@ function HomeAdmin() {
           <ContainerItensMenu>
             <ContainerColuna>
               <ItemMenu onClick={handleChangeAula}>
-                <img src={IconAulas} />
+                <img src={IconAulas} alt="iconAulas" />
                 <h4>Aulas</h4>
               </ItemMenu>
               <ItemMenu onClick={handleChangeListaClients}>
-                <img src={IconList} />
+                <img src={IconList} alt="iconList" />
                 <h4>Lista de Clientes</h4>
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenu onClick={handleChangeCadastroAluno}>
-                <img src={IconUser} />
+                <img src={IconUser} alt="iconUser" />
                 <h4>Cadastrar Aluno</h4>
               </ItemMenu>
               <ItemMenu onClick={() => setShowPersonal(true)}>
-                <img src={IconCadastro} />
+                <img src={IconCadastro} alt="iconCadastro" />
                 <h4>Cadastrar Personal Trainer</h4>
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenuQRcode>
-                <img src={IconAdmin} />
+                <img src={IconAdmin} alt="iconAdmin" />
                 <h4>Perfil</h4>
               </ItemMenuQRcode>
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenuQRcode>
-                <img src={IconMobile} />
+                <img src={IconMobile} alt="iconMobile" />
                 <h4>Compartilhe o APP com seus Clientes</h4>
               </ItemMenuQRcode>
             </ContainerColuna>

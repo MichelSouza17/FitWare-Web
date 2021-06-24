@@ -36,7 +36,7 @@ function Home() {
         </ContainerSlide>
         <ContainerUnits>
           <CardUnit>
-            <img src={IconGym} />
+            <img src={IconGym} alt="iconGym" />
             <h3>Agendamentos</h3>
             <p>
               O sistema de agendamento da FitWare é a parte mais importante do
@@ -44,7 +44,7 @@ function Home() {
             </p>
           </CardUnit>
           <CardUnit>
-            <img src={IconAdmin} />
+            <img src={IconAdmin} alt="iconAdmin" />
             <h3>Administrador</h3>
             <p>
               O administrador terá poderá criar e excluir Agendamentos,
@@ -53,7 +53,7 @@ function Home() {
             </p>
           </CardUnit>
           <CardUnit>
-            <img src={IconMobile} />
+            <img src={IconMobile} alt="iconMobile" />
 
             <h3>Clientes</h3>
             <p>
@@ -72,15 +72,15 @@ function Home() {
             </p>
           </Description>
           <ContainerFunctionalities>
-            <img src={IconAgenda} />
+            <img src={IconAgenda} alt="iconAgenda" />
             <h3>Agendamento</h3>
-            <img src={IconControl} />
+            <img src={IconControl} alt="iconControl" />
             <h3>Controle de Pessoas</h3>
-            <img src={IconHorario} />
+            <img src={IconHorario} alt="iconHorario" />
             <h3>Horário</h3>
-            <img src={IconAula} />
+            <img src={IconAula} alt="iconAula" />
             <h3>Aulas Onlines</h3>
-            <img src={IconRegras} />
+            <img src={IconRegras} alt="iconRegras" />
             <h3>Regras</h3>
           </ContainerFunctionalities>
         </ContainerIntroduction>
@@ -92,7 +92,7 @@ function Home() {
             termos e conseguir sua assinatura para utilizar o sistema e o nosso
             aplicativo que será direcionado para os clientes de sua academia.
           </p>
-          <img src={exercicio} />
+          <img src={exercicio} alt="imgExercicio" />
         </ContainerDescricao>
         <ContainerSupport>
           <h1>Contatos</h1>
