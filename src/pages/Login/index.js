@@ -6,8 +6,8 @@ import { signIn } from "../../services/security";
 import { Container, FotoAcademy, FormLogin } from "./styles";
 
 import AcademiaImage from "../../assets/academia.jpg";
-import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
+import SpinnerLoading from "../../components/SpinnerLoading";
 
 function Login() {
   const history = useHistory();
@@ -46,11 +46,12 @@ function Login() {
       if (response.data.perfil === "student") {
         setMessage({ title: "Ops... Usuário não Autorizado!" });
       }
-
-
     } catch (error) {
       console.error(error);
-      setMessage({ title: "Ops... E-mail ou senha inválidos", description: error.response.data.error });
+      setMessage({
+        title: "Ops... E-mail ou senha inválidos",
+        description: error.response.data.error,
+      });
       setIsLoading(false);
     }
   };
@@ -62,8 +63,9 @@ function Login() {
   return (
     <>
       <Alert message={message} type="error" handleClose={setMessage} />
-      {isLoading && <Loading />}
+
       <Container>
+        {isLoading && <SpinnerLoading />}
         <FotoAcademy src={AcademiaImage} />
         <FormLogin onSubmit={handleSubmit}>
           <h1>Faça seu Login</h1>
