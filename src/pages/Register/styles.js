@@ -45,7 +45,7 @@ export const FormContainer = styled.div`
 `;
 
 export const ContainerUser = styled.div`
-  width: 1000px;
+  width: 945px;
   min-height: 220px;
   height: auto;
   margin-top: 10px;
@@ -168,7 +168,7 @@ export const ContainerWeight = styled.div`
 `;
 
 export const ContainerAddress = styled.div`
-  width: 500px;
+  width: 450px;
   height: 327px;
   display: flex;
   align-items: center;
@@ -262,7 +262,7 @@ export const Citys = styled.div`
 `;
 
 export const ContainerAcademy = styled.div`
-  width: 1000px;
+  width: 945px;
   height: 100px;
   margin-top: 10px;
   flex-wrap: wrap;
@@ -278,7 +278,7 @@ export const ContainerAcademy = styled.div`
 `;
 
 export const TextAcademy = styled.div`
-  width: 450px;
+  width: 400px;
   height: 80px;
   flex-wrap: wrap;
 
@@ -356,7 +356,7 @@ export const ButtonCancel = styled.button`
 `;
 
 export const ContainerPassword = styled.div`
-  width: 1000px;
+  width: 950px;
   height: 80px;
   margin-top: 10px;
   flex-wrap: wrap;

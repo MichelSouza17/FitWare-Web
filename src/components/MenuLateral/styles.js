@@ -64,4 +64,9 @@ export const ItensMenu = styled.div`
     color: var(--primaryBlack);
     transform: translate(10px);
   }
+
+  img {
+    height: 25px;
+    width: 25px;
+  }
 `;
