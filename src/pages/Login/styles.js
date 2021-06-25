@@ -39,11 +39,13 @@ export const FormLogin = styled.form`
 
   input {
     /* opacity: 90%; */
+    width: 100%;
+    
     border: solid 1px;
   }
 
   label {
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 7px;
     overflow-y: hidden;
   }
@@ -51,7 +53,7 @@ export const FormLogin = styled.form`
   button {
     margin-top: 15px;
     margin-bottom: 15px;
-
+    width: 30%;
     color: var(--light);
     overflow-y: hidden;
   }
