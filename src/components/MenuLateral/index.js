@@ -13,28 +13,23 @@ function Modal({ children }) {
       {children}
       <MenuContainer>
         <ItensMenu>
-          <img src={IconHome} />
+          <img src={IconHome} alt="iconHome" />
           <Link to="/home">Home</Link>
         </ItensMenu>
 
         <ItensMenu>
-          <img src={iconAdd} />
+          <img src={iconAdd} alt="iconRegister" />
           <Link to="/register">Cadastrar Aluno</Link>
         </ItensMenu>
 
         <ItensMenu>
-          <img src={iconGym} />
-          <Link to="/registerAcademy">Cadastrar Academia</Link>
+          <img src={iconAula} alt="iconAulas" />
+          <Link to="/aulas">Criar Aulas</Link>
         </ItensMenu>
 
         <ItensMenu>
-          <img src={iconAula} />
-          <Link to="/aulas">Aulas</Link>
-        </ItensMenu>
-
-        <ItensMenu>
-          <img src={iconUser} />
-          <Link to="/clientes">Clientes</Link>
+          <img src={iconUser} alt="iconAlunos" />
+          <Link to="/clientes">Alunos</Link>
         </ItensMenu>
       </MenuContainer>
     </ModalContainer>

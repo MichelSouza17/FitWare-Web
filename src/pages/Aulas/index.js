@@ -353,7 +353,7 @@ function Aulas() {
                     <h4>Tipo de Aula</h4>
                   </th>
                   <th>
-                    <h4>Nome do personal</h4>
+                    <h4>Nome do Personal</h4>
                   </th>
                   <th>
                     <h4>Categoria de Treino</h4>

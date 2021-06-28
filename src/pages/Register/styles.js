@@ -36,7 +36,7 @@ export const FormContainer = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: var(--light);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   h4 {
     color: red;

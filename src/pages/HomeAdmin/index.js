@@ -166,9 +166,7 @@ function HomeAdmin() {
       )}
 
       {showQRCode && (
-        <Modal
-          handleClose={() => setShowQRCode(false)}   
-        >
+        <Modal handleClose={() => setShowQRCode(false)}>
           <img src={QRCode} alt="QRCode" />
         </Modal>
       )}
