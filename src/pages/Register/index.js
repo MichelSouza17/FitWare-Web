@@ -36,10 +36,12 @@ import MenuLateral from "../../components/MenuLateral";
 
 import Imglogo from "../../assets/menu.png";
 import Tag from "../../components/Tag";
+import SpinnerLoading from "../../components/SpinnerLoading";
 
 function Register() {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [userStudent, setUserStudent] = useState({
     first_name: "",
@@ -221,6 +223,7 @@ function Register() {
 
   return (
     <>
+    {isLoading && <SpinnerLoading />}
       <Header />
       <ContainerGeral>
         {showMenu && <MenuLateral />}

@@ -18,10 +18,10 @@ import { Link } from "react-router-dom";
 import IconAgenda from "../../assets/iconAgenda.svg";
 import IconAulas from "../../assets/aula.svg";
 import { api } from "../../services/api";
-import Loading from "../../components/Loading";
 import { getUser } from "../../services/security";
 import Select from "../../components/Select";
 import Tag from "../../components/Tag";
+import SpinnerLoading from "../../components/SpinnerLoading";
 
 function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
@@ -248,7 +248,7 @@ function HomePersonal() {
   return (
     <>
       <Header />
-      {isLoading && <Loading />}
+      {isLoading && <SpinnerLoading />}
       {showNewAula && (
         <Modal
           title="Novo Agendamento"

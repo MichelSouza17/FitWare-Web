@@ -47,8 +47,8 @@ function Home() {
             <img src={IconAdmin} alt="iconAdmin" />
             <h3>Administrador</h3>
             <p>
-              O administrador terá poderá criar e excluir Agendamentos,
-              cadastrar seus personal trainers e clientes na sua academia e
+              O administrador poderá criar Agendamentos de Aulas,
+              cadastrar seus personals trainers e clientes na sua academia e
               supervisionar as aulas presenciais e onlines.
             </p>
           </CardUnit>
@@ -59,7 +59,7 @@ function Home() {
             <p>
               Seus alunos poderam ver quais aulas estão disponiveis através do
               aplicativo mobile, aonde ele poderá cadastrar-se em aulas
-              presenciais ou onlines
+              presenciais ou onlines.
             </p>
           </CardUnit>
         </ContainerUnits>

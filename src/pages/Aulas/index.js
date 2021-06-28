@@ -21,7 +21,6 @@ import { useEffect, useRef, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
-import Loading from "../../components/Loading";
 import Tag from "../../components/Tag";
 import { api } from "../../services/api";
 import { getUser } from "../../services/security";
@@ -30,6 +29,7 @@ import ImgEdit from "../../assets/iconEdit.png";
 import { format } from "date-fns";
 import Imglogo from "../../assets/menu.png";
 import MenuLateral from "../../components/MenuLateral";
+import SpinnerLoading from "../../components/SpinnerLoading";
 
 function NewAula({ handleReload, setIsLoading }) {
   const [schedule, setSchedule] = useState({
@@ -294,7 +294,7 @@ function Aulas() {
 
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && <SpinnerLoading />}
       {showNewAula && (
         <Modal
           title="Novo Agendamento"

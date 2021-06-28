@@ -51,4 +51,12 @@ export const ModalContainer = styled.section`
     text-align: center;
     margin: 0px 20px;
   }
+
+  > img {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 160px;
+  }
 `;

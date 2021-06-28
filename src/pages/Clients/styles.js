@@ -134,7 +134,7 @@ export const ContainerTable = styled.div`
       border-bottom: 1px solid gray;
 
       img {
-        width: 30px;
+        width: 26px;
         margin-left: 10px;
       }
     }

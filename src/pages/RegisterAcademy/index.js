@@ -23,9 +23,11 @@ import { api } from "../../services/api";
 import { buscarViaCep } from "../../services/viaCep";
 import { maskCep, maskCel } from "../../utils/masks";
 import { Link, useHistory } from "react-router-dom";
+import SpinnerLoading from "../../components/SpinnerLoading";
 
 function RegisterAcademy() {
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [academy, setAcademy] = useState({
     name: "",
@@ -118,6 +120,7 @@ function RegisterAcademy() {
 
   return (
     <>
+    {isLoading && <SpinnerLoading />}
       <Header />
       <ContainerGeral>
         <FormContainer>

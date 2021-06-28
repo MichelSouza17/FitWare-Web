@@ -23,8 +23,9 @@ import IconCadastro from "../../assets/cadastro.svg";
 import IconAulas from "../../assets/aula.svg";
 import IconAdmin from "../../assets/admin.svg";
 import IconMobile from "../../assets/mobile.svg";
+import QRCode from "../../assets/qrCode.png";
 import { api } from "../../services/api";
-import Loading from "../../components/Loading";
+import SpinnerLoading from "../../components/SpinnerLoading";
 
 function NewPersonal({ handleReload, setIsLoading }) {
   const [personal, setPersonal] = useState({
@@ -132,6 +133,8 @@ function HomeAdmin() {
 
   const [showPersonal, setShowPersonal] = useState(false);
 
+  const [showQRCode, setShowQRCode] = useState(false);
+
   const handleReload = () => {
     setShowPersonal(false);
     setIsLoading(false);
@@ -149,7 +152,7 @@ function HomeAdmin() {
   };
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && <SpinnerLoading />}
       {showPersonal && (
         <Modal
           title="Cadastrar Personal Trainer"
@@ -159,6 +162,14 @@ function HomeAdmin() {
             handleReload={handleReload}
             setIsLoading={setIsLoading}
           />
+        </Modal>
+      )}
+
+      {showQRCode && (
+        <Modal
+          handleClose={() => setShowQRCode(false)}   
+        >
+          <img src={QRCode} alt="QRCode" />
         </Modal>
       )}
       <Header />
@@ -193,7 +204,7 @@ function HomeAdmin() {
               </ItemMenuPerfil>
             </ContainerColuna>
             <ContainerColuna>
-              <ItemMenuQRcode>
+              <ItemMenuQRcode onClick={() => setShowQRCode(true)}>
                 <img src={IconMobile} alt="iconMobile" />
                 <h4>Compartilhe o APP com seus Clientes</h4>
               </ItemMenuQRcode>

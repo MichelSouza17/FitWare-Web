@@ -244,7 +244,7 @@ export const ContainerTable = styled.div`
       background-color: var(--light);
 
       img {
-        width: 30px;
+        width: 24px;
       }
     }
 

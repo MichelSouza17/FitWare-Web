@@ -63,7 +63,6 @@ function Login() {
   return (
     <>
       <Alert message={message} type="error" handleClose={setMessage} />
-
       <Container>
         {isLoading && <SpinnerLoading />}
         <FotoAcademy src={AcademiaImage} />
