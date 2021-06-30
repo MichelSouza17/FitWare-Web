@@ -10,6 +10,7 @@ import {
   FormNewPersonal,
   InfoTreino,
   ItemMenuPerfil,
+  ContainerIcon,
 } from "./styles";
 
 import { useState } from "react";
@@ -197,7 +198,9 @@ function HomeAdmin() {
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenuPerfil>
-                <img src={IconAdmin} alt="iconAdmin" />
+                <ContainerIcon>
+                  <img src={IconAdmin} alt="iconAdmin" />
+                </ContainerIcon>
                 <h4>Perfil</h4>
               </ItemMenuPerfil>
             </ContainerColuna>

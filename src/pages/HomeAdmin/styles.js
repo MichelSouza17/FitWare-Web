@@ -62,6 +62,8 @@ export const ItemMenu = styled.div`
   margin-left: 12px;
   border-radius: 10px;
   transition: 1s;
+  display: flex;
+  flex-direction: column;
 
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
@@ -72,13 +74,14 @@ export const ItemMenu = styled.div`
   }
 
   img {
-    margin-left: 30%;
+    align-self: center;
     height: 90px;
     width: 90px;
     margin-top: 65px;
   }
 
   h4 {
+    align-self: center;
     text-align: center;
     margin-top: 10px;
     color: var(--light);
@@ -93,10 +96,11 @@ export const ItemMenuPerfil = styled.div`
   border-radius: 10px;
   transition: 1s;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
-    height: 90%;
-    width: 85%;
     transition: 0.9s;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }
@@ -109,10 +113,27 @@ export const ItemMenuPerfil = styled.div`
   }
 
   h4 {
+    align-self: center;
     text-align: center;
     margin-top: 60px;
     color: var(--light);
     width: 220px;
+  }
+`;
+
+export const ContainerIcon = styled.div`
+  height: 300px;
+  width: 100%;
+  overflow-y: hidden;
+  align-items: center;
+  margin-top: 10px;
+  display: flex;
+  img {
+    height: 150px;
+    width: 150px;
+    align-self: center;
+    margin-right: auto;
+    margin-left: auto;
   }
 `;
 
@@ -124,22 +145,25 @@ export const ItemMenuQRcode = styled.div`
   border-radius: 10px;
   transition: 1s;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
-    height: 90%;
-    width: 85%;
     transition: 0.9s;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }
 
   img {
-    margin-left: 15%;
     height: 150px;
     width: 150px;
-    margin-top: 100px;
+    align-self: center;
   }
 
   h4 {
+    align-self: center;
     text-align: center;
     margin-top: 60px;
     color: var(--light);
