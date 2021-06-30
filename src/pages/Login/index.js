@@ -49,8 +49,8 @@ function Login() {
     } catch (error) {
       console.error(error);
       setMessage({
-        title: "Ops... E-mail ou senha inválidos",
-        description: error.response.data.error,
+        title: "Ops...",
+        description: "E-mail ou Senha Inválidos!",
       });
       setIsLoading(false);
     }

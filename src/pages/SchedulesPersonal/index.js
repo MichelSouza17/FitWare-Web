@@ -89,7 +89,16 @@ function SchedulesPersonal() {
                     </h4>
                   </td>
                   <td>
-                    <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>
+                    <h4>
+                      {format(
+                        new Date(
+                          new Date(a.date).getUTCFullYear(),
+                          new Date(a.date).getUTCMonth(),
+                          new Date(a.date).getUTCDate()
+                        ),
+                        "dd/MM/yyyy"
+                      )}
+                    </h4>
                   </td>
                   <td>
                     <h4>{a.limit_person}</h4>

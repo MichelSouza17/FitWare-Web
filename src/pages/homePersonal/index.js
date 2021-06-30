@@ -22,8 +22,9 @@ import { getUser } from "../../services/security";
 import Select from "../../components/Select";
 import Tag from "../../components/Tag";
 import SpinnerLoading from "../../components/SpinnerLoading";
+import Alert from "../../components/Alert";
 
-function NewAula({ handleReload, setIsLoading }) {
+function NewAula({ handleReload, setIsLoading, setMessage }) {
   const [schedule, setSchedule] = useState({
     personal_id: "",
     hour: "",
@@ -114,7 +115,7 @@ function NewAula({ handleReload, setIsLoading }) {
     setIsLoading(true);
 
     try {
-      const response = await api.post(`/academy/${user.userId}/schedule`, {
+      const response = await api.post(`/academy/${user.academyId}/schedule`, {
         personal_id: personalSel,
         hour: schedule.hour,
         date: schedule.date,
@@ -124,6 +125,8 @@ function NewAula({ handleReload, setIsLoading }) {
         is_remote: schedule.is_remote,
         link: schedule.link,
       });
+
+      setMessage({ title: "Ok!", description: "Aula Cadastrada com Sucesso!" });
 
       handleReload();
     } catch (error) {
@@ -245,18 +248,26 @@ function HomePersonal() {
     setIsLoading(false);
   };
 
+  const [message, setMessage] = useState(undefined);
+
   return (
     <>
       <Header />
+
       {isLoading && <SpinnerLoading />}
       {showNewAula && (
         <Modal
           title="Novo Agendamento"
           handleClose={() => setShowNewAula(false)}
         >
-          <NewAula handleReload={handleReload} setIsLoading={setIsLoading} />
+          <NewAula
+            handleReload={handleReload}
+            setIsLoading={setIsLoading}
+            setMessage={setMessage}
+          />
         </Modal>
       )}
+      <Alert message={message} type="success" handleClose={setMessage} />
       <Container>
         <ContainerHome>
           <h3>Bem Vindo Ao Fitware!</h3>
