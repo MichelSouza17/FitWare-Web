@@ -30,8 +30,9 @@ import { format } from "date-fns";
 import Imglogo from "../../assets/menu.png";
 import MenuLateral from "../../components/MenuLateral";
 import SpinnerLoading from "../../components/SpinnerLoading";
+import Alert from "../../components/Alert";
 
-function NewAula({ handleReload, setIsLoading }) {
+function NewAula({ handleReload, setIsLoading, setMessage }) {
   const [schedule, setSchedule] = useState({
     personal_id: "",
     hour: "",
@@ -132,6 +133,8 @@ function NewAula({ handleReload, setIsLoading }) {
         is_remote: schedule.is_remote,
         link: schedule.link,
       });
+
+      setMessage({ title: "Ok!", description: "Aula Cadastrada com Sucesso!" });
 
       handleReload();
     } catch (error) {
@@ -259,6 +262,8 @@ function Aulas() {
 
   const [aulas, setAulas] = useState([]);
 
+  const [message, setMessage] = useState(undefined);
+
   const loadSchedules = async () => {
     if (isLoadingFeed) return;
 
@@ -300,10 +305,15 @@ function Aulas() {
           title="Novo Agendamento"
           handleClose={() => setShowNewAula(false)}
         >
-          <NewAula handleReload={handleReload} setIsLoading={setIsLoading} />
+          <NewAula
+            handleReload={handleReload}
+            setIsLoading={setIsLoading}
+            setMessage={setMessage}
+          />
         </Modal>
       )}
       <Header />
+      <Alert message={message} type="success" handleClose={setMessage} />
       <Container onClick={() => (showMenu ? setShowMenu(false) : "")}>
         {showMenu && <MenuLateral />}
         <Menu onClick={() => setShowMenu(true)}>
@@ -396,7 +406,16 @@ function Aulas() {
                       </h4>
                     </td>
                     <td>
-                      <h4>{format(new Date(a.date), "dd/MM/yyyy")}</h4>
+                      <h4>
+                        {format(
+                          new Date(
+                            new Date(a.date).getUTCFullYear(),
+                            new Date(a.date).getUTCMonth(),
+                            new Date(a.date).getUTCDate()
+                          ),
+                          "dd/MM/yyyy"
+                        )}
+                      </h4>
                     </td>
                     <td>
                       <h4>{a.limit_person}</h4>

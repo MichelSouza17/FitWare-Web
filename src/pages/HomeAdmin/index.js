@@ -27,8 +27,9 @@ import IconMobile from "../../assets/mobile.svg";
 import QRCode from "../../assets/qrCode.png";
 import { api } from "../../services/api";
 import SpinnerLoading from "../../components/SpinnerLoading";
+import Alert from "../../components/Alert";
 
-function NewPersonal({ handleReload, setIsLoading }) {
+function NewPersonal({ handleReload, setIsLoading, setMessage }) {
   const [personal, setPersonal] = useState({
     name: "",
     email: "",
@@ -66,6 +67,11 @@ function NewPersonal({ handleReload, setIsLoading }) {
         email: personal.email,
         password: personal.password,
         specialty: personal.specialty,
+      });
+
+      setMessage({
+        title: "Ok!",
+        description: "Personal Cadastrado com Sucesso!",
       });
 
       handleReload();
@@ -115,7 +121,7 @@ function NewPersonal({ handleReload, setIsLoading }) {
           type="password"
           onBlur={(e) => {
             if (!confirmePassword()) alert("As senhas precisam ser iguais");
-            e.target.focus();
+            // e.target.focus();
           }}
           value={personal.confirmePassword}
           handler={handleInput}
@@ -135,6 +141,8 @@ function HomeAdmin() {
   const [showPersonal, setShowPersonal] = useState(false);
 
   const [showQRCode, setShowQRCode] = useState(false);
+
+  const [message, setMessage] = useState(undefined);
 
   const handleReload = () => {
     setShowPersonal(false);
@@ -162,6 +170,7 @@ function HomeAdmin() {
           <NewPersonal
             handleReload={handleReload}
             setIsLoading={setIsLoading}
+            setMessage={setMessage}
           />
         </Modal>
       )}
@@ -172,6 +181,7 @@ function HomeAdmin() {
         </Modal>
       )}
       <Header />
+      <Alert message={message} type="success" handleClose={setMessage} />
       <Container>
         <ContainerHome>
           <h3>Bem Vindo Ao Fitware!</h3>
