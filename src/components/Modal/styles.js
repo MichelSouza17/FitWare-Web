@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Overlay = styled.div`
   position: absolute;
   width: 100vw;
-  height: 101vh;
+  height: 120vh;
   z-index: 9;
 
   background-color: #333c;
@@ -27,6 +27,7 @@ export const ModalContainer = styled.section`
   background-color: var(--light);
   box-shadow: 0px 0px 10px black;
   border-radius: 4px;
+  overflow-y: hidden;
 
   position: relative;
 

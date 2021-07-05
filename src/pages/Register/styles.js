@@ -261,66 +261,6 @@ export const Citys = styled.div`
   }
 `;
 
-export const ContainerAcademy = styled.div`
-  width: 945px;
-  height: 100px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  border-radius: 5px;
-  box-shadow: 0 0 0.3em black;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background-color: var(--light);
-`;
-
-export const TextAcademy = styled.div`
-  width: 400px;
-  height: 80px;
-  flex-wrap: wrap;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background-color: var(--light);
-
-  > p {
-    font-size: 15px;
-    text-align: left;
-    align-self: flex-start;
-    overflow: hidden;
-    /* font-weight: bold; */
-    padding-inline-start: 20px;
-  }
-`;
-
-export const SelectAcademy = styled.div`
-  width: 550px;
-  height: 100px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  background-color: var(--light);
-
-  select {
-    width: 530px;
-    align-self: flex-end;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
 export const ContainerButtons = styled.form`
   width: 550px;
   min-height: 80px;

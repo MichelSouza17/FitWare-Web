@@ -223,7 +223,6 @@ function RegisterAcademy() {
               type="password"
               onBlur={(e) => {
                 if (!confirmePassword()) alert("As senhas precisam ser iguais");
-                e.target.focus();
               }}
               value={academy.confirmePassword}
               handler={handleInput}

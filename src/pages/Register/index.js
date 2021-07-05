@@ -6,10 +6,7 @@ import {
   ContainerAddress,
   ContainerWeight,
   ContainerDice,
-  TextAcademy,
-  ContainerAcademy,
   User,
-  SelectAcademy,
   ContainerButtons,
   ButtonSave,
   ButtonCancel,
@@ -35,7 +32,6 @@ import { Link, useHistory } from "react-router-dom";
 import MenuLateral from "../../components/MenuLateral";
 
 import Imglogo from "../../assets/menu.png";
-import Tag from "../../components/Tag";
 import SpinnerLoading from "../../components/SpinnerLoading";
 import Alert from "../../components/Alert";
 
@@ -63,50 +59,7 @@ function Register() {
     contact_type: "",
     confirmePassword: "",
     cpf: "",
-    academyCategory: "",
   });
-
-  const [categories, setCategories] = useState([]);
-
-  const [categoriesSel, setCategoriesSel] = useState([]);
-
-  const categoriesRef = useRef();
-
-  useEffect(() => {
-    const loadCategories = async () => {
-      try {
-        const response = await api.get("/academy");
-
-        setCategories(response.data);
-      } catch (error) {
-        alert(error);
-      }
-    };
-
-    loadCategories();
-  }, []);
-
-  const handleCategories = (e) => {
-    const idSel = e.target.value;
-
-    const categorySel = categories.find((c) => c.id.toString() === idSel);
-
-    if (categorySel && !categoriesSel.includes(categorySel))
-      setCategoriesSel([...categoriesSel, categorySel]);
-
-    e.target[e.target.selectedIndex].disabled = true;
-    e.target.value = "";
-  };
-
-  const handleUnselCategory = (idUnsel) => {
-    setCategoriesSel(categoriesSel.filter((c) => c.id !== idUnsel));
-
-    const { options } = categoriesRef.current;
-
-    for (var i = 0; i < options.length; i++) {
-      if (options[i].value === idUnsel.toString()) options[i].disabled = false;
-    }
-  };
 
   const confirmePassword = () =>
     userStudent.password === userStudent.confirmePassword;
@@ -187,12 +140,6 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
-
-    const categories = categoriesSel.reduce((s, c) => (s += c.id + ","), "");
-
-    data.append("academy", categories.substr(0, categories.length - 1));
-
     if (!confirmePassword()) return alert("As senhas precisam ser iguais!");
 
     try {
@@ -213,7 +160,6 @@ function Register() {
         cep: userStudent.cep,
         contact_type: userStudent.contact_type,
         cpf: userStudent.cpf,
-        academyCategory: categoriesSel.map((c) => c.id),
       });
 
       setMessage({
@@ -267,7 +213,7 @@ function Register() {
                 <option value="">Selecione</option>
                 <option value="F">Feminino</option>
                 <option value="M">Masculino</option>
-                <option value="O">Outros</option>
+                <option value="O">Outro</option>
               </Select>
               <Input
                 id="birth_date"
@@ -394,35 +340,6 @@ function Register() {
               </Citys>
             </ContainerAddress>
           </ContainerInfo>
-          <ContainerAcademy>
-            <TextAcademy>
-              <p>Selecione a academia onde o usuário será vinculado</p>
-            </TextAcademy>
-            <SelectAcademy>
-              <Select
-                id="academia"
-                type="int"
-                handler={handleCategories}
-                ref={categoriesRef}
-              >
-                <option value="">Selecione</option>
-                {categories.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </Select>
-              <div>
-                {categoriesSel.map((c) => (
-                  <Tag
-                    key={c.id}
-                    info={c.name}
-                    handleClose={() => handleUnselCategory(c.id)}
-                  ></Tag>
-                ))}
-              </div>
-            </SelectAcademy>
-          </ContainerAcademy>
           <ContainerPassword>
             <Input
               id="password"
@@ -437,7 +354,6 @@ function Register() {
               type="password"
               onBlur={(e) => {
                 if (!confirmePassword()) alert("As senhas precisam ser iguais");
-                e.target.focus();
               }}
               value={userStudent.confirmePassword}
               handler={handleInput}

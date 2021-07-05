@@ -11,9 +11,11 @@ import {
   InfoTreino,
   ItemMenuPerfil,
   ContainerIcon,
+  ContainerProfile,
+  CardsProfile,
 } from "./styles";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import { useHistory } from "react-router-dom";
@@ -121,7 +123,6 @@ function NewPersonal({ handleReload, setIsLoading, setMessage }) {
           type="password"
           onBlur={(e) => {
             if (!confirmePassword()) alert("As senhas precisam ser iguais");
-            // e.target.focus();
           }}
           value={personal.confirmePassword}
           handler={handleInput}
@@ -133,6 +134,41 @@ function NewPersonal({ handleReload, setIsLoading, setMessage }) {
   );
 }
 
+function Profile() {
+
+  const [academy, setAcademy] = useState([]);
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
+
+  const loadProfile = async () => {
+
+    const response = await api.get("/academy");
+
+    setAcademy(response.data);
+  };
+
+  return (
+    <>
+    <ContainerProfile>
+    {academy.map((a) => (
+      <>
+      <CardsProfile><h4>{a.name}</h4></CardsProfile>
+      <CardsProfile><h4>{a.cnpj}</h4></CardsProfile>
+      <CardsProfile><h4>{a.telefone}</h4></CardsProfile>
+      <CardsProfile><h4>{a.AddressAcademy.cep}</h4></CardsProfile>
+      <CardsProfile><h4>{a.AddressAcademy.street}</h4></CardsProfile>
+      <CardsProfile><h4>{a.AddressAcademy.city}</h4></CardsProfile>
+      <CardsProfile><h4>{a.AddressAcademy.number}</h4></CardsProfile>
+      <CardsProfile><h4>{a.AddressAcademy.state}</h4></CardsProfile>
+      </>
+      ))}
+    </ContainerProfile>
+    </>
+  )
+}
+
 function HomeAdmin() {
   const history = useHistory();
 
@@ -141,6 +177,8 @@ function HomeAdmin() {
   const [showPersonal, setShowPersonal] = useState(false);
 
   const [showQRCode, setShowQRCode] = useState(false);
+
+  const [showProfile, setShowProfile] = useState(false);
 
   const [message, setMessage] = useState(undefined);
 
@@ -172,6 +210,13 @@ function HomeAdmin() {
             setIsLoading={setIsLoading}
             setMessage={setMessage}
           />
+        </Modal>
+      )}
+
+      {showProfile && (
+        <Modal 
+        handleClose={() => setShowProfile(false)}>
+          <Profile />
         </Modal>
       )}
 
@@ -208,7 +253,7 @@ function HomeAdmin() {
             </ContainerColuna>
             <ContainerColuna>
               <ItemMenuPerfil>
-                <ContainerIcon>
+                <ContainerIcon onClick={() => setShowProfile(true)}>
                   <img src={IconAdmin} alt="iconAdmin" />
                 </ContainerIcon>
                 <h4>Perfil</h4>

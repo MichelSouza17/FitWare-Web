@@ -209,3 +209,27 @@ export const InfoTreino = styled.div`
     width: 280px;
   }
 `;
+
+export const ContainerProfile = styled.div`
+height: 400px;
+width: 400px;
+background-color: var(--blueLight);
+border-radius: 10px;
+align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-left: 110px;
+gap: 10px;
+overflow-y: auto;
+`;
+
+export const CardsProfile = styled.div`
+height: 40px;
+width: 90%;
+background-color: var(--light);
+border-radius: 10px;
+align-items: center;
+display: flex;
+justify-content: center;
+`;
