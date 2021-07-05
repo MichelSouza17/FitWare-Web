@@ -13,7 +13,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import IconAgenda from "../../assets/iconAgenda.svg";
 import IconAulas from "../../assets/aula.svg";
@@ -241,6 +241,7 @@ function NewAula({ handleReload, setIsLoading, setMessage }) {
 }
 
 function HomePersonal() {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [showNewAula, setShowNewAula] = useState(false);
   const handleReload = () => {
@@ -250,6 +251,9 @@ function HomePersonal() {
 
   const [message, setMessage] = useState(undefined);
 
+  const handleChangeAulas = async (e) => {
+    history.push("/schedulesPersonal");
+  };
   return (
     <>
       <Header />
@@ -276,11 +280,9 @@ function HomePersonal() {
               <img src={IconAulas} alt="Aulas" />
               <h4>Criar Aulas</h4>
             </ItemMenu>
-            <ItemMenu>
-              <Link to="/schedulesPersonal">
-                <img src={IconAgenda} alt="iconAgenda" />
-                <h4>Aulas Personal</h4>
-              </Link>
+            <ItemMenu onClick={handleChangeAulas}>
+              <img src={IconAgenda} alt="iconAgenda" />
+              <h4>Aulas Personal</h4>
             </ItemMenu>
           </ContainerItensMenu>
         </ContainerHome>

@@ -54,6 +54,11 @@ export const ItemMenu = styled.div`
   margin: 20px;
   border-radius: 10px;
   transition: 1s;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   :hover {
     background-image: linear-gradient(to bottom, #23b0ff, #81ccf7);
@@ -64,10 +69,8 @@ export const ItemMenu = styled.div`
   }
 
   img {
-    margin-left: 42%;
     height: 60px;
     width: 60px;
-    margin-top: 65px;
   }
 
   h4 {

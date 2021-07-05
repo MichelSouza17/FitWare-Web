@@ -135,7 +135,6 @@ function NewPersonal({ handleReload, setIsLoading, setMessage }) {
 }
 
 function Profile() {
-
   const [academy, setAcademy] = useState([]);
 
   useEffect(() => {
@@ -143,7 +142,6 @@ function Profile() {
   }, []);
 
   const loadProfile = async () => {
-
     const response = await api.get("/academy");
 
     setAcademy(response.data);
@@ -151,22 +149,38 @@ function Profile() {
 
   return (
     <>
-    <ContainerProfile>
-    {academy.map((a) => (
-      <>
-      <CardsProfile><h4>{a.name}</h4></CardsProfile>
-      <CardsProfile><h4>{a.cnpj}</h4></CardsProfile>
-      <CardsProfile><h4>{a.telefone}</h4></CardsProfile>
-      <CardsProfile><h4>{a.AddressAcademy.cep}</h4></CardsProfile>
-      <CardsProfile><h4>{a.AddressAcademy.street}</h4></CardsProfile>
-      <CardsProfile><h4>{a.AddressAcademy.city}</h4></CardsProfile>
-      <CardsProfile><h4>{a.AddressAcademy.number}</h4></CardsProfile>
-      <CardsProfile><h4>{a.AddressAcademy.state}</h4></CardsProfile>
-      </>
-      ))}
-    </ContainerProfile>
+      <ContainerProfile>
+        {academy.map((a) => (
+          <>
+            <CardsProfile>
+              <h4>{a.name}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.cnpj}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.telefone}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.AddressAcademy.cep}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.AddressAcademy.street}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.AddressAcademy.city}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.AddressAcademy.number}</h4>
+            </CardsProfile>
+            <CardsProfile>
+              <h4>{a.AddressAcademy.state}</h4>
+            </CardsProfile>
+          </>
+        ))}
+      </ContainerProfile>
     </>
-  )
+  );
 }
 
 function HomeAdmin() {
@@ -214,8 +228,7 @@ function HomeAdmin() {
       )}
 
       {showProfile && (
-        <Modal 
-        handleClose={() => setShowProfile(false)}>
+        <Modal handleClose={() => setShowProfile(false)}>
           <Profile />
         </Modal>
       )}
@@ -252,8 +265,8 @@ function HomeAdmin() {
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>
-              <ItemMenuPerfil>
-                <ContainerIcon onClick={() => setShowProfile(true)}>
+              <ItemMenuPerfil onClick={() => setShowProfile(true)}>
+                <ContainerIcon>
                   <img src={IconAdmin} alt="iconAdmin" />
                 </ContainerIcon>
                 <h4>Perfil</h4>
