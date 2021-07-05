@@ -3,13 +3,19 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
     :root{
-        --Dark: #333333;
-        --DarkGray: #858585;
-        --BlueLight: #0297b8;
-        --BlueDark: #023ceb;
-        --RedTransparent: #EF233C;
-        --textLight: #EDF2F4;
+        --Dark: #141414;
+        --DarkGray: #DADADA;
         --light: #ffffff;
+        --primary: #293CFF;
+        --primaryBlack: #5D61BB;
+        --secondy: #6874F1;
+        --secondyLight: #A9B8FC;
+        --redLight: #ff6961;
+        --accentLight: #F6C1A7;
+        --accentBlack: #F9B5AC;
+        --blueLight: #23B0FF;
+        --accentBlue: #81ccf7;
+        --accentGray: #E8E8E8;
     }
 
     *{
@@ -19,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
 
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
+        overflow-x: hidden;
     }
 
     ::-webkit-scrollbar{
@@ -30,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     ::-webkit-scrollbar-thumb{
         border-radius: 2px;
-        background-color: var(--RedTransparent);
+        background-color: var(--blueLight);
     }
 
     button{
@@ -38,7 +45,7 @@ export const GlobalStyles = createGlobalStyle`
         font-weight: bold;
         font-size: 17px;
         color: var(--textLight);
-        background-color: var(--BlueLight);
+        background-color: var(--blueLight);
         border: 1px solid var(--light);
         border-radius: 4px;
 
@@ -46,7 +53,7 @@ export const GlobalStyles = createGlobalStyle`
         transition: .2s ease-in-out;
 
         :hover{
-            background-color: var(--BlueDark);
+            background-color: var(--blueLight);
         }
 
         :active{

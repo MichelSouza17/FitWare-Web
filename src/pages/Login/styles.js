@@ -1,62 +1,65 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--DarkGray);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--light);
+  justify-content: center;
+  align-items: center;
+
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row;
+
+  body {
+    width: 100%;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: row;
+  }
+`;
+
+export const FotoAcademy = styled.img`
+  width: 70%;
+  height: inherit;
 `;
 
 export const FormLogin = styled.form`
-    width: 500px;
-    height: 350px;
-    background-color: var(--RedTransparent);
-    border-radius: 7px;
+  width: 30%;
+  height: 50%;
+  background-color: var(--light);
+  border-radius: 7px 0px 0px 7px;
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
 
-    header {
-        width: 100%;
-        height: 110px;
-        background-color: var(--Dark);
-        border-radius: 7px;
+  input {
+    /* opacity: 90%; */
+    width: 100%;
+    
+    border: solid 1px;
+  }
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  label {
+    /* margin-left: 10px; */
+    margin-top: 7px;
+    overflow-y: hidden;
+  }
 
-        img {
-            width: 300px;
-            height: 100px;
-            border: 1px solid #fff;
-            border-radius: 5px;
-            padding: 4px;
-        }
-    }
+  button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 30%;
+    color: var(--light);
+    overflow-y: hidden;
+  }
 
-    body{
-        width: 100%;
-        height: 100%;
-        background-color: var(--RedTransparent);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    label {
-        margin-left: 10px;
-        margin-top: 7px;
-    }
-
-    button {
-        margin-top: 12px;
-        margin-bottom: 10px;
-    }
+  h1 {
+    color: var(--blueLight);
+    overflow-y: hidden;
+  }
 `;
