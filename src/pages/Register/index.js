@@ -22,7 +22,7 @@ import {
 
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Header from "../../components/Header";
 import Select from "../../components/Select";
 import { api } from "../../services/api";
