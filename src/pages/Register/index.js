@@ -1,29 +1,4 @@
 import {
-<<<<<<< HEAD
-    Container,
-    Header,
-    ContainerUser,
-    ContainerContacts,
-    ContainerAddress,
-} from "./styles";
-
-function Register() {
-    return (
-        <>
-            <Container>
-                <ContainerUser></ContainerUser>
-                <ContainerContacts></ContainerContacts>
-                <ContainerAddress></ContainerAddress>
-            </Container>
-            <Header>
-                    <h2>
-                        @Copyright 2021 todos os direitos reservados - Política
-                        de Privacidade
-                    </h2>
-                </Header>
-        </>
-    );
-=======
   ContainerGeral,
   FormContainer,
   ContainerUser,
@@ -396,7 +371,6 @@ function Register() {
       <Footer />
     </>
   );
->>>>>>> 4ba85e883bd09c2d7fbd902197c905ba83a2c6ba
 }
 
 export default Register;
