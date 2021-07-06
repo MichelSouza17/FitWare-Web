@@ -239,6 +239,7 @@ function NewAula({ handleReload, setIsLoading, setMessage }) {
         <Input
           id="link"
           name="link"
+          placeholder="Link para Aula Remota"
           value={schedule.link}
           handler={handleInput}
         />
@@ -276,7 +277,6 @@ function Aulas() {
   };
 
   useEffect(() => {
-    console.log(showPresencial);
     if (aulas.length > 0) {
       if (showPresencial) {
         setAulasShow(aulas.filter((a) => !a.is_remote));

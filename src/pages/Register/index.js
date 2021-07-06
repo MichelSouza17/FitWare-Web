@@ -176,9 +176,9 @@ function Register() {
 
   return (
     <>
-      <Alert message={message} type="success" handleClose={setMessage} />
       {isLoading && <SpinnerLoading />}
       <Header />
+      <Alert message={message} type="success" handleClose={setMessage} />
       <ContainerGeral>
         {showMenu && <MenuLateral />}
         <Menu onClick={() => setShowMenu(true)}>

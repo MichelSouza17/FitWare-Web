@@ -30,6 +30,7 @@ import QRCode from "../../assets/qrCode.png";
 import { api } from "../../services/api";
 import SpinnerLoading from "../../components/SpinnerLoading";
 import Alert from "../../components/Alert";
+import { getUser } from "../../services/security";
 
 function NewPersonal({ handleReload, setIsLoading, setMessage }) {
   const [personal, setPersonal] = useState({
@@ -135,49 +136,52 @@ function NewPersonal({ handleReload, setIsLoading, setMessage }) {
 }
 
 function Profile() {
-  const [academy, setAcademy] = useState([]);
+  const [academy, setAcademy] = useState({
+    AddressAcademy: {}
+  });
 
   useEffect(() => {
     loadProfile();
   }, []);
 
   const loadProfile = async () => {
-    const response = await api.get("/academy");
+    const user = await getUser();
+
+
+    const response = await api.get(`/academy/${user.userId}`);
 
     setAcademy(response.data);
   };
 
   return (
     <>
-      <ContainerProfile>
-        {academy.map((a) => (
+      <ContainerProfile>      
           <>
             <CardsProfile>
-              <h4>{a.name}</h4>
+              <h4>{academy.name}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.cnpj}</h4>
+              <h4>{academy.cnpj}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.telefone}</h4>
+              <h4>{academy.telefone}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.AddressAcademy.cep}</h4>
+              <h4>{academy.AddressAcademy.cep}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.AddressAcademy.street}</h4>
+              <h4>{academy.AddressAcademy.street}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.AddressAcademy.city}</h4>
+              <h4>{academy.AddressAcademy.city}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.AddressAcademy.number}</h4>
+              <h4>{academy.AddressAcademy.number}</h4>
             </CardsProfile>
             <CardsProfile>
-              <h4>{a.AddressAcademy.state}</h4>
+              <h4>{academy.AddressAcademy.state}</h4>
             </CardsProfile>
           </>
-        ))}
       </ContainerProfile>
     </>
   );
@@ -251,7 +255,7 @@ function HomeAdmin() {
               </ItemMenu>
               <ItemMenu onClick={handleChangeListaClients}>
                 <img src={IconList} alt="iconList" />
-                <h4>Lista de Clientes</h4>
+                <h4>Lista de Alunos</h4>
               </ItemMenu>
             </ContainerColuna>
             <ContainerColuna>

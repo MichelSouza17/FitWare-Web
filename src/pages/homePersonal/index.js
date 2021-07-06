@@ -231,6 +231,7 @@ function NewAula({ handleReload, setIsLoading, setMessage }) {
         <Input
           id="link"
           name="link"
+          placeholder="Link para Aula Remota"
           value={schedule.link}
           handler={handleInput}
         />
